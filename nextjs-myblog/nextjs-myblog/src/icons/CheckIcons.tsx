@@ -6,7 +6,9 @@ export default function CheckIcons() {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="mx-auto h-10 w-auto"
+      width={'auto'}
+      height={100}
+      className="text-white"
     >
       <path
         strokeLinecap="round"
