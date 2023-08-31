@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Next.js13 MyBlog",
@@ -13,7 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="container mx-auto bg-indigo-400 text-slate-50">
         <Header/>
         {children}
-        <footer>footer</footer>
+        <Footer />
       </body>
     </html>
   );
