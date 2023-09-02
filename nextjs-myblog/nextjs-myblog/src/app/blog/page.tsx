@@ -8,7 +8,7 @@ const blog = () => {
       <section className="w-full md:w-2/3 flex flex-col items-center px-3">
         <ArticleList />
       </section>
-      <section className="md:w-1/3 flex flex-col items-center px-3 md:pl-6"></section>
+      <section className="md:w-1/3 flex flex-col items-center px-3 md:pl-6">
         <Aside />
       </section>
     </div>
