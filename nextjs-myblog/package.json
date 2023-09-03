@@ -1,6 +1,10 @@
 {
   "dependencies": {
     "@tailwindcss/forms": "^0.5.6",
+    "json-server": "^0.17.3",
     "modern-css-reset": "^1.4.0"
+  },
+  "scripts": {
+    "json-server": "json-server --watch nextjs-myblog/src/data/posts.json --port 3001"
   }
 }
