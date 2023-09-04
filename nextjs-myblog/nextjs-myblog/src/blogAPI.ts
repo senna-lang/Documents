@@ -28,12 +28,11 @@ export const getDetailArticle = async (id: string): Promise<Article> => {
   const articles = await res.json();
   return articles;
 };
-export const createArticle = async (
+export const createArticle = async ( //記事投稿
   id: string,
   title: string,
   content: string
 ): Promise<Article> => {
-  //記事投稿
 
   const currentDateTime = new Date().toISOString();
 
