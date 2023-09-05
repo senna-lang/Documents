@@ -28,12 +28,12 @@ export const getDetailArticle = async (id: string): Promise<Article> => {
   const articles = await res.json();
   return articles;
 };
-export const createArticle = async ( //記事投稿
+export const createArticle = async (
+  //記事投稿
   id: string,
   title: string,
   content: string
 ): Promise<Article> => {
-
   const currentDateTime = new Date().toISOString();
 
   const res = await fetch(`http://localhost:3001/posts/`, {
@@ -50,4 +50,19 @@ export const createArticle = async ( //記事投稿
 
   const newArticles = await res.json();
   return newArticles;
+};
+export const deleteArticle = async (
+  //記事削除
+  id: string
+): Promise<Article> => {
+  const res = await fetch(`http://localhost:3001/posts/${id}`, {
+    method: "DELETE",
+  });
+
+  if (!res.ok) {
+    throw new Error("エラーが発生しました");
+  }
+
+  const deleteArticles = await res.json();
+  return deleteArticles;
 };
