@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { createArticle } from "@/blogAPI";
 import { useRouter } from "next/navigation";
@@ -6,18 +6,19 @@ import React, { useState } from "react";
 
 const CreateNewPage = () => {
   const router = useRouter();
-  const [id,setId] = useState<string>('');
-  const [title,setTitle] = useState<string>('');
-  const [content,setContent] = useState<string>('');
-
-
+  const [id, setId] = useState<string>("");
+  const [title, setTitle] = useState<string>("");
+  const [content, setContent] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await createArticle(id,title,content);
-    router.push('/blog');
+    setLoading(true);
+    await createArticle(id, title, content);
+    setLoading(false);
+    router.push("/blog");
     router.refresh();
-  }
+  };
 
   return (
     <div className="py-8 px-4">
@@ -42,10 +43,21 @@ const CreateNewPage = () => {
         </div>
         <div className="mb-4 ">
           <label className="text-gray-700 text-sm font-bold mb-2">本文</label>
-          <textarea  onChange={(e) => setContent(e.target.value)} className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none" />
+          <textarea
+            onChange={(e) => setContent(e.target.value)}
+            className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none"
+          />
         </div>
 
-        <button type="submit" className="py-2 px-4 border rounded-md !bg-orange-300">
+        <button
+          type="submit"
+          className={`py-2 px-4 border rounded-md ${
+            loading
+              ? "!bg-orange-300-cursor-not-allowed "
+              : "!bg-orange-400 hover:!bg-orange-500"
+          } `}
+          disabled={loading}
+        >
           投稿
         </button>
       </form>
