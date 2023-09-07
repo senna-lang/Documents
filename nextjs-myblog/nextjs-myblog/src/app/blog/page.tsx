@@ -5,13 +5,10 @@ import React from "react";
 import { supabase } from "@/utils/supabaseClient";
 
 const blog = async () => {
-  // const articles = await getAllArticles();
-
+  
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
   const res = await fetch(`${API_URL}/api`, { cache: "no-store" });
   const articles = await res.json();
-
-  console.log(articles);
 
   return (
     <div className="md:flex">
