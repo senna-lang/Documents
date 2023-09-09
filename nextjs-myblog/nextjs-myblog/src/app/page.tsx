@@ -1,7 +1,20 @@
 import Image from "next/image";
 import CheckIcons from "@/icons/CheckIcons";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
 
-export default function HOME() {
+import type { Database } from "../../lib/database.types";
+import SupabaseListener from "./components/SupabaseLintener";
+
+export default async function HOME() {
+  const supabase = createServerComponentClient<Database>({
+    cookies,
+  });
+
+  const { //セッションの取得
+    data: { session },
+  } = await supabase.auth.getSession();
+
   return (
     <div className="flex h-screen flex-1 flex-col justify-center px-6 py-12  lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -61,7 +74,7 @@ export default function HOME() {
               type="submit"
               className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
-              Create your account
+              {session ? <div>login</div> : <div>logout</div>}
             </button>
           </div>
         </form>

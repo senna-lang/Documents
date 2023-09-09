@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import SupabaseListener from "./SupabaseLintener";
 
 const Header = () => {
   return (
@@ -15,6 +16,9 @@ const Header = () => {
                記事を書く
             </Link>
          </nav>
+      </div>
+      <div>
+        <SupabaseListener/>
       </div>
     </header>
   );
