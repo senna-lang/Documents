@@ -1,6 +1,7 @@
 import { supabase } from "@/utils/supabaseClient";
 import { NextApiRequest, NextApiResponse } from "next";
 import { NextResponse } from "next/server";
+import { notFound } from "next/navigation";
 
 export async function GET(req :Request,res :Response) {
   const { data, error } = await supabase.from("posts").select("*");
@@ -9,3 +10,22 @@ export async function GET(req :Request,res :Response) {
   }
   return NextResponse.json(data);
 }
+export async function POST(req: Request, res: Response) {
+  const { id, title, content } = await req.json();
+
+  const { data, error } = await supabase.from("posts").insert([
+    {
+      id,
+      title,
+      content,
+      createdAt: new Date().toISOString(),
+    },
+  ]);
+
+  if (!data) {
+    notFound();
+  }
+
+  return NextResponse.json(data);
+}
+
