@@ -15,10 +15,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ja">
       <head />
-      <body className="container mx-auto bg-indigo-400 text-slate-50 ">
+      <body className="container mx-auto bg-white text-black ">
         <div className="flex flex-col min-h-screen ">
           <Header />
-          <main className="flex-grow">
+          <main className="flex-grow mx-28">
             <Suspense fallback={<Loading />}>{children}</Suspense>
           </main>
           <Footer />

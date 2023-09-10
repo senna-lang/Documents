@@ -3,13 +3,18 @@ import Image from "next/image";
 
 const ContactCard = () => {
   return (
-    <div>
-      <div className="bg-white text-center shadow-xl p-8 w-80 rounded m-auto">
-        <div className="mt-4">
-          <p className="font-bold text-slate-900">Contact info</p>
-        </div>
-        <div className="flex justify-center mt-4">
-          <Image className="rounded-full" src="/images/avatar.JPG" width={60} height={60} alt="Avatar" />
+      <div className="bg-white text-center shadow-xl rounded m-auto ">
+        {/* <div className="flex justify-center mt-4">
+          <Image
+            className="rounded-full" 
+            src="/images/avatar.JPG"
+            width={60}
+            height={60}
+            alt="Avatar"
+          />
+        </div> */}
+        <div className="relative w-full h-52">
+          <Image src="/images/profileback.jpeg" alt="background" fill className="object-cover"/>
         </div>
         <div className="mt-4">
           <p className="font-bold text-gray-600">Address</p>
@@ -71,7 +76,6 @@ const ContactCard = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
