@@ -4,12 +4,12 @@ import Link from "next/link";
 import { Article } from "@/types";
 
 type ArticleCardProps = {
-   article : Article
-}
+  article: Article;
+};
 
-const ArticleCard = ({article} : ArticleCardProps) => {
+const ArticleCard = ({ article }: ArticleCardProps) => {
   return (
-    <article className=" py-4 px-4 w-1/2" key={article.id}>
+    <article className=" my-2 mx-2 w-[48%] hover:shadow-lg  transition-transform duration-500 translate-y-2 hover:translate-y-[-2] " key={article.id}>
       <Link href={`articles/${article.id}`} className="hover:opacity-75">
         <Image
           src={`https://source.unsplash.com/collection/1346951/1000x500?sig=${article.id}`}
@@ -23,19 +23,22 @@ const ArticleCard = ({article} : ArticleCardProps) => {
         <Link href="#" className="text-blue-700 pb-4 font-bold">
           Technology
         </Link>
-        <Link
-          href={`articles/${article.id}`}
-          className="text-slate-900 text-3xl font-bold hover:text-gray-700 pb-4"
-        >
-          {article.title}
-        </Link>
-        <p className="text-sm pb-3 text-slate-900">Published on {article.createdAt}</p>
-        <Link href={`articles/${article.id}`} className="text-slate-900 pb-6">
+        <div className="min-h-[72px]">
+          <Link
+            href={`articles/${article.id}`}
+            className="text-slate-900 text-3xl font-bold hover:text-gray-700 pb-4"
+          >
+            {article.title}
+          </Link>
+        </div>
+
+        <Link href={`articles/${article.id}`} className="text-slate-900 pb-6 mt-2">
           {article.content.length > 70 ? article.content.substring(0, 70) + "..." : article.content}
         </Link>
         <Link href={`articles/${article.id}`} className="text-pink-800 hover:text-black">
           続きを読む
         </Link>
+        <p className="text-sm pb-3 text-slate-900 text-right">{article.createdAt}</p>
       </div>
     </article>
   );
