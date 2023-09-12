@@ -11,10 +11,10 @@ type ArticleListProps = {
 const ArticleList = ({ articles }: ArticleListProps) => {
   return (
     <div>
-      <div className="text-center my-5">
+      <div className="text-center my-7">
         <h1 className="text-5xl font-playfairDisplay ">NEW POSTS</h1>
       </div>
-      <div className="flex flex-wrap">
+      <div className="flex flex-col md:flex-row md:justify-between md:flex-wrap lg:justify-normal lg:mb-4">
         {articles.map((article) => (
           <ArticleCard article={article} key={article.id} />
         ))}

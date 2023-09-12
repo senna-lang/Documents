@@ -11,11 +11,11 @@ const blog = async () => {
   const articles = await res.json();
  
   return (
-    <div className="md:flex h-auto">
-      <section className="w-full md:w-[70%] items-center px-3">
+    <div className="h-auto lg:flex">
+      <section className="w-full items-center px-3">
         <ArticleList articles={articles} />
       </section>
-      <section className="md:w-[30%] flex flex-col items-center px-3 md:pl-6">
+      <section className=" flex flex-col items-center px-3 ">
         <Aside />
       </section>
     </div>

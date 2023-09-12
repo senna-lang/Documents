@@ -3,11 +3,11 @@ import Image from "next/image";
 
 const ContactCard = () => {
   return (
-    <div className="bg-white text-center border rounded m-auto relative mt-8">
+    <div className="bg-white text-center border rounded mb-4 relative mt-2">
       <div className="relative w-full h-60">
         <Image src="/images/profileback.jpeg" alt="background" fill className="object-cover" />
       </div>
-      <div className="absolute top-1/2 left-1/2 transform translate-x-[-50%] translate-y-[-90%]">
+      <div className="absolute top-1/2 left-1/2 transform translate-x-[-50%] translate-y-[-75%] md:translate-y-[-50%] lg:translate-y-[-70%]">
         <Image
           className="rounded-full w-24 h-24 object-cover"
           src="/images/avatar.JPG"
@@ -17,7 +17,7 @@ const ContactCard = () => {
         />
         <p className="text-2xl font-bold text-gray-600 mt-4">せん</p>
       </div>
-      <div className="bg-white rounded p-4 mt-28 w-full">
+      <div className="bg-white rounded p-4 mt-14 w-full lg:mt-24">
         <h3 className="font-bold text-gray-900 mb-2">About me</h3>
         <p className="text-gray-600">
           長野県　安曇野市出身 24歳
@@ -28,7 +28,7 @@ const ContactCard = () => {
           ゲーム　etc...
         </p>
       </div>
-      <div className="mt-4 flex justify-around py-8">
+      <div className="mb-4 flex justify-around py-2">
         <div>
           <a
             href="https://nerdcave.com/tailwind-cheat-sheet"
