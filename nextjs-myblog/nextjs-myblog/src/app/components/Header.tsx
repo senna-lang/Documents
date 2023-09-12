@@ -7,7 +7,7 @@ const Header = () => {
     <header className="mb-8 py-5 px-5 border-b flex justify-between items-center">
       <div>
         <Link href='/blog'>
-          <h1 className="text-2xl font-extrabold">Next.js13 Blog</h1>
+          <h1 className="text-2xl font-extrabold">SENN'S BLOG</h1>
         </Link>
       </div>
       <div>

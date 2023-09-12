@@ -15,16 +15,17 @@ const ContactCard = () => {
           height={60}
           alt="Avatar"
         />
-         <p className="text-2xl font-bold text-gray-600 mt-4">せん</p>
+        <p className="text-2xl font-bold text-gray-600 mt-4">せん</p>
       </div>
-       <div className="bg-white rounded p-4 mt-28 w-full">
+      <div className="bg-white rounded p-4 mt-28 w-full">
         <h3 className="font-bold text-gray-900 mb-2">About me</h3>
         <p className="text-gray-600">
           長野県　安曇野市出身 24歳
           <br />
           趣味でプログラミングをしているものです。最近はNext.js13でブログ構築をしています。
           <br />
-          <span className="font-bold">趣味</span>　読書　映画鑑賞　スポーツ鑑賞　スノーボード etc...
+          <span className="font-bold">趣味</span>　読書　映画鑑賞　スポーツ鑑賞　スノーボード
+          ゲーム　etc...
         </p>
       </div>
       <div className="mt-4 flex justify-around py-8">
