@@ -10,7 +10,7 @@ type ArticleCardProps = {
 const ArticleCard = ({ article }: ArticleCardProps) => {
   return (
     <article
-      className="my-2 mx-2 bg-white min-h-[520px] hover:shadow-lg  transition-transform duration-500 translate-y-2 hover:translate-y-[-2] md:w-[47%] "
+      className="my-2 mx-2 bg-white min-h-[500px] hover:shadow-lg  transition-transform duration-500 translate-y-2 hover:translate-y-[-2] md:w-[47%] "
       key={article.id}
     >
       <Link href={`articles/${article.id}`} className="hover:opacity-75">
@@ -22,7 +22,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
           priority
         />
       </Link>
-      <div className=" flex flex-col justify-start p-6">
+      <div className=" flex flex-col justify-start pt-6 px-6">
         <Link href="#" className="text-blue-700 pb-4 font-bold">
           Technology
         </Link>
