@@ -11,12 +11,20 @@ const blog = async () => {
 
   const res = await fetch(`${API_URL}/api/notion`, { next: { revalidate: 10 } });
   const posts = await res.json();
-  const metaData = posts.map((post:any) => {
+  const metaData = posts.map((post: any) => {
+    const getTags = (tags:any) => {
+      const allTags = tags.map((tag) => {
+        return tag.name;
+      });
+      return allTags;
+    };
+
     const meta = {
       id: post.properties.Name.title[0].plain_text,
       description: post.properties.Description.rich_text[0].plain_text,
       date: post.properties.Date.date.start,
       slug: post.properties.Slug.rich_text[0].plain_text,
+      tags: getTags(post.properties.Tags.multi_select),
     };
     return meta;
   });
