@@ -7,9 +7,8 @@ import React from "react";
 
 const blog = async () => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
-  // const res2 = await fetch(`${API_URL}/api/blog`, { cache: "no-store" });
-  // const articles = await res2.json();
-  // console.log(articles)
+ 
+
 
   const res = await fetch(`${API_URL}/api/notion`, { next: { revalidate: 10 } });
   const posts = await res.json();

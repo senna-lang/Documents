@@ -1,5 +1,4 @@
 import { Client } from "@notionhq/client";
-import { NextApiRequest, NextApiResponse } from "next";
 import { NextResponse } from "next/server";
 
 const notionSecret = "secret_XHu8WmO9WYmfE1MU2pG1dkz0qUG57eiij94gxPDOz5V";
@@ -16,4 +15,6 @@ export async function GET(req: Request, res: Response) {
   const allPosts = posts.results;
   return NextResponse.json(allPosts);
 }
+
+
 
