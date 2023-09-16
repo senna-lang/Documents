@@ -24,24 +24,25 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
       </Link>
       <div className=" flex flex-col justify-start pt-6 px-6">
         <Link href="#" className="text-blue-700 pb-4 font-bold">
-          Technology
+          {article.tags}
         </Link>
 
         <Link
           href={`articles/${article.id}`}
           className="text-slate-900 text-3xl font-bold min-h-[80px] hover:text-gray-700 pb-2"
         >
-          {article.title}
+          {article.id}
         </Link>
 
         <Link href={`articles/${article.id}`} className="text-slate-900 pb-10 mt-2 h-[120px]">
-          {article.content.length > 70 ? article.content.substring(0, 70) + "..." : article.content}
+          {article.description}
+          {/* {article.description.length > 70 ? article.description.substring(0, 70) + "..." : article.description} */}
         </Link>
         
           <Link href={`articles/${article.id}`} className="text-pink-800 hover:text-black">
             続きを読む
           </Link>
-          <p className="text-sm text-slate-900 text-right">{article.createdAt}</p>
+          <p className="text-sm text-slate-900 text-right">{article.date}</p>
         
       </div>
     </article>
