@@ -12,6 +12,7 @@ const blog = async () => {
 
   const res = await fetch(`${API_URL}/api/notion`, { next: { revalidate: 10 } });
   const posts = await res.json();
+  console.log(posts);
   const metaData = posts.map((post: any) => {
     const getTags = (tags:any) => {
       const allTags = tags.map((tag:any) => {
