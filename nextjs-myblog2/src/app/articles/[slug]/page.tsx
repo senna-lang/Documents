@@ -5,7 +5,7 @@ import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const Post = async ({ params }: { params: { slug: string } }) => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
-  const res = await fetch(`${API_URL}/api/notion/${params.slug}`, { next: { revalidate: 600 } });
+  const res = await fetch(`${API_URL}/api/notion/${params.slug}`, { next: { revalidate: 60 } });
   if (!res.ok) {
     throw new Error("Failed to fetch article");
   }
@@ -48,22 +48,21 @@ const Post = async ({ params }: { params: { slug: string } }) => {
         </p>
       ))}
       <div className="mt-10 font-medium">
-        {/* {mbString} */}
         <ReactMarkdown
-          components={{
-            code({ node, inline, className, children, ...props }) {
-              const match = /language-(\w+)/.exec(className || "");
-              return !inline && match ? (
-                <SyntaxHighlighter language="javascript" style={vscDarkPlus}>
-                  {String(children).replace(/\n$/, "")}
-                </SyntaxHighlighter>
-              ) : (
-                <code className={className} {...props}>
-                  {children}
-                </code>
-              );
-            },
-          }}
+          // components={{
+          //   code({ node, inline, className, children, ...props }) {
+          //     const match = /language-(\w+)/.exec(className || "");
+          //     return !inline && match ? (
+          //       <SyntaxHighlighter language="javascript" style={vscDarkPlus}>
+          //         {String(children).replace(/\n$/, "")}
+          //       </SyntaxHighlighter>
+          //     ) : (
+          //       <code className={className} {...props}>
+          //         {children}
+          //       </code>
+          //     );
+          //   },
+          // }}
         >
           {mbString.parent}
         </ReactMarkdown>
