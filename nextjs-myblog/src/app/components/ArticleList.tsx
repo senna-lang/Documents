@@ -6,17 +6,16 @@ import ArticleCard from "./ArticleCard";
 
 type ArticleListProps = {
   articles: Article[];
+  normal: boolean;
 };
 
-const ArticleList = ({ articles }: ArticleListProps) => {
+const ArticleList = ({ articles, normal }: ArticleListProps) => {
   return (
     <div>
-      <div className="text-center my-7">
-        <h1 className="text-5xl font-playfairDisplay ">NEW POSTS</h1>
-      </div>
-      <div className="flex flex-col md:flex-row md:justify-between md:flex-wrap lg:justify-normal lg:mb-4">
+
+      <div className="flex flex-col md:flex-row md:justify-between md:flex-wrap  lg:justify-normal lg:mb-4">
         {articles.map((article) => (
-          <ArticleCard article={article} key={article.id} />
+          <ArticleCard article={article} key={article.id} normal={normal}/>
         ))}
       </div>
     </div>
