@@ -5,16 +5,13 @@ import { Article } from "@/types";
 
 type ArticleCardProps = {
   article: Article;
-  normal:boolean
 };
 
-const ArticleCard = ({ article,normal }: ArticleCardProps,) => {
-  const twoCol = "my-2 mx-2 bg-white min-h-[500px] hover:shadow-lg  transition-transform duration-500 translate-y-2 hover:translate-y-[-2] md:w-[47%] "
-  const threeCol= "my-2 mx-2 bg-white min-h-[500px] hover:shadow-lg  transition-transform duration-500 translate-y-2 hover:translate-y-[-2] md:w-[30%] "
-  const style = normal ? twoCol :threeCol;
+const ArticleCard = ({ article}: ArticleCardProps,) => {
+  
   return (
     <article
-      className={style}
+      className='my-2 bg-white min-h-[500px] hover:shadow-lg  transition-transform duration-500 translate-y-2 hover:translate-y-[-2]'
       key={article.id}
     >
       <Link href={`articles/${article.slug}`} className="hover:opacity-75">

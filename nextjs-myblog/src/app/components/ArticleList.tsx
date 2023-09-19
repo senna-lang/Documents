@@ -10,12 +10,12 @@ type ArticleListProps = {
 };
 
 const ArticleList = ({ articles, normal }: ArticleListProps) => {
+  const style = normal ? "grid gap-2 md:grid-cols-2 lg:mb-4n" : "grid gap-2 md:grid-cols-3 lg:mb-4";
   return (
     <div>
-
-      <div className="flex flex-col md:flex-row md:justify-between md:flex-wrap  lg:justify-normal lg:mb-4">
+      <div className={style}>
         {articles.map((article) => (
-          <ArticleCard article={article} key={article.id} normal={normal}/>
+          <ArticleCard article={article} key={article.id} />
         ))}
       </div>
     </div>
