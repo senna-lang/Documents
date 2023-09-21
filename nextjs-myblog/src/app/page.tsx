@@ -1,84 +1,56 @@
-import Image from "next/image";
-import CheckIcons from "@/icons/CheckIcons";
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
+// "use client";
 
-import type { Database } from "../../lib/database.types";
-import SupabaseListener from "./components/SupabaseLintener";
+import ArticleList from "./components/ArticleList";
+import Aside from "./components/Aside";
+import React from "react";
+import Link from "next/link";
 
-export default async function HOME() {
-  const supabase = createServerComponentClient<Database>({
-    cookies,
+const blog = async () => {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+  const res = await fetch(`${API_URL}/api/notion`, { next: { revalidate: 10 } });
+  const posts = await res.json();
+  const fourPosts = posts.slice(0, 4);
+
+  // console.log(posts);
+  const metaData = fourPosts.map((post: any) => {
+    const getTags = (tags: any) => {
+      const allTags = tags.map((tag: any) => {
+        return tag.name;
+      });
+      return allTags;
+    };
+
+    const meta = {
+      id: post.properties.Name.title[0].plain_text,
+      description: post.properties.Description.rich_text[0].plain_text,
+      date: post.properties.Date.date.start,
+      slug: post.properties.Slug.rich_text[0].plain_text,
+      tags: getTags(post.properties.Tags.multi_select),
+    };
+    return meta;
   });
-
-  const { //セッションの取得
-    data: { session },
-  } = await supabase.auth.getSession();
+  // console.log(metaData);
 
   return (
-    <div className="flex h-screen flex-1 flex-col justify-center px-6 py-12  lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <CheckIcons />
-        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-          Welcome to my WORKS !!
-        </h2>
-      </div>
-
-      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form className="space-y-6" action="#" method="POST">
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-              Email address
-            </label>
-            <div className="mt-2">
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
-          </div>
-
-          <div>
-            <div className="flex items-center justify-between">
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Password
-              </label>
-            </div>
-            <div className="mt-2">
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                required
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
-          </div>
-
-          <div>
-            <button
-              type="submit"
-              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mt-10 mb-2"
-            >
-              Sign in
+    <div className="h-auto xl:flex xl:mx-36">
+      <section className="w-full items-center px-3 xl:w-[70%]">
+        <div className="text-center my-7">
+          <h1 className="text-5xl font-playfairDisplay ">NEW POSTS</h1>
+        </div>
+        <ArticleList articles={metaData} normal={true} />
+        <div className="text-center mb-10">
+          <Link href={`allposts`}>
+            <button className=" relative inline-block bg-black text-white border-black font-semibold py-4 px-16 my-3 mx-auto cursor-pointer transition-all duration-500 hover:bg-opacity-70 hover:text-white hover:tracking-[5px]">
+              MORE
             </button>
-            <button
-              type="submit"
-              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            >
-              {session ? <div>login</div> : <div>logout</div>}
-            </button>
-          </div>
-        </form>
-      </div>
+          </Link>
+        </div>
+      </section>
+      <section className=" flex flex-col items-center px-3 xl:w-[30%]">
+        <Aside />
+      </section>
     </div>
   );
-}
+};
+
+export default blog;
