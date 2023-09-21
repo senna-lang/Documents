@@ -1,11 +1,10 @@
 import React from "react";
+import Aside from "@/app/components/Aside";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const Post = async ({ params }: { params: { slug: string } }) => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
-  const res = await fetch(`${API_URL}/api/notion/${params.slug}`, { next: { revalidate: 60 } });
+  const res = await fetch(`${API_URL}/api/notion/${params.slug}`, { next: { revalidate: 10 } });
   if (!res.ok) {
     throw new Error("Failed to fetch article");
   }
@@ -34,40 +33,29 @@ const Post = async ({ params }: { params: { slug: string } }) => {
   // console.log(metaData);
 
   return (
-    <section className=" lg:px-2 px-5  lg:w2/5 mt-20 xl:mx-36">
-      <h2 className=" w-full text-2xl font-medium">{metaData.id}</h2>
-      <div className=" border-b-2 w-1/3 mt-1 border-sky-900"></div>
-      <span className=" text-gray-500">Published {metaData.date}</span>
-      <br />
-      {metaData.tags.map((tag: string) => (
-        <p
-          className="text-white bg-sky-900 rounded-xl font-medium mt-2 mr-2 px-2 inline-block"
-          key={metaData.slug}
-        >
-          {tag}
-        </p>
-      ))}
-      <div className="mt-10 font-medium">
-        <ReactMarkdown
-          // components={{
-          //   code({ node, inline, className, children, ...props }) {
-          //     const match = /language-(\w+)/.exec(className || "");
-          //     return !inline && match ? (
-          //       <SyntaxHighlighter language="javascript" style={vscDarkPlus}>
-          //         {String(children).replace(/\n$/, "")}
-          //       </SyntaxHighlighter>
-          //     ) : (
-          //       <code className={className} {...props}>
-          //         {children}
-          //       </code>
-          //     );
-          //   },
-          // }}
-        >
-          {mbString.parent}
-        </ReactMarkdown>
+
+    <div className=" h-auto xl:flex xl:mx-36">
+      <div className="news-detail w-full items-center px-3 xl:w-[70%]">
+        <h2 className=" w-full text-2xl font-medium">{metaData.id}</h2>
+        <div className=" border-b-2 w-1/3 mt-1 border-sky-900"></div>
+        <span className=" text-gray-500">Published {metaData.date}</span>
+        <br />
+        {metaData.tags.map((tag: string) => (
+          <p
+            className="text-white bg-sky-900 rounded-xl font-medium mt-2 mr-2 px-2 inline-block"
+            key={metaData.slug}
+          >
+            {tag}
+          </p>
+        ))}
+        <div className="mt-10 font-medium">
+          <ReactMarkdown>{mbString.parent}</ReactMarkdown>
+        </div>
       </div>
-    </section>
+      <section className=" flex flex-col items-center px-3 xl:w-[30%]">
+        <Aside />
+      </section>
+    </div>
   );
 };
 
