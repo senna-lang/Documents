@@ -1,16 +1,18 @@
 // "use client";
 
+import PageNation from "@/app/components/PageNation";
 import ArticleList from "../../components/ArticleList";
 
-const BlogPageList = async (context:any) => {
+
+const BlogPageList = async (context: any) => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
   const res = await fetch(`${API_URL}/api/notion`, { next: { revalidate: 10 } });
   const posts = await res.json();
-  const currentPage = context.params?.page;
-  // console.log(currentPage);
+  const currentPage:number = context.params?.page;
+  console.log(currentPage);
   const startIndex = (currentPage - 1) * 6;
   const endIndex = startIndex + 6;
-  const postsByPage = posts.slice(startIndex,endIndex);
+  const postsByPage = posts.slice(startIndex, endIndex);
 
   // console.log(posts);
   const metaData = postsByPage.map((post: any) => {
@@ -33,14 +35,15 @@ const BlogPageList = async (context:any) => {
   // console.log(metaData);
 
   return (
-    <div className="h-auto xl:flex xl:mx-40">
-    <section className="w-full items-center px-3 ">
-      <div className="text-center my-7">
-        <h1 className="text-5xl font-playfairDisplay ">All Posts</h1>
-      </div>
-      <ArticleList articles={metaData} normal={false}/>
-    </section>
-  </div>
+    <div className="h-auto xl:mx-40">
+      <section className="w-full items-center px-3 ">
+        <div className="text-center my-7">
+          <h1 className="text-5xl font-playfairDisplay ">All Posts</h1>
+        </div>
+        <ArticleList articles={metaData} normal={false} />
+      </section>
+      <PageNation numberOfPage={currentPage}/>
+    </div>
   );
 };
 

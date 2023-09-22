@@ -39,7 +39,7 @@ const blog = async () => {
         </div>
         <ArticleList articles={metaData} normal={true} />
         <div className="text-center mb-10">
-          <Link href={`allposts`}>
+          <Link href={`/allposts`}>
             <button className=" relative inline-block bg-black text-white border-black font-semibold py-4 px-16 my-3 mx-auto cursor-pointer transition-all duration-500 hover:bg-opacity-70 hover:text-white hover:tracking-[5px]">
               MORE
             </button>

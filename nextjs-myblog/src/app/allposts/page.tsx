@@ -4,13 +4,15 @@ import ArticleList from "../components/ArticleList";
 import PageNation from "../components/PageNation";
 import React from "react";
 
-const allPosts = async () => {
+const allPosts = async (context:any) => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
   const res = await fetch(`${API_URL}/api/notion`, { next: { revalidate: 10 } });
   const posts = await res.json();
+  const postsByPage = posts.slice(0,6);
+
 
   // console.log(posts);
-  const metaData = posts.map((post: any) => {
+  const metaData = postsByPage.map((post: any) => {
     const getTags = (tags: any) => {
       const allTags = tags.map((tag: any) => {
         return tag.name;
@@ -37,7 +39,7 @@ const allPosts = async () => {
         </div>
         <ArticleList articles={metaData} normal={false} />
       </section>
-        <PageNation />
+        <PageNation numberOfPage={1}/>
     </div>
   );
 };
