@@ -1,20 +1,22 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Article } from "@/types";
+import { useRouter } from "next/navigation";
 
 type ArticleCardProps = {
   article: Article;
 };
 
-const ArticleCard = ({ article}: ArticleCardProps,) => {
-  
+const ArticleCard = ({ article }: ArticleCardProps) => {
+  const router = useRouter();
   return (
     <article
-      className='my-2 bg-white min-h-[500px] hover:shadow-lg  transition-transform duration-500 translate-y-2 hover:translate-y-[-2]'
+      className="my-2 bg-white min-h-[500px] hover:shadow-lg  transition-transform duration-500 translate-y-2 hover:translate-y-[-2]"
       key={article.id}
     >
-      <Link href={`articles/${article.slug}`} className="hover:opacity-75">
+      <div className="hover:opacity-75" onClick={() => router.push(`/articles/${article.slug}`)}>
         <Image
           src={`https://source.unsplash.com/collection/1346951/1000x500?sig=${article.id}`}
           width={1280}
@@ -22,31 +24,41 @@ const ArticleCard = ({ article}: ArticleCardProps,) => {
           alt=""
           priority
         />
-      </Link>
+      </div>
       <div className=" flex flex-col justify-start pt-6 px-6">
         <div className="flex">
           {article.tags.map((tag) => (
-            <Link href="#" className="text-blue-700 pb-4 font-bold mr-2" key={article.slug}>
+            <Link
+              href={`/allposts/tag/${tag}/1`}
+              className="text-blue-700 pb-4 font-bold mr-2"
+              key={article.slug}
+            >
               {tag}
             </Link>
           ))}
         </div>
 
-        <Link
-          href={`articles/${article.slug}`}
+        <div
           className="text-slate-900 text-3xl font-bold min-h-[80px] hover:text-gray-700 pb-2"
+          onClick={() => router.push(`/articles/${article.slug}`)}
         >
           {article.id}
-        </Link>
+        </div>
 
-        <Link href={`articles/${article.slug}`} className="text-slate-900 pb-10 mt-2 h-[120px]">
+        <div
+          className="text-slate-900 pb-10 mt-2 h-[120px]"
+          onClick={() => router.push(`/articles/${article.slug}`)}
+        >
           {article.description}
           {/* {article.description.length > 70 ? article.description.substring(0, 70) + "..." : article.description} */}
-        </Link>
+        </div>
 
-        <Link href={`articles/${article.slug}`} className="text-pink-800 hover:text-black">
+        <div
+          className="text-pink-800 hover:text-black"
+          onClick={() => router.push(`/articles/${article.slug}`)}
+        >
           続きを読む
-        </Link>
+        </div>
         <p className="text-sm text-slate-900 text-right pb-4">{article.date}</p>
       </div>
     </article>

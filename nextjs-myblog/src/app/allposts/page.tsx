@@ -1,4 +1,4 @@
-// "use client";
+
 
 import ArticleList from "../components/ArticleList";
 import PageNation from "../components/PageNation";
@@ -8,6 +8,7 @@ const allPosts = async (context:any) => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
   const res = await fetch(`${API_URL}/api/notion`, { next: { revalidate: 10 } });
   const posts = await res.json();
+  const numberOfPage = Math.floor(posts.length / 6) + (posts.length % 6 > 0 ? 1 : 0);
   const postsByPage = posts.slice(0,6);
 
 
@@ -29,7 +30,7 @@ const allPosts = async (context:any) => {
     };
     return meta;
   });
-  // console.log(metaData);
+  
 
   return (
     <div className="h-auto xl:mx-40">
@@ -39,7 +40,7 @@ const allPosts = async (context:any) => {
         </div>
         <ArticleList articles={metaData} normal={false} />
       </section>
-        <PageNation numberOfPage={1}/>
+        <PageNation numberOfPage={numberOfPage} tag={null}/>
     </div>
   );
 };
