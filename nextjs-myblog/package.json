@@ -18,6 +18,7 @@
     "autoprefixer": "10.4.15",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
+    "gsap": "^3.12.2",
     "next": "13.4.19",
     "next-auth": "^4.23.1",
     "notion-to-md": "^3.1.1",
@@ -26,6 +27,7 @@
     "react-dom": "18.2.0",
     "react-markdown": "^8.0.7",
     "react-syntax-highlighter": "^15.5.0",
+    "split-type": "^0.3.3",
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2"
   },
