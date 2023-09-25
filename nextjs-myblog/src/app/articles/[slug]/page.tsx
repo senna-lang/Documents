@@ -1,6 +1,7 @@
 import React from "react";
 import Aside from "@/app/components/Aside";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import Link from "next/link";
 
 const Post = async ({ params }: { params: { slug: string } }) => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -45,7 +46,7 @@ const Post = async ({ params }: { params: { slug: string } }) => {
             className="text-white bg-sky-900 rounded-xl font-medium mt-2 mr-2 px-2 inline-block"
             key={metaData.slug}
           >
-            {tag}
+            <Link href={`/allposts/tag/${tag}/1`}>{tag}</Link>
           </p>
         ))}
         <div className="mt-10 font-medium">

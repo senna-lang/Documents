@@ -11,6 +11,18 @@ export async function GET(req: Request, res: Response) {
   const posts = await notion.databases.query({
     database_id: notionDataBaseId,
     page_size: 100,
+    filter: {
+      property : 'Published',
+      checkbox: {
+        equals: true
+      }
+    },
+    sorts: [
+      {
+        property :'Date',
+        direction:'descending'
+      }
+    ]
   });
   const allPosts = posts.results;
   return NextResponse.json(allPosts);
