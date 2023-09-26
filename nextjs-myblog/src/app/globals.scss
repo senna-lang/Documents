@@ -18,3 +18,63 @@
     margin: 5px 0;
   }
 }
+
+// /***タイピングアニメーションを追加***/
+// .typeWriter{
+//   width: 5em; /*文字と同じ幅*/
+//   border-right: 0.02em solid black; /*カーソル*/
+//   overflow: hidden; /*はみ出た要素を非表示に*/
+//   white-space: nowrap; /*1行に*/
+//   animation: typing1 4s steps(5, end) forwards, cursol 1s step-end infinite;
+// /*animation: アニメーション名｜時間｜分割数｜ループ */
+// }
+// /*** カーソルが点滅するアニメーション ***/
+// @keyframes cursol{
+//   0%{ border-color: transparent; }/*消滅*/
+//   50%{ border-color: black; } /*出現*/
+//   100%{ border-color: transparent; }/*消滅*/
+// }
+
+.typing-effect1 {
+  width: 5ch;
+  animation: typing 2s steps(5), effect .5s step-end 2s infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.02em solid black;
+  font-family: monospace;
+  font-size: 4.5em;
+}
+.typing-effect2 {
+  width: 10ch;
+  animation: typing 2s steps(10), effect .5s step-end infinite alternate;
+  animation-fill-mode: both;
+  animation-delay: 2s;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.02em solid black;
+  font-family: monospace;
+  font-size: 4.5em;
+}
+.typing-effect3 {
+  width: 11ch;
+  animation: typing 2s steps(11), effect .5s step-end infinite alternate;
+  animation-fill-mode: both;
+  animation-delay: 4s;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.02em solid black;
+  font-family: monospace;
+  font-size: 4.5em;
+}
+ 
+@keyframes typing {
+  from {
+    width: 0
+  }
+}
+    
+@keyframes effect {
+  0%{ border-color: transparent; }/*消滅*/
+  50%{ border-color: black; } /*出現*/
+  100%{ border-color: transparent; }/*消滅*/
+}
