@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Article } from "@/types";
 import { useRouter } from "next/navigation";
+import { BiSolidPurchaseTagAlt } from "react-icons/bi";
 
 type ArticleCardProps = {
   article: Article;
@@ -13,7 +14,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
   const router = useRouter();
   return (
     <article
-      className="my-2 bg-white min-h-[500px] hover:shadow-lg  transition-transform duration-500 translate-y-2 hover:translate-y-[-2]"
+      className="my-2 bg-white min-h-[500px] cursor-pointer hover:shadow-lg transition-transform duration-500 translate-y-2 hover:translate-y-[-2]"
       key={article.id}
     >
       <div className="hover:opacity-75" onClick={() => router.push(`/articles/${article.slug}`)}>
@@ -27,15 +28,20 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
       </div>
       <div className=" flex flex-col justify-start pt-6 px-6">
         <div className="flex">
-          {article.tags.map((tag) => (
-            <Link
-              href={`/allposts/tag/${tag}/1`}
-              className="text-blue-700 pb-4 font-bold mr-2"
-              key={article.slug}
-            >
-              {tag}
-            </Link>
-          ))}
+          <div className="mt-1 mr-2">
+            <BiSolidPurchaseTagAlt />
+          </div>
+          <div className="flex">
+            {article.tags.map((tag) => (
+              <Link
+                href={`/allposts/tag/${tag}/1`}
+                className="text-blue-600 pb-4 font-bold mr-2"
+                key={article.slug}
+              >
+                {tag}
+              </Link>
+            ))}
+          </div>
         </div>
 
         <div

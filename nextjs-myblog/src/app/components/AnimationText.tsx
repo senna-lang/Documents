@@ -2,7 +2,7 @@ import React from "react";
 
 const AnimationText = () => {
   return (
-    <div className=" absolute right-0">
+    <div className=" absolute left-[900px]">
       <div className="typing-effect1">
         Hello 
       </div>
@@ -10,7 +10,7 @@ const AnimationText = () => {
         Welcome to 
       </div>
       <div className="typing-effect3">
-        SENN'S BLOG
+        SENN'S BLOG.
       </div>
     </div>
   );

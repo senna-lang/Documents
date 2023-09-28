@@ -2,6 +2,7 @@ import React from "react";
 import Aside from "@/app/components/Aside";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import Link from "next/link";
+import { BiSolidPurchaseTagAlt } from "react-icons/bi";
 
 const Post = async ({ params }: { params: { slug: string } }) => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -34,28 +35,32 @@ const Post = async ({ params }: { params: { slug: string } }) => {
   // console.log(metaData);
 
   return (
-
-    <div className=" h-auto xl:flex xl:mx-36">
-      <div className="news-detail w-full items-center px-3 xl:w-[70%]">
-        <h2 className=" w-full text-2xl font-medium">{metaData.id}</h2>
-        <div className=" border-b-2 w-1/3 mt-1 border-sky-900"></div>
-        <span className=" text-gray-500">Published {metaData.date}</span>
-        <br />
-        {metaData.tags.map((tag: string) => (
-          <p
-            className="text-white bg-sky-900 rounded-xl font-medium mt-2 mr-2 px-2 inline-block"
-            key={metaData.slug}
-          >
-            <Link href={`/allposts/tag/${tag}/1`}>{tag}</Link>
-          </p>
-        ))}
-        <div className="mt-10 font-medium">
-          <ReactMarkdown>{mbString.parent}</ReactMarkdown>
+    <div>
+      <div className=" text-center flex flex-col items-center my-9">
+        <h2 className=" w-full text-3xl font-bold">{metaData.id}</h2>
+        <p className=" text-gray-500 mt-6">Published {metaData.date}</p>
+        <div className="flex mb-12">
+          <div className="mt-3 mr-2">
+            <BiSolidPurchaseTagAlt />
+          </div>
+          {metaData.tags.map((tag: string) => (
+            <p className="text-black border rounded-xl mt-2 px-2 inline-block" key={metaData.slug}>
+              <Link href={`/allposts/tag/${tag}/1`}>{tag}</Link>
+            </p>
+          ))}
         </div>
       </div>
-      <section className=" flex flex-col items-center px-3 xl:w-[30%]">
-        <Aside />
-      </section>
+
+      <div className=" h-auto mb-6 xl:flex xl:mx-36">
+        <div className="news-detail bg-white w-full items-center px-3 xl:w-[70%]">
+          <div className="mt-2 font-medium">
+            <ReactMarkdown>{mbString.parent}</ReactMarkdown>
+          </div>
+        </div>
+        <section className=" flex flex-col items-center px-3 xl:w-[30%]">
+          <Aside />
+        </section>
+      </div>
     </div>
   );
 };

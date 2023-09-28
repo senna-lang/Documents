@@ -3,20 +3,10 @@
 import React from "react";
 import Image from "next/image";
 import AnimationText from "./AnimationText";
-import { useRef, useLayoutEffect } from "react";
-import { gsap } from "gsap";
 
 const MainVisual = () => {
-  // const textRef = useRef<HTMLDivElement | null>(null);
-  // useLayoutEffect(() => {
-  //   gsap.to(textRef.current, {
-  //     opacity: 1,
-  //     color: "black",
-  //     duration: 2,
-  //   });
-  // }, []);
   return (
-    <div className="h-[600px] relative mx-36">
+    <div className="h-[550px] relative mx-36">
       <AnimationText />
       <div className=" absolute left-0 top-10">
         <Image

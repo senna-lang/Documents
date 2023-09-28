@@ -12,32 +12,19 @@
     margin: 20px 0;
   }
   & h1 {
-    font-size:xx-large;
+    font-size: xx-large;
     background-color: aqua;
     border-left: solid 5px slateblue;
     margin: 5px 0;
+    padding-left: 10px;
   }
 }
 
-// /***タイピングアニメーションを追加***/
-// .typeWriter{
-//   width: 5em; /*文字と同じ幅*/
-//   border-right: 0.02em solid black; /*カーソル*/
-//   overflow: hidden; /*はみ出た要素を非表示に*/
-//   white-space: nowrap; /*1行に*/
-//   animation: typing1 4s steps(5, end) forwards, cursol 1s step-end infinite;
-// /*animation: アニメーション名｜時間｜分割数｜ループ */
-// }
-// /*** カーソルが点滅するアニメーション ***/
-// @keyframes cursol{
-//   0%{ border-color: transparent; }/*消滅*/
-//   50%{ border-color: black; } /*出現*/
-//   100%{ border-color: transparent; }/*消滅*/
-// }
-
 .typing-effect1 {
   width: 5ch;
-  animation: typing 2s steps(5), effect .5s step-end 2s infinite alternate;
+  animation:
+    typing 2s steps(5),
+    effect 1s step-end 2s 1 alternate forwards;
   white-space: nowrap;
   overflow: hidden;
   border-right: 0.02em solid black;
@@ -46,9 +33,11 @@
 }
 .typing-effect2 {
   width: 10ch;
-  animation: typing 2s steps(10), effect .5s step-end infinite alternate;
+  animation:
+    typing 3s steps(10),
+    effect 1s step-end 4 alternate;
   animation-fill-mode: both;
-  animation-delay: 2s;
+  animation-delay: 3s;
   white-space: nowrap;
   overflow: hidden;
   border-right: 0.02em solid black;
@@ -57,24 +46,32 @@
 }
 .typing-effect3 {
   width: 11ch;
-  animation: typing 2s steps(11), effect .5s step-end infinite alternate;
+  animation:
+    typing 2s steps(11),
+    effect 0.75s step-end infinite alternate;
   animation-fill-mode: both;
-  animation-delay: 4s;
+  animation-delay: 7.5s;
   white-space: nowrap;
   overflow: hidden;
   border-right: 0.02em solid black;
   font-family: monospace;
   font-size: 4.5em;
 }
- 
+
 @keyframes typing {
   from {
-    width: 0
+    width: 0;
   }
 }
-    
+
 @keyframes effect {
-  0%{ border-color: transparent; }/*消滅*/
-  50%{ border-color: black; } /*出現*/
-  100%{ border-color: transparent; }/*消滅*/
+  0% {
+    border-color: transparent;
+  } /*消滅*/
+  50% {
+    border-color: black;
+  } /*出現*/
+  100% {
+    border-color: transparent;
+  } /*消滅*/
 }

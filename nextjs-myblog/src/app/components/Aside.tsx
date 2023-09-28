@@ -6,7 +6,7 @@ const Aside = async () => {
   const res = await fetch(`${API_URL}/api/notion`, { next: { revalidate: 10 } });
   const posts = await res.json();
 
-  const getTags:string[] = posts.flatMap((post: any) => {
+  const getTags: string[] = posts.flatMap((post: any) => {
     const getTag = (tags: any) => {
       const allTags = tags.map((tag: any) => {
         return tag.name;
@@ -18,21 +18,22 @@ const Aside = async () => {
     return tags;
   });
   const set = new Set(getTags);
-  const tagList:string[] = Array.from(set);
-  const slicedTagList = tagList.slice(0,4);
-  
+  const tagList: string[] = Array.from(set);
+  const slicedTagList = tagList.slice(0, 4);
 
   return (
     <aside className="w-full">
-      <div className="bg-white border rounded p-4 mt-8 w-full">
-        <h3 className="font-bold text-gray-900 mb-2">Category</h3>
-        <ul className="text-gray-600 mt-2">
+      <div className="bg-white border rounded p-4 w-full ">
+        <h3 className="font-bold text-gray-900 mb-4 text-xl">Category</h3>
+        <div className="grid gap-2 md:grid-cols-2">
           {slicedTagList.map((tag) => (
-            <li key={tag}>
-              <a href={`/allposts/tag/${tag}/1`}>{tag}</a>
-            </li>
+            <div key={tag} className=" border rounded-md h-10 flex flex-col items-center justify-center hover:bg-slate-300 hover:tracking-widest hover:font-medium cursor-pointer transition-all duration-500">
+              <a href={`/allposts/tag/${tag}/1`}>
+                {tag}
+              </a>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
       <ContactCard />
     </aside>
