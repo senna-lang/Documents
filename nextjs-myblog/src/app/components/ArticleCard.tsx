@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -30,7 +30,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
           height={300}
           alt=""
           priority
-          className="!h-[220px] object-cover"
+          className="!h-[240px] object-cover"
         />
       </div>
       <div className=" flex flex-col justify-start pt-6 px-6">
@@ -52,14 +52,14 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
         </div>
 
         <div
-          className="text-slate-900 text-3xl font-bold min-h-[80px] hover:text-gray-700 pb-2"
+          className="text-slate-900 text-3xl font-bold min-h-[70px] hover:text-gray-700 pb-2"
           onClick={() => router.push(`/articles/${article.slug}`)}
         >
           {article.id}
         </div>
 
         <div
-          className="text-slate-900 pb-10 mt-2 h-[120px]"
+          className="text-slate-900 pb-10 mt-2 h-[110px]"
           onClick={() => router.push(`/articles/${article.slug}`)}
         >
           {article.description}

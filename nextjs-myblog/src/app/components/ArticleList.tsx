@@ -1,6 +1,4 @@
-import Link from "next/link";
-import React from "react";
-import Image from "next/image";
+import React from "react"
 import { Article } from "@/types";
 import ArticleCard from "./ArticleCard";
 

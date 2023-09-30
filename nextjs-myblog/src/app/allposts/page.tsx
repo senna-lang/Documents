@@ -2,16 +2,12 @@ import ArticleList from "../components/ArticleList";
 import PageNation from "../components/PageNation";
 import React from "react";
 
-const allPosts = async (context:any) => {
+const allPosts = async (context: any) => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
   const res = await fetch(`${API_URL}/api/notion`, { next: { revalidate: 10 } });
   const posts = await res.json();
   const numberOfPage = Math.floor(posts.length / 6) + (posts.length % 6 > 0 ? 1 : 0);
-  const postsByPage = posts.slice(0,6);
-
-  
-
-
+  const postsByPage = posts.slice(0, 6);
 
   // console.log(posts);
   const metaData = postsByPage.map((post: any) => {
@@ -28,10 +24,13 @@ const allPosts = async (context:any) => {
       date: post.properties.Date.date.start,
       slug: post.properties.Slug.rich_text[0].plain_text,
       tags: getTags(post.properties.Tags.multi_select),
+      thumb:
+      post.properties.Thumb && post.properties.Thumb.files.length > 0
+        ? post.properties.Thumb.files[0].file.url
+        : null,
     };
     return meta;
   });
-  
 
   return (
     <div className="h-auto xl:mx-40">
@@ -41,7 +40,7 @@ const allPosts = async (context:any) => {
         </div>
         <ArticleList articles={metaData} normal={false} />
       </section>
-        <PageNation numberOfPage={numberOfPage} tag={null} currentPage={1}/>
+      <PageNation numberOfPage={numberOfPage} tag={null} currentPage={1} />
     </div>
   );
 };
