@@ -31,7 +31,7 @@ const PageNation = (props: Props) => {
     <section className="mb-8 lg:w-1/2 mx-auto rounded-md p-5">
       <ul className="flex items-center justify-center gap-4">
         {pages.map((page) => (
-          <li className={`bg-black rounded-full w-8 h-8 relative cursor-pointer ${page==currentPage ? '': 'opacity-20'}`} onClick={
+          <li className={`bg-black rounded-full w-9 h-9 relative cursor-pointer ${page==currentPage ? '': 'opacity-20 hover:opacity-100 duration-300'}`} onClick={
             tag
               ? () => router.replace(`/allposts/tag/${tag}/${page}`)
               : () => router.replace(`/allposts/${page}`)

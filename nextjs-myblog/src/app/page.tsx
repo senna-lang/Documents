@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 
 import ArticleList from "./components/ArticleList";
 import Aside from "./components/Aside";
@@ -27,10 +27,14 @@ const blog = async () => {
       date: post.properties.Date.date.start,
       slug: post.properties.Slug.rich_text[0].plain_text,
       tags: getTags(post.properties.Tags.multi_select),
+      thumb:
+      post.properties.Thumb && post.properties.Thumb.files.length > 0
+        ? post.properties.Thumb.files[0].file.url
+        : null,
     };
     return meta;
   });
-  // console.log(metaData);
+  console.log(metaData);
 
   return (
     <div>

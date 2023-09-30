@@ -5,4 +5,5 @@ export type Article = {
    date: string;
    slug: string;
    tags: string[];
+   thumb: string;
  };

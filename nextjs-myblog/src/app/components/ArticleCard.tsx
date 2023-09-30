@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Article } from "@/types";
 import { useRouter } from "next/navigation";
 import { BiSolidPurchaseTagAlt } from "react-icons/bi";
+import { TfiTime } from "react-icons/tfi";
 
 type ArticleCardProps = {
   article: Article;
@@ -12,6 +13,7 @@ type ArticleCardProps = {
 
 const ArticleCard = ({ article }: ArticleCardProps) => {
   const router = useRouter();
+  // console.log(article.thumb);
   return (
     <article
       className="my-2 bg-white min-h-[500px] cursor-pointer hover:shadow-lg transition-transform duration-500 translate-y-2 hover:translate-y-[-2]"
@@ -19,11 +21,16 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
     >
       <div className="hover:opacity-75" onClick={() => router.push(`/articles/${article.slug}`)}>
         <Image
-          src={`https://source.unsplash.com/collection/1346951/1000x500?sig=${article.id}`}
+          src={
+            article.thumb
+              ? article.thumb
+              : `https://source.unsplash.com/collection/1346951/1000x500?sig=${article.id}`
+          }
           width={1280}
           height={300}
           alt=""
           priority
+          className="!h-[220px] object-cover"
         />
       </div>
       <div className=" flex flex-col justify-start pt-6 px-6">
@@ -65,7 +72,12 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
         >
           続きを読む
         </div>
-        <p className="text-sm text-slate-900 text-right pb-4">{article.date}</p>
+        <span className="flex justify-end mb-4">
+          <span className="mr-1 mt-[3.7px] text-xs ">
+            <TfiTime />
+          </span>
+          <p className="text-sm text-slate-900 opacity-70">{article.date}</p>
+        </span>
       </div>
     </article>
   );

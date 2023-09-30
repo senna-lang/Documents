@@ -24,7 +24,7 @@ const Aside = async () => {
   return (
     <aside className="w-full">
       <div className="bg-white border rounded p-4 w-full ">
-        <h3 className="font-bold text-gray-900 mb-4 text-xl">Category</h3>
+        <h3 className="font-bold text-gray-900 mb-4 text-xl ">Category</h3>
         <div className="grid gap-2 md:grid-cols-2">
           {slicedTagList.map((tag) => (
             <div key={tag} className=" border rounded-md h-10 flex flex-col items-center justify-center hover:bg-slate-300 hover:tracking-widest hover:font-medium cursor-pointer transition-all duration-500">
