@@ -42,7 +42,7 @@ const BlogPageList = async (context: any) => {
         </div>
         <ArticleList articles={metaData} normal={false} />
       </section>
-      <PageNation numberOfPage={numberOfPage} tag={null} />
+      <PageNation numberOfPage={numberOfPage} tag={null} currentPage={currentPage}/>
     </div>
   );
 };

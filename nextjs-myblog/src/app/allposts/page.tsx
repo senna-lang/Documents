@@ -1,5 +1,3 @@
-
-
 import ArticleList from "../components/ArticleList";
 import PageNation from "../components/PageNation";
 import React from "react";
@@ -10,6 +8,9 @@ const allPosts = async (context:any) => {
   const posts = await res.json();
   const numberOfPage = Math.floor(posts.length / 6) + (posts.length % 6 > 0 ? 1 : 0);
   const postsByPage = posts.slice(0,6);
+
+  
+
 
 
   // console.log(posts);
@@ -40,7 +41,7 @@ const allPosts = async (context:any) => {
         </div>
         <ArticleList articles={metaData} normal={false} />
       </section>
-        <PageNation numberOfPage={numberOfPage} tag={null}/>
+        <PageNation numberOfPage={numberOfPage} tag={null} currentPage={1}/>
     </div>
   );
 };

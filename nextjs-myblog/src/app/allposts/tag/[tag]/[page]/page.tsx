@@ -8,10 +8,7 @@ const tagPageList = async (context: any) => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
   const res = await fetch(`${API_URL}/api/notion`, { next: { revalidate: 10 } });
   const posts = await res.json();
-  
 
-
-  
   const metaData = posts.map((post: any) => {
     const getTags = (tags: any) => {
       const allTags = tags.map((tag: any) => {
@@ -31,8 +28,8 @@ const tagPageList = async (context: any) => {
   });
   // console.log(metaData);
 
-  const filteredData:any = metaData.filter((data:any) => 
-    data.tags.find((tag:string) => tag === currentTag)
+  const filteredData: any = metaData.filter((data: any) =>
+    data.tags.find((tag: string) => tag === currentTag)
   );
 
   const numberOfPage = Math.floor(filteredData.length / 6) + (filteredData.length % 6 > 0 ? 1 : 0);
@@ -51,7 +48,7 @@ const tagPageList = async (context: any) => {
         </div>
         <ArticleList articles={postsByPage} normal={false} />
       </section>
-      <PageNation numberOfPage={numberOfPage} tag={currentTag}/>
+      <PageNation numberOfPage={numberOfPage} tag={currentTag} currentPage={currentPage}/>
     </div>
   );
 };
