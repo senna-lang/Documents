@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { Suspense } from "react";
 import Loading from "./loading";
-import SupabaseLintener from "./components/SupabaseLintener";
+
 
 export const metadata: Metadata = {
   title: "Next.js13 MyBlog",

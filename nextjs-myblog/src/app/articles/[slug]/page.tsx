@@ -12,7 +12,6 @@ const Post = async ({ params }: { params: { slug: string } }) => {
   }
   const detailArticle = await res.json();
   const { page, mbString } = detailArticle;
-  // console.log(mbString.parent);
 
   const createMetaData = (page: any) => {
     const getTags = (tags: any) => {
@@ -32,7 +31,6 @@ const Post = async ({ params }: { params: { slug: string } }) => {
   };
 
   const metaData = createMetaData(page);
-  // console.log(metaData);
 
   return (
     <div>

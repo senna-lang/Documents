@@ -20,6 +20,40 @@
   }
 }
 
+.swiper {
+    width: 800px !important;
+    height: 400px !important;
+    object-fit: cover;
+}
+
+.mv01 {
+  /* スライド アクティブ時 */
+  .swiper-slide {
+    &[class*=-active] {
+      .slide-media img {
+        transition-delay: 0s;
+        transform: scale(1.05);
+      }
+      .slide-title {
+        animation: mv01-fadeIn 2s .5s var(--easing) both;
+      }
+    }
+  }
+}
+ 
+@keyframes mv01-fadeIn {
+  0% {
+    transform: scale(.5);
+    opacity: 0;
+    filter: blur(300px);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
 .typing-effect1 {
   width: 5ch;
   animation:
