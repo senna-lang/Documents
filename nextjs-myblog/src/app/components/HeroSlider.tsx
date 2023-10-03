@@ -2,7 +2,7 @@ import React from "react";
 import { createMetaData } from "@/utils/metaData";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper/modules";
+import SwiperCore, {Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -19,18 +19,14 @@ const HeroSlider = async () => {
   const images = imageFilter.filter((image: string | null) => image !== null);
   return (
     <Swiper
-      modules={[Navigation, Pagination, Autoplay]}
+      modules={[Autoplay]}
       slidesPerView={1} //一度に表示するスライドの数
       effect="fade"
       fadeEffect={{
         crossFade: true,
       }}
-      pagination={{
-        el :'.mv01 .swiper-pagination',
-        clickable: true,
-      }} //何枚目のスライドかを示すアイコン、スライドの下の方にある
-      navigation //スライドを前後させるためのボタン、スライドの左右にある
       loop={true}
+      speed={2000}
       autoplay={{
         delay: 7000,
         disableOnInteraction: false,
@@ -41,7 +37,7 @@ const HeroSlider = async () => {
       {images.map((src: string, index: number) => {
         return (
           <SwiperSlide key={`${index}`}>
-            <Image src={src} layout="responsive" width={640} height={400} alt="test_image" className=""/>
+            <Image src={src} width={800} height={400} alt="test_image" className=""/>
           </SwiperSlide>
         )
       })}

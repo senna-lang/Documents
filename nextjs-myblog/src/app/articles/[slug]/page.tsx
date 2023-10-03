@@ -1,5 +1,7 @@
 import React from "react";
 import Aside from "@/app/components/Aside";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import Link from "next/link";
 import { BiSolidPurchaseTagAlt } from "react-icons/bi";
@@ -32,9 +34,10 @@ const Post = async ({ params }: { params: { slug: string } }) => {
 
   const metaData = createMetaData(page);
 
+
   return (
     <div>
-      <div className=" text-center flex flex-col items-center my-9">
+      <div className=" text-center flex flex-col items-center">
         <h2 className=" w-full text-3xl font-bold">{metaData.id}</h2>
         <p className=" text-gray-500 mt-6">Published {metaData.date}</p>
         <div className="flex mb-12">
@@ -49,10 +52,28 @@ const Post = async ({ params }: { params: { slug: string } }) => {
         </div>
       </div>
 
+
       <div className=" h-auto mb-6 xl:flex xl:mx-36">
-        <div className="news-detail bg-white w-full items-center px-3 xl:w-[70%]">
-          <div className="mt-2 font-medium">
-            <ReactMarkdown>{mbString.parent}</ReactMarkdown>
+        <div className="news-detail bg-white rounded-lg w-full items-center px-7 xl:w-[70%]">
+          <div className="m-3 font-medium">
+            <ReactMarkdown >{mbString.parent}</ReactMarkdown>
+
+            {/* <ReactMarkdown
+              components={{
+                code({ node, inline, className, children }) {
+                  const match = /language-(\w+)/.exec(className || "");
+                  return !inline && match ? (
+                    <SyntaxHighlighter style={vscDarkPlus} language={match[1]} PreTag="div">
+                      {String(children).replace(/\n$/, "")}
+                    </SyntaxHighlighter>
+                  ) : (
+                    <code>{children}</code>
+                  );
+                },
+              }}
+            >
+              {mbString}
+            </ReactMarkdown> */}
           </div>
         </div>
         <section className=" flex flex-col items-center px-3 xl:w-[30%]">

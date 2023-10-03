@@ -3,9 +3,9 @@ import Image from "next/image";
 
 const ContactCard = () => {
   return (
-    <div className="bg-white text-center border rounded mb-4 relative mt-2">
-      <div className="relative w-full h-60">
-        <Image src="/images/profileback.jpeg" alt="background" fill className="object-cover" />
+    <div className="bg-white text-center border rounded-lg mb-4 relative mt-2">
+      <div className="relative w-full h-60 ">
+        <Image src="/images/profileback.jpeg" alt="background" fill className="object-cover rounded-t-lg" />
       </div>
       <div className="absolute top-1/2 left-1/2 transform translate-x-[-50%] translate-y-[-75%] md:translate-y-[-50%] lg:translate-y-[-70%]">
         <Image

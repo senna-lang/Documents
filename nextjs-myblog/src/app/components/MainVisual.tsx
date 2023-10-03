@@ -1,12 +1,12 @@
 // "use client";
 
 import React from "react";
-import Image from "next/image";
+import { createMetaData } from "@/utils/metaData";
 import AnimationText from "./AnimationText";
+import Image from "next/image";
 import HeroSlider from "./HeroSlider";
-import { Article } from "@/types";
 
-const MainVisual = () => {
+const MainVisual = async() => {
   return (
     <div className="h-[550px] relative mx-36">
       <AnimationText />

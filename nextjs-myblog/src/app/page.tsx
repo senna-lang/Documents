@@ -9,7 +9,7 @@ import { createMetaData } from "@/utils/metaData";
 
 const blog = async () => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
-  const res = await fetch(`${API_URL}/api/notion`, { next: { revalidate: 100 } });
+  const res = await fetch(`${API_URL}/api/notion`, { next: { revalidate: 10 } });
   const posts = await res.json();
   const postsByPage = posts.slice(0, 6);
 

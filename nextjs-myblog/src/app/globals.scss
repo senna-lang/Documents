@@ -9,41 +9,71 @@
     width: 100%;
     height: 500px;
     object-fit: cover;
-    margin: 20px 0;
+    margin: 20px auto;
   }
   & h1 {
     font-size: xx-large;
-    background-color: aqua;
-    border-left: solid 5px slateblue;
-    margin: 5px 0;
+    background-color: #e6e6e6;
+    border-left: solid 5px #1a1a1a;
+    margin: 20px 0 40px 0;
     padding-left: 10px;
+  }
+  & h2 {
+    font-size: x-large;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    position: relative;
+    border-bottom: 3px solid #3cb371;
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: -3px;
+      width: 25%;
+      height: 3px;
+      background: #236641;
+    }
+  }
+  & p {
+    margin: 10px 0;
+    line-height: 2;
+  }
+  & ul {
+    padding-left: 20px;
+    margin: 20px 0;
+    list-style-type: disc;
+    list-style-position: outside;
+
+    & li {
+      margin-bottom: 5px;
+      line-height: 2;
+    }
   }
 }
 
 .swiper {
-    width: 800px !important;
-    height: 400px !important;
-    object-fit: cover;
+  width: 800px !important;
+  height: 400px !important;
+  object-fit: cover;
 }
 
 .mv01 {
   /* スライド アクティブ時 */
   .swiper-slide {
-    &[class*=-active] {
+    &[class*="-active"] {
       .slide-media img {
         transition-delay: 0s;
         transform: scale(1.05);
       }
       .slide-title {
-        animation: mv01-fadeIn 2s .5s var(--easing) both;
+        animation: mv01-fadeIn 2s 0.5s var(--easing) both;
       }
     }
   }
 }
- 
+
 @keyframes mv01-fadeIn {
   0% {
-    transform: scale(.5);
+    transform: scale(0.5);
     opacity: 0;
     filter: blur(300px);
   }
