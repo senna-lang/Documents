@@ -4,6 +4,10 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import Link from "next/link";
 import { BiSolidPurchaseTagAlt } from "react-icons/bi";
 import TocBot from "@/app/components/TocBot";
+import rehypeSlug from "rehype-slug";
+import { CodeBlock } from "@/app/components/CodeBlock";
+
+
 
 const Post = async ({ params }: { params: { slug: string } }) => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -53,29 +57,12 @@ const Post = async ({ params }: { params: { slug: string } }) => {
       <div className=" h-auto mb-6 xl:flex xl:mx-36">
         <div className="news-detail bg-white rounded-lg w-full items-center px-7 xl:w-[70%]">
           <div className="m-3 font-medium">
-            <ReactMarkdown>{mbString.parent}</ReactMarkdown>
-
-            {/* <ReactMarkdown
-              components={{
-                code({ node, inline, className, children, ...props }) {
-                  const match = /language-(\w+)/.exec(className || "");
-                  return !inline && match ? (
-                    <SyntaxHighlighter
-                      language={match[1]}
-                      PreTag="div"
-                      {...props}
-                      style={vscDarkPlus}
-                    >
-                      {String(children).replace(/\n$/, "")}
-                    </SyntaxHighlighter>
-                  ) : (
-                    <code {...props}>{children}</code>
-                  );
-                },
-              }}
+            <ReactMarkdown
+              rehypePlugins={[rehypeSlug]}
+              // components={CodeBlock}
             >
               {mbString.parent}
-            </ReactMarkdown> */}
+            </ReactMarkdown>
           </div>
         </div>
         <section className=" flex flex-col items-center px-3 xl:w-[30%]">
