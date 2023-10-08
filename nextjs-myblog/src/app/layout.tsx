@@ -4,7 +4,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { Suspense } from "react";
 import Loading from "./loading";
-
+import "@mantine/core/styles.css";
+import { MantineProvider, ColorSchemeScript } from "@mantine/core";
 
 export const metadata: Metadata = {
   title: "Next.js13 MyBlog",
@@ -12,19 +13,19 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-
-  
   return (
     <html lang="ja">
       <head />
       <body className="container mx-auto bg-slate-100 text-black ">
-        <div className="flex flex-col min-h-screen ">
-          <Header />
-          <main className="flex-grow">
-            <Suspense fallback={<Loading />}>{children}</Suspense>
-          </main>
-          <Footer />
-        </div>
+        <MantineProvider>
+          <div className="flex flex-col min-h-screen ">
+            <Header />
+            <main className="flex-grow">
+              <Suspense fallback={<Loading />}>{children}</Suspense>
+            </main>
+            <Footer />
+          </div>
+        </MantineProvider>
       </body>
     </html>
   );
