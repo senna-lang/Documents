@@ -7,8 +7,6 @@ import TocBot from "@/app/components/TocBot";
 import rehypeSlug from "rehype-slug";
 import { CodeBlock } from "@/app/components/CodeBlock";
 
-
-
 const Post = async ({ params }: { params: { slug: string } }) => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
   const res = await fetch(`${API_URL}/api/notion/${params.slug}`, { next: { revalidate: 10 } });
@@ -67,6 +65,7 @@ const Post = async ({ params }: { params: { slug: string } }) => {
         </div>
         <section className=" flex flex-col items-center px-3 xl:w-[30%]">
           <Aside />
+
           <TocBot />
         </section>
       </div>

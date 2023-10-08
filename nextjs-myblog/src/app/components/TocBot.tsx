@@ -8,14 +8,14 @@ const TocBot = () => {
     tocbot.init({
       tocSelector: ".toc",
       contentSelector: ".news-detail",
-      headingSelector: "h2",
+      headingSelector: "h2,h3",
     });
 
     return () => tocbot.destroy();
   }, []);
   return (
-    <div className="w-full bg-white flex flex-col items-center justify-center p-3">
-      <h1 className=" font-bold text-xl mb-4">Table Of Content</h1>
+    <div className=" mb-4 sticky top-8 left-0 w-full  bg-white flex flex-col justify-center p-3">
+      <h1 className=" font-bold text-xl mb-4 text-center">Table Of Content</h1>
       <nav className="toc" />
     </div>
   );

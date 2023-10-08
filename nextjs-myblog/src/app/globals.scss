@@ -20,16 +20,33 @@
   }
   & h2 {
     font-size: x-large;
-    margin-bottom: 10px;
+    margin: 50px 0;
     padding-bottom: 5px;
     position: relative;
     border-bottom: 3px solid #3cb371;
+    font-weight: bolder;
     &::before {
       content: "";
       position: absolute;
       bottom: -3px;
       width: 25%;
       height: 3px;
+      background: #236641;
+    }
+  }
+
+  & h3 {
+    font-size: large;
+    margin-bottom: 5px;
+    font-weight: bold;
+    position: relative;
+    margin-top: 20px;
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: -3px;
+      width: 40%;
+      height: 2px;
       background: #236641;
     }
   }
@@ -54,7 +71,9 @@
   & a {
     margin-bottom: 5px;
     margin-left: 20px;
-    font-size: small;
+    font-size: 13px;
+    line-height: 2;
+    font-weight: 500;
     opacity: 0.5;
     &.is-active-link {
       opacity: 1;
@@ -63,16 +82,19 @@
   & li {
     position: relative;
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       display: block;
       border-radius: 50%;
       width: 8px;
       height: 8px;
-      left: 0; /*点の位置*/
-      top: 0.6em; /*点の位置*/
-      background-color: rgba(0,191,255,0.5);
+      left: 0;
+      top: 0.6em;
+      background-color: rgba(0, 191, 255, 0.5);
     }
+  }
+  & .is-collapsible {
+    margin-left: 20px;
   }
 }
 
