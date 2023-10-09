@@ -106,16 +106,42 @@
 
 .mv01 {
   /* スライド アクティブ時 */
-  .swiper-slide {
+  & .swiper-slide {
+    & .slide-media {
+      position: relative;
+    }
+    & .slide-title {
+      position: absolute;
+      bottom: 10px;
+      right: 30px;
+      opacity: 0;
+      font-size: 2rem;
+      line-height: 1.6;
+    }
     &[class*="-active"] {
-      .slide-media img {
-        transition-delay: 0s;
-        transform: scale(1.05);
-      }
-      .slide-title {
-        animation: mv01-fadeIn 2s 0.5s var(--easing) both;
+      & .slide-title {
+        animation: mv01-fadeIn 2s 0.5s both;
       }
     }
+    &[class*="-active"],
+    &[class*="-duplicate-active"],
+    &[class*="-prev"] {
+      .slide-media {
+        animation-name: zoom;
+        animation-duration: 6s;
+        animation-fill-mode: forwards;
+      }
+    }
+  }
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.05);
   }
 }
 
@@ -193,8 +219,7 @@ header {
     height: 56px;
     margin-bottom: 120px;
     background-color: var(--mantine-color-body);
-    border-bottom: 1px solid
-      light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+    border-bottom: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
     padding-left: var(--mantine-spacing-md);
     padding-right: var(--mantine-spacing-md);
   }
@@ -219,5 +244,35 @@ header {
     /* @mixin hover {
       background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
     } */
+  }
+}
+
+.slider {
+  & .card {
+    height: 440px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-size: cover;
+    background-position: center;
+  }
+
+  & .title {
+    font-family:
+      Greycliff CF,
+      sans-serif;
+    font-weight: 900;
+    color: var(--mantine-color-white);
+    line-height: 1.2;
+    font-size: 32px;
+    margin-top: var(--mantine-spacing-xs);
+  }
+
+  & .category {
+    color: var(--mantine-color-white);
+    opacity: 0.7;
+    font-weight: 700;
+    text-transform: uppercase;
   }
 }

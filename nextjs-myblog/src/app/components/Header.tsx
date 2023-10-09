@@ -24,7 +24,7 @@ import Link from "next/link";
 const links = [
   { link: "/allposts", label: "All Posts" },
   { link: "/pricing", label: "About Me" },
-  { link: "/learn", label: "Git Hub" },
+  { link: "https://github.com/senna-lang", label: "Git Hub" },
 ];
 
 export function Header() {
@@ -59,13 +59,6 @@ export function Header() {
           <Group ml={50} gap={5} className="links" visibleFrom="sm">
             {items}
           </Group>
-          <Autocomplete
-            className="search"
-            placeholder="Search"
-            leftSection={<IconSearch style={{ width: rem(16), height: rem(16) }} stroke={1.5} />}
-            data={["React", "Angular", "Vue", "Next.js", "Riot.js", "Svelte", "Blitz.js"]}
-            visibleFrom="xs"
-          />
         </Group>
       </div>
     </header>
