@@ -6,24 +6,24 @@ import { Autoplay } from "swiper/modules";
 import { EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
+import Link from "next/link";
 
 const HeroSlider = async () => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
   const res = await fetch(`${API_URL}/api/notion`, { next: { revalidate: 100 } });
   const posts = await res.json();
   const metaData = createMetaData(posts);
-  const imageFilter = metaData.map((data: any) => {
-    const image = {
-      id:data.id,
-      img:data.thumb
-    }
-    return image;
+  const thumbs = metaData.map((data: any) => {
+    const thumb = {
+      id: data.id,
+      img: data.thumb,
+      slug: data.slug,
+    };
+    return thumb;
   });
 
+  const filteredThumbs = thumbs.filter((image: any) => image.img !== null);
 
-  const images = imageFilter.filter((image:any) => image.img !== null);
-
-  // console.log(images);
   return (
     <Swiper
       modules={[Autoplay, EffectFade]}
@@ -41,18 +41,20 @@ const HeroSlider = async () => {
       }}
       followFinger={false}
     >
-      {images.map((data:any) => {
+      {filteredThumbs.map((data: any) => {
         return (
           <SwiperSlide key={`${data.id}`}>
-            <div className="slide-media">
-              <Image src={data.img} width={800} height={400} alt="test_image"/>
-            </div>
-            <h2 className="slide-title text-white">{data.id}</h2>
+            <Link href={`/articles/${data.slug}`}>
+              <div className="slide-media">
+                <Image src={data.img} width={800} height={400} alt="test_image" />
+              </div>
+              <h2 className="slide-title text-white">{data.id}</h2>
+            </Link>
           </SwiperSlide>
         );
       })}
     </Swiper>
-  ); 
+  );
 };
 
 export default HeroSlider;
