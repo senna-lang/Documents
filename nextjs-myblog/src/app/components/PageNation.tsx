@@ -13,7 +13,6 @@ const PageNation = (props: Props) => {
   const { numberOfPage, tag , currentPage} = props;
   let pages: number[] = [];
   let count = 0;
-  console.log(tag);
 
   if (numberOfPage == 1) {
     for (let i = numberOfPage; count < numberOfPage; i++) {
