@@ -2,11 +2,10 @@ import ArticleList from "../components/ArticleList";
 import PageNation from "../components/PageNation";
 import React from "react";
 import { createMetaData } from "@/utils/metaData";
+import { getAllPosts } from "@/lib/notion";
 
 const allPosts = async (context: any) => {
-  const API_URL = process.env.NEXT_PUBLIC_API_URL;
-  const res = await fetch(`${API_URL}/api/notion`, { next: { revalidate: 10 } });
-  const posts = await res.json();
+  const posts = await getAllPosts();
   const numberOfPage = Math.floor(posts.length / 6) + (posts.length % 6 > 0 ? 1 : 0);
   const postsByPage = posts.slice(0, 6);
 

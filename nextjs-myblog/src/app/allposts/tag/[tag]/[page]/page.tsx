@@ -2,12 +2,11 @@ import ArticleList from "../../../../components/ArticleList";
 import PageNation from "../../../../components/PageNation";
 import React from "react";
 import { createMetaData } from "@/utils/metaData";
+import { getAllPosts } from "@/lib/notion";
 
 const tagPageList = async (context: any) => {
   const currentTag = context.params?.tag;
-  const API_URL = process.env.NEXT_PUBLIC_API_URL;
-  const res = await fetch(`${API_URL}/api/notion`, { next: { revalidate: 10 } });
-  const posts = await res.json();
+  const posts = await getAllPosts();
 
   const metaData = createMetaData(posts);
 

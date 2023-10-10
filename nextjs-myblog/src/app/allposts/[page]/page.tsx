@@ -1,11 +1,10 @@
 import PageNation from "@/app/components/PageNation";
 import ArticleList from "../../components/ArticleList";
 import { createMetaData } from "@/utils/metaData";
+import { getAllPosts } from "@/lib/notion";
 
 const BlogPageList = async (context: any) => {
-  const API_URL = process.env.NEXT_PUBLIC_API_URL;
-  const res = await fetch(`${API_URL}/api/notion`, { next: { revalidate: 10 } });
-  const posts = await res.json();
+  const posts = await getAllPosts();
   const numberOfPage = Math.floor(posts.length / 6) + (posts.length % 6 > 0 ? 1 : 0);
   const currentPage: number = context.params?.page;
   const startIndex = (currentPage - 1) * 6;

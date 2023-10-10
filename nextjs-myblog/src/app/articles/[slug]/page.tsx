@@ -5,15 +5,11 @@ import Link from "next/link";
 import { BiSolidPurchaseTagAlt } from "react-icons/bi";
 import TocBot from "@/app/components/TocBot";
 import rehypeSlug from "rehype-slug";
-import { CodeBlock } from "@/app/components/CodeBlock";
+import { getPostDetail } from "@/lib/notion";
+import { createMetaData } from "@/utils/metaData";
 
-const Post = async ({ params }: { params: { slug: string } }) => {
-  const API_URL = process.env.NEXT_PUBLIC_API_URL;
-  const res = await fetch(`${API_URL}/api/notion/${params.slug}`, { next: { revalidate: 10 } });
-  if (!res.ok) {
-    throw new Error("Failed to fetch article");
-  }
-  const detailArticle = await res.json();
+const Post = async ({ params }: any) => {
+  const detailArticle = await getPostDetail(params?.slug);
   const { page, mbString } = detailArticle;
 
   const createMetaData = (page: any) => {

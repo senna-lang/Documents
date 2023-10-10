@@ -1,10 +1,9 @@
 import React from "react";
 import ContactCard from "./ContactCard";
+import { getAllPosts } from "@/lib/notion";
 
 const Aside = async () => {
-  const API_URL = process.env.NEXT_PUBLIC_API_URL;
-  const res = await fetch(`${API_URL}/api/notion`, { next: { revalidate: 10 } });
-  const posts = await res.json();
+  const posts = await getAllPosts()
 
   const getTags: string[] = posts.flatMap((post: any) => {
     const getTag = (tags: any) => {

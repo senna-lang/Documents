@@ -1,21 +1,16 @@
-"use client";
-
 import ArticleList from "./components/ArticleList";
 import Aside from "./components/Aside";
 import React from "react";
 import Link from "next/link";
 import MainVisual from "./components/MainVisual";
 import { createMetaData } from "@/utils/metaData";
+import { getAllPosts } from "@/lib/notion";
 
 const blog = async () => {
-  const API_URL = process.env.NEXT_PUBLIC_API_URL;
-  const res = await fetch(`${API_URL}/api/notion`, { next: { revalidate: 10 } });
-  const posts = await res.json();
+  const posts = await getAllPosts();
   const postsByPage = posts.slice(0, 6);
-
   const metaData = createMetaData(postsByPage);
-;
-
+  
   return (
     <div>
       <MainVisual />
