@@ -10,7 +10,7 @@ const AnimationText = () => {
         Welcome to 
       </div>
       <div className="typing-effect3">
-        SENN'S BLOG.
+        SENNS BLOG.
       </div>
     </div>
   );

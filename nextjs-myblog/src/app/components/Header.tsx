@@ -23,7 +23,7 @@ export function Header() {
     <header className="header mb-8 py-5 px-5 border-b lg:mx-36">
       <div className="inner">
         <Link href="/">
-          <h1 className="text-2xl font-extrabold">SENN'S BLOG</h1>
+          <h1 className="text-2xl font-extrabold">SENNS BLOG</h1>
         </Link>
         <Group>
           <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
