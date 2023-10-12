@@ -5,11 +5,25 @@ import Link from "next/link";
 import { BiSolidPurchaseTagAlt } from "react-icons/bi";
 import TocBot from "@/app/components/TocBot";
 import rehypeSlug from "rehype-slug";
-import { getPostDetail } from "@/lib/notion";
+import { getPostDetail, getAllPosts } from "@/lib/notion";
 import { createMetaData } from "@/utils/metaData";
+import notFound from "../not-found";
+
+export async function generateStaticParams() {
+  const posts = await getAllPosts();
+  const metaData = createMetaData(posts);
+  return metaData.map((data: any) => {
+    const slug = data.slug;
+    return slug;
+  });
+}
 
 const Post = async ({ params }: any) => {
   const detailArticle = await getPostDetail(params?.slug);
+
+  if (!detailArticle) {
+    notFound();
+  }
   const { page, mbString } = detailArticle;
 
   const createMetaData = (page: any) => {
@@ -34,7 +48,7 @@ const Post = async ({ params }: any) => {
   return (
     <div>
       <div className=" text-center flex flex-col items-center">
-        <h2 className=" w-full text-3xl font-bold">{metaData.id}</h2>
+        <h1 className=" w-full text-3xl font-bold">{metaData.id}</h1>
         <p className=" text-gray-500 mt-6">Published {metaData.date}</p>
         <div className="flex mb-12">
           <div className="mt-3 mr-2">
