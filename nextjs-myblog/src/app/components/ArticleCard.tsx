@@ -18,7 +18,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
       className="my-2 bg-white min-h-[500px] cursor-pointer hover:shadow-lg transition-transform duration-500 translate-y-2 hover:translate-y-[-2]"
       key={article.id}
     >
-      <div className="hover:opacity-75" onClick={() => router.push(`/articles/${article.slug}`)}>
+      <div className="hover:opacity-75 relative before:content-[''] before:block before: pt-[56.25%]" onClick={() => router.push(`/articles/${article.slug}`)}>
         <Image
           src={
             article.thumb
@@ -29,7 +29,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
           height={300}
           alt=""
           priority
-          className="!h-[240px] object-cover"
+          className=" absolute top-0 left-0 w-full h-full object-cover"
         />
       </div>
       <div className=" flex flex-col justify-start pt-6 px-6">
