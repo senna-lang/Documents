@@ -4,7 +4,7 @@
 @tailwind utilities;
 @tailwind base;
 
-.news-detail {
+.news-detail { //記事詳細ページ
   & img {
     width: 100%;
     height: 500px;
@@ -15,7 +15,7 @@
     font-size: xx-large;
     background-color: #e6e6e6;
     border-left: solid 5px #1a1a1a;
-    margin: 20px 0 40px 0;
+    margin: 20px 0 50px 0;
     padding-left: 10px;
   }
   & h2 {
@@ -37,7 +37,7 @@
 
   & h3 {
     font-size: large;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     font-weight: bold;
     position: relative;
     margin-top: 20px;
@@ -51,12 +51,12 @@
     }
   }
   & p {
-    margin: 10px 0;
+    margin-bottom: 20px;
     line-height: 2;
   }
-  & ul {
+  & ul,ol {
     padding-left: 20px;
-    margin: 20px 0;
+    margin-bottom: 20px;
     list-style-type: disc;
     list-style-position: outside;
 
@@ -67,7 +67,7 @@
   }
 }
 
-.toc {
+.toc { //Table Of Content
   & a {
     margin-bottom: 5px;
     margin-left: 20px;
@@ -98,13 +98,12 @@
   }
 }
 
-.swiper {
+.swiper {  
   width: 800px !important;
   height: 400px !important;
   object-fit: cover;
 }
-
-.mv01 {
+.mv01 { //Hero
   /* スライド アクティブ時 */
   & .swiper-slide {
     & .slide-media {
@@ -144,6 +143,7 @@
     transform: scale(1.05);
   }
 }
+
 
 @keyframes mv01-fadeIn {
   0% {
