@@ -5,12 +5,13 @@ import Link from "next/link";
 import MainVisual from "./components/MainVisual";
 import { createMetaData } from "@/utils/metaData";
 import { getAllPosts } from "@/lib/notion";
+import ContactCard from "./components/ContactCard";
 
 const blog = async () => {
   const posts = await getAllPosts();
   const postsByPage = posts.slice(0, 6);
   const metaData = createMetaData(postsByPage);
-  
+
   return (
     <div>
       <MainVisual />
@@ -30,6 +31,7 @@ const blog = async () => {
         </section>
         <section className=" flex flex-col items-center mt-32 px-3 xl:w-[30%]">
           <Aside />
+          <ContactCard />
         </section>
       </div>
     </div>

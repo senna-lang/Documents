@@ -75,7 +75,6 @@ const Post = async ({ params }: any) => {
         </div>
         <section className=" flex flex-col items-center px-3 xl:w-[30%]">
           <Aside />
-
           <TocBot />
         </section>
       </div>
