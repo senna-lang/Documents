@@ -6,6 +6,12 @@ export function createMetaData(posts: any) {
       });
       return allTags;
     };
+    const getCat = (cat: any) => {
+      const allCat = cat.map((cat: any) => {
+        return cat.name;
+      });
+      return allCat;
+    };
 
     const meta = {
       id: post.properties.Name.title[0].plain_text,
@@ -13,6 +19,7 @@ export function createMetaData(posts: any) {
       date: post.properties.Date.date.start,
       slug: post.properties.Slug.rich_text[0].plain_text,
       tags: getTags(post.properties.Tags.multi_select),
+      category: getCat(post.properties.Category.multi_select),
       thumb:
         post.properties.Thumb && post.properties.Thumb.files.length > 0
           ? post.properties.Thumb.files[0].file.url
