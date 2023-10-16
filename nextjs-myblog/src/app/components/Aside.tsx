@@ -38,11 +38,10 @@ const Aside = async () => {
   return (
     <aside className="w-full">
       <div className="bg-white border rounded-lg p-4 w-full mb-2">
-        <h3 className="font-bold text-gray-900 mb-4 text-xl ">Category</h3>
+        <h3 className=" font-bold text-gray-900 mb-4 text-xl font-sourceCodePro">Category</h3>
         <ComboBox catList={slicedCatList} />
       </div>
       <div className="bg-white border rounded-lg p-4 w-full mb-2">
-        <h3 className="font-bold text-gray-900 mb-4 text-xl ">Tags</h3>
         <TagSearch tagList={tagList} />
       </div>
     </aside>

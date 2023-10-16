@@ -18,7 +18,7 @@ const blog = async () => {
       <div className="h-auto xl:flex xl:mx-36">
         <section className="w-full items-center px-3 xl:w-[70%]">
           <div className="text-center my-8">
-            <h1 className="text-5xl font-playfairDisplay ">NEW POSTS</h1>
+            <h1 className="text-5xl font-playfairDisplay">NEW POSTS</h1>
           </div>
           <ArticleList articles={metaData} normal={true} />
           <div className="text-center mt-5 mb-10">

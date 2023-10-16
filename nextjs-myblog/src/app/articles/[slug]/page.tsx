@@ -67,7 +67,6 @@ const Post = async ({ params }: any) => {
           <div className="m-3 font-medium">
             <ReactMarkdown
               rehypePlugins={[rehypeSlug]}
-              // components={CodeBlock}
             >
               {mbString.parent}
             </ReactMarkdown>

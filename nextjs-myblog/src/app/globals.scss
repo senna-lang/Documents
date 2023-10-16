@@ -1,10 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Source+Code+Pro&display=swap');
 
 @tailwind components;
 @tailwind utilities;
 @tailwind base;
 
-.news-detail { //記事詳細ページ
+.news-detail {
+  //記事詳細ページ
   & img {
     width: 100%;
     height: 500px;
@@ -54,7 +55,8 @@
     margin-bottom: 20px;
     line-height: 2;
   }
-  & ul,ol {
+  & ul,
+  ol {
     padding-left: 20px;
     margin-bottom: 20px;
     list-style-type: disc;
@@ -67,7 +69,8 @@
   }
 }
 
-.toc { //Table Of Content
+.toc {
+  //Table Of Content
   & a {
     margin-bottom: 5px;
     margin-left: 20px;
@@ -98,12 +101,13 @@
   }
 }
 
-.swiper {  
+.swiper {
   width: 800px !important;
   height: 400px !important;
   object-fit: cover;
 }
-.mv01 { //Hero
+.mv01 {
+  //Hero
   /* スライド アクティブ時 */
   & .swiper-slide {
     & .slide-media {
@@ -143,7 +147,6 @@
     transform: scale(1.05);
   }
 }
-
 
 @keyframes mv01-fadeIn {
   0% {

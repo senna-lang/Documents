@@ -9,7 +9,8 @@ const config: Config = {
   ],
   theme: {
     fontFamily: {
-      playfairDisplay: ['Playfair Display']
+      playfairDisplay: ['Playfair Display'],
+      sourceCodePro: ['Source Code Pro']
     },
     extend: {
       backgroundImage: {
