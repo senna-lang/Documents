@@ -2,7 +2,7 @@ import { Client } from "@notionhq/client";
 import { NotionToMarkdown } from "notion-to-md";
 import { cache } from "react";
 
-export const revalidate = 60; 
+export const revalidate = 60;
 
 const notionSecret = "secret_XHu8WmO9WYmfE1MU2pG1dkz0qUG57eiij94gxPDOz5V";
 const notionDataBaseId = "b7afe30eb0fe48e0b2d4a11da3bb3a21";

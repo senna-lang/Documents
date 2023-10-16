@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const ContactCard = () => {
   return (
-    <div className="bg-white text-center border rounded-lg mb-4 relative mt-2">
+    <div className="bg-white text-center border rounded-lg relative">
       <div className="relative w-full h-60 ">
         <Image src="/images/profileback.jpeg" alt="background" fill className="object-cover rounded-t-lg" />
       </div>

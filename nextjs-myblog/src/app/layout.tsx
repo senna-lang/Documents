@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import { Suspense } from "react";
 import Loading from "./loading";
 import "@mantine/core/styles.css";
-import { MantineProvider} from "@mantine/core";
+import { MantineProvider } from "@mantine/core";
 import { ScrollToTop } from "./components/ScrollToTop";
 
 export const metadata: Metadata = {
@@ -24,9 +24,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <main className="flex-grow">
               <Suspense fallback={<Loading />}>{children}</Suspense>
             </main>
-              <div className="sticky bottom-0 py-4 text-right sp:p-2">
-                <ScrollToTop/>
-              </div>
+            <div className="sticky bottom-0 py-4 text-right sp:p-2">
+              <ScrollToTop />
+            </div>
             <Footer />
           </div>
         </MantineProvider>
