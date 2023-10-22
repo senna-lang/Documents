@@ -36,7 +36,7 @@ const HeroSlider = (sliderData: any) => {
               <div className="slide-media">
                 <Image src={data.img} width={800} height={400} alt="test_image" />
               </div>
-              <h2 className="slide-title text-white">{data.id}</h2>
+              <h2 className="slide-title text-white font-semibold">{data.id}</h2>
             </Link>
           </SwiperSlide>
         );
