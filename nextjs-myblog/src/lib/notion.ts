@@ -4,8 +4,8 @@ import { cache } from "react";
 
 export const revalidate = 60;
 
-const notionSecret = "secret_XHu8WmO9WYmfE1MU2pG1dkz0qUG57eiij94gxPDOz5V";
-const notionDataBaseId = "b7afe30eb0fe48e0b2d4a11da3bb3a21";
+const notionSecret = process.env.NOTION_TOKEN;
+const notionDataBaseId = process.env.NOTION_DATABASE_ID;
 
 const notion = new Client({
   auth: notionSecret,
