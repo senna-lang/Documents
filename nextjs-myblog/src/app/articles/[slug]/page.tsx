@@ -7,28 +7,30 @@ import TocBot from "@/app/components/TocBot";
 import rehypeSlug from "rehype-slug";
 import { getPostDetail, getAllPosts } from "@/lib/notion";
 import { createMetaData } from "@/utils/metaData";
-import notFound from "../not-found";
+import { Article } from "@/types";
+
+type Tag = {
+  id: string;
+  name: string;
+  color: string;
+};
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
   const metaData = createMetaData(posts);
-  return metaData.map((data: any) => {
-    const slug = data.slug;
-    return slug;
-  });
+  return metaData.map((data: Article) => ({
+    slug: data.slug,
+  }));
 }
 
-const Post = async ({ params }: any) => {
-  const detailArticle = await getPostDetail(params?.slug);
+const Post = async ({ params }: { params: { slug: string } }) => {
+  const detailArticle = await getPostDetail(params.slug);
 
-  if (!detailArticle) {
-    notFound();
-  }
   const { page, mbString } = detailArticle;
 
   const createMetaData = (page: any) => {
-    const getTags = (tags: any) => {
-      const allTags = tags.map((tag: any) => {
+    const getTags = (tags: Tag[]) => {
+      const allTags = tags.map((tag: Tag) => {
         return tag.name;
       });
       return allTags;
@@ -55,7 +57,7 @@ const Post = async ({ params }: any) => {
             <BiSolidPurchaseTagAlt />
           </div>
           {metaData.tags.map((tag: string) => (
-            <p className="text-black border rounded-xl mt-2 px-2 inline-block" key={metaData.slug}>
+            <p className="text-black border rounded-xl mt-2 px-2 inline-block" key={tag}>
               <Link href={`/allposts/tag/${tag}/1`}>{tag}</Link>
             </p>
           ))}
@@ -65,11 +67,7 @@ const Post = async ({ params }: any) => {
       <div className=" h-auto mb-6 xl:flex xl:mx-36">
         <div className="news-detail bg-white rounded-lg w-full items-center px-7 xl:w-[70%]">
           <div className="m-3 font-medium">
-            <ReactMarkdown
-              rehypePlugins={[rehypeSlug]}
-            >
-              {mbString.parent}
-            </ReactMarkdown>
+            <ReactMarkdown rehypePlugins={[rehypeSlug]}>{mbString.parent}</ReactMarkdown>
           </div>
         </div>
         <section className=" flex flex-col items-center px-3 xl:w-[30%]">

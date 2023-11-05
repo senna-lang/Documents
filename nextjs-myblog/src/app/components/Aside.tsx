@@ -3,17 +3,24 @@ import { getAllPosts } from "@/lib/notion";
 import ComboBox from "./ComboBox";
 import TagSearch from "./TagSearch";
 
+type Tag = {
+  id:string;
+  name:string;
+  color:string;
+}
+
+
 const Aside = async () => {
   const posts = await getAllPosts();
 
   const getTags: string[] = posts.flatMap((post: any) => {
-    const getTag = (tags: any) => {
-      const allTags = tags.map((tag: any) => {
+    const getTag = (tags: Tag[]) => {
+      const allTags = tags.map((tag: Tag) => {
         return tag.name;
       });
       return allTags;
     };
-
+    
     const tags = getTag(post.properties.Tags.multi_select);
     return tags;
   });
@@ -21,8 +28,8 @@ const Aside = async () => {
   const tagList: string[] = Array.from(set);
 
   const getCat: string[] = posts.flatMap((post: any) => {
-    const getCat = (cat: any) => {
-      const allCat = cat.map((cat: any) => {
+    const getCat = (cat: Tag[]) => {
+      const allCat = cat.map((cat: Tag) => {
         return cat.name;
       });
       return allCat;
