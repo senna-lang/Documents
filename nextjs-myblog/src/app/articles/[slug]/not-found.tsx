@@ -1,6 +1,6 @@
 import React from "react";
 
-const notFound = () => {
+export const notFound = () => {
   return (
     <div className="flex items-center justify-center mt-20">
       <div className="p-8 rounded-lg shadow-md text-center bg-white">
