@@ -4,8 +4,8 @@ import React from "react";
 import { createMetaData } from "@/utils/metaData";
 import { getAllPosts } from "@/lib/notion";
 
-const tagPageList = async (context: any) => {
-  const currentTag = context.params?.tag;
+const tagPageList = async ({ params }: { params: { tag: string; page: number } }) => {
+  const currentTag = params?.tag;
   const posts = await getAllPosts();
 
   const metaData = createMetaData(posts);
@@ -16,7 +16,7 @@ const tagPageList = async (context: any) => {
 
   const numberOfPage = Math.floor(filteredData.length / 6) + (filteredData.length % 6 > 0 ? 1 : 0);
 
-  const currentPage: number = context.params?.page;
+  const currentPage: number = params?.page;
   const startIndex = (currentPage - 1) * 6;
   const endIndex = startIndex + 6;
   const postsByPage = filteredData.slice(startIndex, endIndex);
@@ -25,7 +25,7 @@ const tagPageList = async (context: any) => {
     <div className="h-auto xl:mx-40">
       <section className="w-full items-center px-3 ">
         <div className="text-center my-7">
-          <h1 className="text-5xl font-playfairDisplay ">{currentTag}</h1>
+          <h1 className="text-5xl font-PlayFairDisplay">{currentTag}</h1>
         </div>
         <ArticleList articles={postsByPage} normal={false} />
       </section>
