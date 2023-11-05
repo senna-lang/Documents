@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { createMetaData } from "@/utils/metaData";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
@@ -9,7 +8,17 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import Link from "next/link";
 
-const HeroSlider = (sliderData: any) => {
+type SliderData = {
+  id: string;
+  img: string;
+  slug: string;
+};
+
+type SliderDataProps = {
+  sliderData: SliderData[];
+};
+
+const HeroSlider = (sliderData: SliderDataProps) => {
   const thumb = sliderData.sliderData;
 
   return (
@@ -29,14 +38,20 @@ const HeroSlider = (sliderData: any) => {
       }}
       followFinger={false}
     >
-      {thumb.map((data: any) => {
+      {thumb.map((data: SliderData) => {
         return (
           <SwiperSlide key={`${data.id}`}>
             <Link href={`/articles/${data.slug}`}>
               <div className="slide-media">
-                <Image src={data.img} width={800} height={400} alt="test_image" />
+                <Image
+                  src={data.img}
+                  width={1280}
+                  height={720}
+                  alt="sliderImage"
+                  priority
+                />
               </div>
-              <h2 className="slide-title text-white font-semibold">{data.id}</h2>
+              <h2 className="slide-title absolute bottom-[10px] right-[30px] opacity-0 leading-[1.6] text-white font-semibold text-[1rem] lg:text-[2rem]">{data.id}</h2>
             </Link>
           </SwiperSlide>
         );

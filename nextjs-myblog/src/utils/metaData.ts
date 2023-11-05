@@ -1,13 +1,19 @@
+type Tag = {
+  id: string;
+  name: string;
+  color: string;
+};
+
 export function createMetaData(posts: any) {
   const metaData = posts.map((post: any) => {
-    const getTags = (tags: any) => {
-      const allTags = tags.map((tag: any) => {
+    const getTags = (tags: Tag[]) => {
+      const allTags = tags.map((tag: Tag) => {
         return tag.name;
       });
       return allTags;
     };
-    const getCat = (cat: any) => {
-      const allCat = cat.map((cat: any) => {
+    const getCat = (cat: Tag[]) => {
+      const allCat = cat.map((cat: Tag) => {
         return cat.name;
       });
       return allCat;
