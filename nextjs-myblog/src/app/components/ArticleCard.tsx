@@ -42,7 +42,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
               <Link
                 href={`/allposts/tag/${tag}/1`}
                 className="text-blue-600 pb-4 font-bold mr-2"
-                key={article.slug}
+                key={tag}
               >
                 {tag}
               </Link>
