@@ -20,18 +20,18 @@ export function Header() {
   ));
 
   return (
-    <header className="header mb-8 py-5 px-5 border-b lg:mx-36">
-      <div className="inner">
+    <header className="header mb-4 md:mb-8 py-5 px-5 border-b lg:mx-28 xl:mx-36">
+      <div className="flex items-center justify-between">
         <Link href="/">
-          <h1 className="text-2xl font-extrabold font-sourceCodePro">SENNS BLOG</h1>
+          <h1 className="text-2xl font-extrabold sm:text-md">SENNA BLOG</h1>
         </Link>
-        <Group>
-          <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
-        </Group>
 
         <Group>
           <Group ml={50} gap={5} className="links" visibleFrom="sm">
             {items}
+          </Group>
+          <Group>
+            <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
           </Group>
         </Group>
       </div>
