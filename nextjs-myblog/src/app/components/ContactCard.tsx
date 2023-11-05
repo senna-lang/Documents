@@ -3,9 +3,15 @@ import Image from "next/image";
 
 const ContactCard = () => {
   return (
-    <div className="bg-white text-center border rounded-lg relative">
+    <div className="bg-white w-full text-center border rounded-lg relative">
       <div className="relative w-full h-60 ">
-        <Image src="/images/profileback.jpeg" alt="background" fill className="object-cover rounded-t-lg" />
+        <Image
+          src="/images/profileback.jpeg"
+          alt="background"
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 768px) 80vw, 50vw, 1024px"
+          className="object-cover rounded-t-lg"
+        />
       </div>
       <div className="absolute top-1/2 left-1/2 transform translate-x-[-50%] translate-y-[-75%] md:translate-y-[-50%] lg:translate-y-[-70%]">
         <Image
