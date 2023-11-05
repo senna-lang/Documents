@@ -1,11 +1,12 @@
-import { Client } from "@notionhq/client";
+import { notFound } from "next/navigation";
+import { Client} from "@notionhq/client";
 import { NotionToMarkdown } from "notion-to-md";
 import { cache } from "react";
 
 export const revalidate = 60;
 
-const notionSecret = process.env.NOTION_TOKEN;
-const notionDataBaseId = process.env.NOTION_DATABASE_ID;
+const notionSecret = process.env.NOTION_TOKEN!;
+const notionDataBaseId = process.env.NOTION_DATABASE_ID!;
 
 const notion = new Client({
   auth: notionSecret,
@@ -47,11 +48,11 @@ export const getPostDetail = cache(async (slug: string) => {
     },
   });
   const page = response.results[0];
-  // console.log(page)
+  if (!page) {
+    notFound();
+  }
   const mbBlocks = await n2m.pageToMarkdown(page.id);
-  // console.log(page.id)
   const mbString = n2m.toMarkdownString(mbBlocks);
-  // console.log(mbString.parent);
   return {
     page,
     mbString,

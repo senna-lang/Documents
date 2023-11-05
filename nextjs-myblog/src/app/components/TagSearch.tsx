@@ -12,7 +12,7 @@ const TagSearch: FC<Props> = ({ tagList }) => {
   const slicedTagList = tagList.slice(0, 6);
   const TagList = new Array(...slicedTagList);
   const [tag, setTag] = useState<string[]>(TagList);
-  const [state, setState] = useState(true);
+  const [state, setState] = useState<boolean>(true);
 
   const changeTagList = (tagArr: string[]) => {
     if (tagArr.length == 0) {
