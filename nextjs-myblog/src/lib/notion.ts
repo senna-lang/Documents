@@ -1,9 +1,10 @@
 import { notFound } from "next/navigation";
-import { Client} from "@notionhq/client";
+import { Client } from "@notionhq/client";
 import { NotionToMarkdown } from "notion-to-md";
 import { cache } from "react";
 
 export const revalidate = 60;
+
 
 const notionSecret = process.env.NOTION_TOKEN!;
 const notionDataBaseId = process.env.NOTION_DATABASE_ID!;
@@ -58,3 +59,14 @@ export const getPostDetail = cache(async (slug: string) => {
     mbString,
   };
 });
+
+export const updateLikes = async (id: string) => {
+  await notion.pages.update({
+    page_id: id,
+    properties: {
+      Likes: {
+        number: 4,
+      },
+    },
+  });
+};

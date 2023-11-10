@@ -30,6 +30,7 @@ export function createMetaData(posts: any) {
         post.properties.Thumb && post.properties.Thumb.files.length > 0
           ? post.properties.Thumb.files[0].file.url
           : null,
+      likes: post.properties.Likes.number,
     };
     return meta;
   });
