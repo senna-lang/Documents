@@ -1,0 +1,279 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&family=Source+Code+Pro&display=swap");
+
+@tailwind components;
+@tailwind utilities;
+@tailwind base;
+
+.news-detail {
+  //記事詳細ページ
+  & img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    margin: 20px auto;
+  }
+  & h1 {
+    font-size: xx-large;
+    background-color: #e6e6e6;
+    border-left: solid 5px #1a1a1a;
+    margin: 20px 0 50px 0;
+    padding-left: 10px;
+  }
+  & h2 {
+    font-size: x-large;
+    margin: 50px 0;
+    padding-bottom: 5px;
+    position: relative;
+    border-bottom: 3px solid #3cb371;
+    font-weight: bolder;
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: -3px;
+      width: 25%;
+      height: 3px;
+      background: #236641;
+    }
+  }
+
+  & h3 {
+    font-size: large;
+    margin-bottom: 15px;
+    font-weight: bold;
+    position: relative;
+    margin-top: 20px;
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: -3px;
+      width: 40%;
+      height: 2px;
+      background: #236641;
+    }
+  }
+  & p {
+    margin-bottom: 20px;
+    line-height: 2;
+  }
+  & ul,
+  ol {
+    padding-left: 20px;
+    margin-bottom: 20px;
+    list-style-type: disc;
+    list-style-position: outside;
+
+    & li {
+      margin-bottom: 5px;
+      line-height: 2;
+    }
+  }
+}
+
+.toc {
+  //Table Of Content
+  & a {
+    margin-bottom: 5px;
+    margin-left: 20px;
+    font-size: 13px;
+    line-height: 2;
+    font-weight: 500;
+    opacity: 0.5;
+    &.is-active-link {
+      opacity: 1;
+    }
+  }
+  & li {
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      display: block;
+      border-radius: 50%;
+      width: 8px;
+      height: 8px;
+      left: 0;
+      top: 0.6em;
+      background-color: rgba(0, 191, 255, 0.5);
+    }
+  }
+  & .is-collapsible {
+    margin-left: 20px;
+  }
+}
+
+.swiper {
+  width: 800px ;
+  height: 450px ;
+}
+.mv01 {
+  //Hero
+  /* スライド アクティブ時 */
+  & .swiper-slide {
+    &[class*="-active"] {
+      & .slide-title {
+        animation: mv01-fadeIn 2s 0.5s both;
+      }
+    }
+    &[class*="-active"],
+    &[class*="-duplicate-active"],
+    &[class*="-prev"] {
+      .slide-media {
+        animation-name: zoom;
+        animation-duration: 6s;
+        animation-fill-mode: forwards;
+      }
+    }
+  }
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes mv01-fadeIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+    filter: blur(300px);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.typing-effect1 {
+  width: 5ch;
+  animation:
+    typing 2s steps(5),
+    effect 1s step-end 2s 1 alternate forwards;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.02em solid black;
+  font-family: monospace;
+}
+.typing-effect2 {
+  width: 10ch;
+  animation:
+    typing 3s steps(10),
+    effect 1s step-end 4 alternate;
+  animation-fill-mode: both;
+  animation-delay: 3s;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.02em solid black;
+  font-family: monospace;
+}
+.typing-effect3 {
+  width: 11ch;
+  animation:
+    typing 2s steps(11),
+    effect 0.75s step-end infinite alternate;
+  animation-fill-mode: both;
+  animation-delay: 7.5s;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.02em solid black;
+  font-family: monospace;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes effect {
+  0% {
+    border-color: transparent;
+  } /*消滅*/
+  50% {
+    border-color: black;
+  } /*出現*/
+  100% {
+    border-color: transparent;
+  } /*消滅*/
+}
+
+header {
+  .header {
+    height: 56px;
+    margin-bottom: 120px;
+    background-color: var(--mantine-color-body);
+    border-bottom: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+    padding-left: var(--mantine-spacing-md);
+    padding-right: var(--mantine-spacing-md);
+  }
+
+  .inner {
+    height: 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .link {
+    display: block;
+    line-height: 1;
+    padding: 8px 12px;
+    border-radius: var(--mantine-radius-sm);
+    text-decoration: none;
+    color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0));
+    font-size: var(--mantine-font-size-sm);
+    font-weight: 500;
+
+    /* @mixin hover {
+      background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
+    } */
+  }
+}
+
+.slider {
+  & .card {
+    height: 440px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-size: cover;
+    background-position: center;
+  }
+
+  & .title {
+    font-family:
+      Greycliff CF,
+      sans-serif;
+    font-weight: 900;
+    color: var(--mantine-color-white);
+    line-height: 1.2;
+    font-size: 32px;
+    margin-top: var(--mantine-spacing-xs);
+  }
+
+  & .category {
+    color: var(--mantine-color-white);
+    opacity: 0.7;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .swiper {
+    width: 320px !important;
+    height: 180px !important;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .swiper {
+    width: 640px ;
+    height: 360px;
+  }
+}
