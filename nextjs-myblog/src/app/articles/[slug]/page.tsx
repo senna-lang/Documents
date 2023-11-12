@@ -42,6 +42,7 @@ const Post = async ({ params }: { params: { slug: string } }) => {
       date: page.properties.Date.date.start,
       slug: page.properties.Slug.rich_text[0].plain_text,
       tags: getTags(page.properties.Tags.multi_select),
+      likes: page.properties.Likes.number,
     };
     return meta;
   };
@@ -73,7 +74,10 @@ const Post = async ({ params }: { params: { slug: string } }) => {
         </div>
         <section className=" flex flex-col items-center px-3 xl:w-[30%]">
           <Aside />
-          <TocBot />
+          <div className=" mb-4 sticky top-8 left-0 w-full flex flex-col justify-center">
+            <TocBot />
+            <ArticleComments likes={metaData.likes} id={detailArticle.page.id} />
+          </div>
         </section>
       </div>
     </div>
