@@ -2,9 +2,10 @@ import { notFound } from "next/navigation";
 import { Client } from "@notionhq/client";
 import { NotionToMarkdown } from "notion-to-md";
 import { cache } from "react";
+import { PropertyItemsResponse} from "@notionhq/client/build/src/api-endpoints";
+
 
 export const revalidate = 60;
-
 
 const notionSecret = process.env.NOTION_TOKEN!;
 const notionDataBaseId = process.env.NOTION_DATABASE_ID!;
@@ -60,13 +61,10 @@ export const getPostDetail = cache(async (slug: string) => {
   };
 });
 
-export const updateLikes = async (id: string) => {
-  await notion.pages.update({
-    page_id: id,
-    properties: {
-      Likes: {
-        number: 4,
-      },
-    },
-  });
+export const getPage = async (page_id: string) => {
+  const propertyId = "vLhm";
+  const response = await notion.pages.properties.retrieve({ page_id, property_id: propertyId });
+  const likes = (response as PropertyItemsResponse).number;
+  return likes;
+
 };
