@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
 type LikesProps = {
@@ -8,8 +8,11 @@ type LikesProps = {
 };
 
 const ArticleComments = ({ likes, id }: LikesProps) => {
+  const [isLiked, setIsLiked] = useState<boolean>(false);
   const updateLikes = (id: string) => {
-    axios.patch(`/api/likes/${id}`)
+    setIsLiked(true);
+    axios
+      .patch(`/api/likes/${id}`)
       .then((response) => {
         console.log("リクエストが成功しました:", response.data);
       })
@@ -27,21 +30,20 @@ const ArticleComments = ({ likes, id }: LikesProps) => {
       });
   };
 
-  
-
   return (
     <div className=" mt-2 rounded-lg bg-white p-3">
-      <div className=" bg-orange-400 rounded-lg">
+      <div className={isLiked ? "bg-orange-200 rounded-lg" : " bg-orange-400 rounded-lg"}>
         <button
           className="text-xl m-4  text-white"
           onClick={() => updateLikes(id)}
+          disabled={isLiked}
         >
           Smash the 🧡 button
         </button>
       </div>
 
       <div>
-        <p>Likes{likes}</p>
+        <p>Likes : {likes ? likes : 0}</p>
       </div>
     </div>
   );
