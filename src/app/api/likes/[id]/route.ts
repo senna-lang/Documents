@@ -1,7 +1,7 @@
 import { Client } from "@notionhq/client";
-import { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
 import { getPage } from "@/lib/notion";
+import { NextRequest, NextResponse } from "next/server";
 
 const notionSecret = process.env.NOTION_TOKEN!;
 
@@ -9,7 +9,7 @@ const notion = new Client({
   auth: notionSecret,
 });
 
-export async function PATCH(req: NextApiRequest, res: NextApiResponse) {
+export async function PATCH(req: NextRequest,res:NextResponse) {
   const url = req.url as string;
 
   const urlParts: string[] = new URL(url).pathname.split("/");
