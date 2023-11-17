@@ -7,12 +7,10 @@ import { createMetaData } from "@/utils/metaData";
 import { getAllPosts } from "@/lib/notion";
 import ContactCard from "./components/ContactCard";
 
-
-const blog = async () => {
+const Blog = async () => {
   const posts = await getAllPosts();
   const postsByPage = posts.slice(0, 6);
   const metaData = createMetaData(postsByPage);
-
 
   return (
     <div>
@@ -20,7 +18,7 @@ const blog = async () => {
       <div className="h-auto xl:flex lg:mx-28 xl:mx-36">
         <section className="w-full items-center px-3 xl:w-[70%]">
           <div className="text-center my-10">
-            <h1 className='text-5xl font-PlayFairDisplay'>NEW POSTS</h1>
+            <h1 className="text-5xl font-PlayFairDisplay">NEW POSTS</h1>
           </div>
           <ArticleList articles={metaData} normal={true} />
           <div className="text-center mt-5 mb-6 lg:mb-10">
@@ -40,4 +38,4 @@ const blog = async () => {
   );
 };
 
-export default blog;
+export default Blog;
