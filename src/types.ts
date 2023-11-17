@@ -8,3 +8,10 @@ export type Article = {
   thumb: string;
   likes: number | null;
 };
+export type PropertyItemsResponse = {
+  object: string;
+type: string;
+id: string;
+number: number;
+request_id: string;
+}

@@ -2,8 +2,7 @@ import { notFound } from "next/navigation";
 import { Client } from "@notionhq/client";
 import { NotionToMarkdown } from "notion-to-md";
 import { cache } from "react";
-import { PropertyItemsResponse} from "@notionhq/client/build/src/api-endpoints";
-
+import { PropertyItemsResponse } from "@/types";
 
 export const revalidate = 60;
 
@@ -66,5 +65,4 @@ export const getPage = async (page_id: string) => {
   const response = await notion.pages.properties.retrieve({ page_id, property_id: propertyId });
   const likes = (response as PropertyItemsResponse).number;
   return likes;
-
 };
