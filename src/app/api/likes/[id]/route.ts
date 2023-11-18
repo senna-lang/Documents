@@ -9,6 +9,17 @@ const notion = new Client({
   auth: notionSecret,
 });
 
+export const corsHeaders = {
+  'Access-Control-Allow-Origin': 'https://notion-blog-juhu27lna-senna-lang.vercel.app', // 許可するオリジン
+  'Access-Control-Allow-Methods': 'POST, OPTIONS', // 許可するメソッド
+  'Access-Control-Allow-Headers': 'Content-Type', // 許可するリクエストヘッダー
+}
+
+export async function OPTIONS() {
+  return NextResponse.json({}, { headers: corsHeaders })
+}
+
+
 export async function PATCH(req: NextRequest,res:NextResponse) {
   const url = req.url as string;
 
@@ -24,6 +35,7 @@ export async function PATCH(req: NextRequest,res:NextResponse) {
       url: `https://api.notion.com/v1/pages/${page_id}`,
       headers: {
         Authorization: `Bearer ${process.env.NOTION_TOKEN}`,
+        corsHeaders,
         "Notion-Version": "2022-06-28",
         "content-type": "application/json",
       },
