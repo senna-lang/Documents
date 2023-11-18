@@ -26,7 +26,7 @@ export async function generateStaticParams() {
 
 const Post = async ({ params }: { params: { slug: string } }) => {
   const detailArticle = await getPostDetail(params.slug);
-
+  
   const { page, mbString } = detailArticle;
 
   const createMetaData = (page: any) => {

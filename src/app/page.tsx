@@ -4,13 +4,14 @@ import React from "react";
 import Link from "next/link";
 import MainVisual from "./components/MainVisual";
 import { createMetaData } from "@/utils/metaData";
-import { getAllPosts } from "@/lib/notion";
+import { getAllPosts} from "@/lib/notion";
 import ContactCard from "./components/ContactCard";
 
 const Blog = async () => {
   const posts = await getAllPosts();
   const postsByPage = posts.slice(0, 6);
   const metaData = createMetaData(postsByPage);
+
 
   return (
     <div>
