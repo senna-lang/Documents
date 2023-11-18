@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Article } from "@/types";
 import { BiSolidPurchaseTagAlt } from "react-icons/bi";
 import { TfiTime } from "react-icons/tfi";
@@ -34,7 +35,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
         href={`/articles/${article.slug}`}
         className=" block hover:opacity-75 relative before:content-[''] before:block before: pt-[56.25%]"
       >
-        {/* <Image
+        <Image
           src={
             article.thumb
               ? article.thumb
@@ -45,16 +46,8 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
           alt=""
           priority
           className=" absolute top-0 left-0 w-full h-full object-cover"
-        /> */}
-        <img
-          src={
-            article.thumb
-              ? article.thumb
-              : `https://source.unsplash.com/collection/1346951/1000x500?sig=${article.id}`
-          }
-          alt="thumbnail"
-          className=" absolute top-0 left-0 w-full h-full object-cover"
         />
+       
       </Link>
       <div className=" flex flex-col justify-start pt-6 px-6">
         <div className="flex">
