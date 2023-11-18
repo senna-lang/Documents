@@ -9,15 +9,6 @@ const notion = new Client({
   auth: notionSecret,
 });
 
-export const corsHeaders = {
-  'Access-Control-Allow-Origin': 'https://notion-blog-juhu27lna-senna-lang.vercel.app', // 許可するオリジン
-  'Access-Control-Allow-Methods': 'POST, OPTIONS', // 許可するメソッド
-  'Access-Control-Allow-Headers': 'Content-Type', // 許可するリクエストヘッダー
-}
-
-export async function OPTIONS() {
-  return NextResponse.json({}, { headers: corsHeaders })
-}
 
 
 export async function PATCH(req: NextRequest,res:NextResponse) {
