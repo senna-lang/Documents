@@ -35,7 +35,9 @@ export async function PATCH(req: NextRequest,res:NextResponse) {
       url: `https://api.notion.com/v1/pages/${page_id}`,
       headers: {
         Authorization: `Bearer ${process.env.NOTION_TOKEN}`,
-        corsHeaders,
+        'Access-Control-Allow-Origin': 'https://notion-blog-juhu27lna-senna-lang.vercel.app', 
+        'Access-Control-Allow-Methods': 'POST, OPTIONS', 
+        'Access-Control-Allow-Headers': 'Content-Type', 
         "Notion-Version": "2022-06-28",
         "content-type": "application/json",
       },
