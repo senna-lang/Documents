@@ -1,6 +1,5 @@
-'use client'
+"use client";
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { Article } from "@/types";
 import { BiSolidPurchaseTagAlt } from "react-icons/bi";
@@ -35,7 +34,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
         href={`/articles/${article.slug}`}
         className=" block hover:opacity-75 relative before:content-[''] before:block before: pt-[56.25%]"
       >
-        <Image
+        {/* <Image
           src={
             article.thumb
               ? article.thumb
@@ -45,6 +44,15 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
           height={300}
           alt=""
           priority
+          className=" absolute top-0 left-0 w-full h-full object-cover"
+        /> */}
+        <img
+          src={
+            article.thumb
+              ? article.thumb
+              : `https://source.unsplash.com/collection/1346951/1000x500?sig=${article.id}`
+          }
+          alt="thumbnail"
           className=" absolute top-0 left-0 w-full h-full object-cover"
         />
       </Link>
