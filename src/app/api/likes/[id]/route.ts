@@ -26,11 +26,11 @@ export async function PATCH(req: NextRequest,res:NextResponse) {
       url: `https://api.notion.com/v1/pages/${page_id}`,
       headers: {
         Authorization: `Bearer ${process.env.NOTION_TOKEN}`,
-        'Access-Control-Allow-Origin': 'https://next-js13-my-blog.vercel.app', 
-        'Access-Control-Allow-Methods': 'POST, OPTIONS, PATCH', 
-        'Access-Control-Allow-Headers': 'Content-Type', 
-        "Notion-Version": "2022-06-28",
+        "Access-Control-Allow-Origin": "https://next-js13-my-blog.vercel.app", 
+        "Access-Control-Allow-Methods": "POST, OPTIONS, PATCH", 
         "content-type": "application/json",
+        "Access-Control-Allow-Headers": "Content-Type", 
+        "Notion-Version": "2022-06-28",
       },
       data: {
         properties: {

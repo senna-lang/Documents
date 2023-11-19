@@ -12,7 +12,11 @@ const ArticleComments = ({ likes, id }: LikesProps) => {
   const updateLikes = (id: string) => {
     setIsLiked(true);
     axios
-      .patch(`/api/likes/${id}`)
+      .patch(`/api/likes/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
       .then((response) => {
         console.log("リクエストが成功しました:", response.data);
       })
