@@ -5,7 +5,7 @@ import Link from "next/link";
 import { BiSolidPurchaseTagAlt } from "react-icons/bi";
 import TocBot from "@/app/components/TocBot";
 import rehypeSlug from "rehype-slug";
-import { getPostDetail, getAllPosts } from "@/lib/notion";
+import { getPostDetail, getAllPosts, getPage } from "@/lib/notion";
 import { createMetaData } from "@/utils/metaData";
 import { Article } from "@/types";
 import ArticleComments from "@/app/components/ArticleComments";
@@ -49,6 +49,7 @@ const Post = async ({ params }: { params: { slug: string } }) => {
 
   const metaData = createMetaData(page);
 
+
   return (
     <div>
       <div className=" text-center flex flex-col items-center">
@@ -76,7 +77,7 @@ const Post = async ({ params }: { params: { slug: string } }) => {
           <Aside />
           <div className=" mb-4 sticky top-8 left-0 w-full flex flex-col justify-center">
             <TocBot />
-            <ArticleComments likes={metaData.likes} id={detailArticle.page.id} />
+            <ArticleComments  id={detailArticle.page.id} />
           </div>
         </section>
       </div>

@@ -1,49 +1,38 @@
-import { Client } from "@notionhq/client";
-import axios from "axios";
-import { getPage } from "@/lib/notion";
+import { getPage, updatePage } from "@/lib/notion";
 import { NextRequest, NextResponse } from "next/server";
 
-const notionSecret = process.env.NOTION_TOKEN!;
-
-const notion = new Client({
-  auth: notionSecret,
-});
-
-
-
-export async function PATCH(req: NextRequest,res:NextResponse) {
+export async function GET(req: NextRequest) {
   const url = req.url as string;
 
   const urlParts: string[] = new URL(url).pathname.split("/");
 
   const page_id: string = urlParts[urlParts.length - 1];
 
-  getPage(page_id).then((result) => {
-    const currentLikes: number = result; 
+  const result = await getPage(page_id);
+  const currentLikes = NextResponse.json(result)
+ 
+  return currentLikes;
+}
 
-    const options = {
-      method: "PATCH",
-      url: `https://api.notion.com/v1/pages/${page_id}`,
-      headers: {
-        Authorization: `Bearer ${process.env.NOTION_TOKEN}`,
-        "Notion-Version": "2022-06-28",
-      },
-      data: {
-        properties: {
-          Likes: {
-            number: currentLikes + 1,
-          },
-        },
-      },
-    };
+export async function PATCH(req: NextRequest) {
+  const url = req.url as string;
 
-    axios
-      .request(options)
-      .then(function (response) {
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+  const urlParts: string[] = new URL(url).pathname.split("/");
+
+  const page_id: string = urlParts[urlParts.length - 1];
+
+  const result = await getPage(page_id);
+  const currentLikes = result;
+
+  const postRes = await updatePage({
+    page_id,
+    properties: {
+      Likes: {
+        number: currentLikes + 1,
+      },
+    },
   });
+
+  const response = NextResponse.json(postRes);
+  return response;
 }
