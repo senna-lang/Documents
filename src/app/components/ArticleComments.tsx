@@ -15,6 +15,7 @@ const ArticleComments = ({ id }: LikesProps) => {
     <div className=" mt-2 rounded-lg bg-white p-3">
       <div>
         <Button
+          variant="fill"
           onClick={() =>
             trigger(null, {
               onSuccess: () => setIsLiked(true),
