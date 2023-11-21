@@ -16,6 +16,7 @@ const ArticleComments = ({ id }: LikesProps) => {
       <div>
         <Button
           variant="fill"
+          color="indigo"
           onClick={() =>
             trigger(null, {
               onSuccess: () => setIsLiked(true),
