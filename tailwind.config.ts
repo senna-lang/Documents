@@ -10,7 +10,7 @@ const config: Config = {
   theme: {
     fontFamily: {
       PlayFairDisplay : ['  var(--font-PlayFairDisplay)'],
-      sourceCodePro: ['Source Code Pro']
+      sourceCodePro: ['Source Code Pro'],
     },
     extend: {
       backgroundImage: {
