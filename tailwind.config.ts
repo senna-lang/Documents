@@ -9,8 +9,8 @@ const config: Config = {
   ],
   theme: {
     fontFamily: {
-      PlayFairDisplay : ['  var(--font-PlayFairDisplay)'],
-      sourceCodePro: ['Source Code Pro'],
+      PlayFairDisplay: ["  var(--font-PlayFairDisplay)"],
+      sourceCodePro: ["Source Code Pro"],
     },
     extend: {
       backgroundImage: {
@@ -20,5 +20,9 @@ const config: Config = {
     },
   },
   plugins: [require("@tailwindcss/forms")],
+  corePlugins: {
+    preflight: false, 
+  },
+  important: "#__next",
 };
 export default config;
