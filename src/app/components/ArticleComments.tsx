@@ -13,21 +13,19 @@ const ArticleComments = ({ id }: LikesProps) => {
 
   return (
     <div className=" mt-2 rounded-lg bg-white p-3">
-      <div>
-        <Button
-          variant="fill"
-          color="indigo"
-          onClick={() =>
-            trigger(null, {
-              onSuccess: () => setIsLiked(true),
-            })
-          }
-          disabled={isLiked}
-          loading={isMutating}
-        >
-          Smash the 🧡 button
-        </Button>
-      </div>
+      <Button
+        variant="fill"
+        color="indigo"
+        onClick={() =>
+          trigger(null, {
+            onSuccess: () => setIsLiked(true),
+          })
+        }
+        disabled={isLiked}
+        loading={isMutating}
+      >
+        Smash the 🧡 button
+      </Button>
 
       <div>
         <p>Likes : {data ? data : 0}</p>
