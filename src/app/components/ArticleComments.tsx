@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useLike } from "@/hooks/useLike";
+import { Button } from "@mantine/core";
 
 type LikesProps = {
   id: string;
@@ -9,14 +10,21 @@ type LikesProps = {
 const ArticleComments = ({ id }: LikesProps) => {
   const [isLiked, setIsLiked] = useState<boolean>(false);
   const { data, trigger, isMutating } = useLike(id);
-  console.log(data)
 
   return (
     <div className=" mt-2 rounded-lg bg-white p-3">
-      <div className={isLiked ? "bg-orange-200 rounded-lg" : " bg-orange-400 rounded-lg"}>
-        <button className="text-xl m-4  text-white" onClick={() => trigger()} disabled={isLiked}>
+      <div>
+        <Button
+          onClick={() =>
+            trigger(null, {
+              onSuccess: () => setIsLiked(true),
+            })
+          }
+          disabled={isLiked}
+          loading={isMutating}
+        >
           Smash the 🧡 button
-        </button>
+        </Button>
       </div>
 
       <div>
