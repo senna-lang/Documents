@@ -1,4 +1,4 @@
-import "styles/mantineBase.css"
+import "./styles/mantineBase.css"
 import "./globals.scss";
 import type { Metadata } from "next";
 import Header from "./components/Header";
