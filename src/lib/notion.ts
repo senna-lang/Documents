@@ -84,9 +84,10 @@ export const getPostDetail = cache(async (slug: string) => {
     return null;
   };
 
-  urlArray.map((url) => {
-    fetcher(url);
-  });
+  await Promise.all(urlArray.map(async (url) => {
+    await fetcher(url);
+  }));
+
 
   const mbString = n2m.toMarkdownString(mbBlocks);
   return {

@@ -26,6 +26,7 @@ const fetcher = async (url: string) => {
 const ArticleCard = ({ article }: ArticleCardProps) => {
   const { data: imageUrl, error } = useSWR(article.thumb, fetcher);
 
+
   return (
     <article
       className="my-2 bg-white min-h-[500px] cursor-pointer hover:shadow-lg transition-transform duration-500 translate-y-2 hover:translate-y-[-2]"
