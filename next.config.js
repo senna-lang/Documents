@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  server: {
-    bodyParser: false,
-  },
   images: {
     domains: [
       "source.unsplash.com",
