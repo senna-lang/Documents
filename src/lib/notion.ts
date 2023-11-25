@@ -4,7 +4,6 @@ import { NotionToMarkdown } from "notion-to-md";
 import { cache } from "react";
 import type { UpdatePageParameters } from "@notionhq/client/build/src/api-endpoints";
 import { PropertyItemsResponse } from "@/types";
-import axios from "axios";
 
 export const revalidate = 60;
 
@@ -56,38 +55,6 @@ export const getPostDetail = cache(async (slug: string) => {
   }
 
   const mbBlocks = await n2m.pageToMarkdown(page.id);
-
-  const urlBlockArray = mbBlocks.filter((block: any) => {
-    if (block.type === "image") {
-      return block;
-    }
-  });
-
-  const urlArray = urlBlockArray.map((block: any) => {
-    const urlPattern = /\((.*?)\)/;
-    const match = urlPattern.exec(block.parent);
-
-    if (match && match[1]) {
-      const extractedUrl = match[1];
-      return extractedUrl;
-    }
-  });
-
-  const fetcher = async (url: string | undefined) => {
-    if (!url) return null;
-    const response = await axios.get(url);
-    if (response.data.type === "external") {
-      return response.data.url;
-    } else if (response.data.type === "file") {
-      return response.data.file.url;
-    }
-    return null;
-  };
-
-  await Promise.all(urlArray.map(async (url) => {
-    await fetcher(url);
-  }));
-
 
   const mbString = n2m.toMarkdownString(mbBlocks);
   return {
