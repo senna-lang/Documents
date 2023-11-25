@@ -5,7 +5,7 @@ import { useDisclosure } from "@mantine/hooks";
 import Link from "next/link";
 
 const links = [
-  { link: "/allposts", label: "All Posts" },
+  { link: "/allposts/1", label: "All Posts" },
   { link: "/pricing", label: "About Me" },
   { link: "https://github.com/senna-lang", label: "Git Hub" },
 ];
