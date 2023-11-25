@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  server: {
+    bodyParser: false,
+  },
   images: {
     domains: [
       "source.unsplash.com",
@@ -17,7 +20,7 @@ const nextConfig = {
         headers: [
           { key: "Access-Control-Allow-Credentials", value: "true" },
           { key: "Access-Control-Allow-Origin", value: "*" },
-          { key: "Access-Control-Allow-Methods", value: "GET,OPTIONS,PATCH" },
+          { key: "Access-Control-Allow-Methods", value: "GET,OPTIONS,PATCH,POST" },
         ],
       },
     ];
