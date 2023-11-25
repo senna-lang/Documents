@@ -2,7 +2,10 @@ import { notFound } from "next/navigation";
 import { Client } from "@notionhq/client";
 import { NotionToMarkdown } from "notion-to-md";
 import { cache } from "react";
-import type { UpdatePageParameters } from "@notionhq/client/build/src/api-endpoints";
+import type {
+  UpdatePageParameters,
+  CreateCommentParameters,
+} from "@notionhq/client/build/src/api-endpoints";
 import { PropertyItemsResponse } from "@/types";
 
 export const revalidate = 60;
@@ -70,4 +73,9 @@ export const getPage = async (page_id: string) => {
   return likes;
 };
 
-export const updatePage = async (params: UpdatePageParameters) => notion.pages.update(params);
+export const updatePage = async (params: UpdatePageParameters) => await notion.pages.update(params);
+
+export const createComment = async (params: CreateCommentParameters) => {
+  const response =  await notion.comments.create(params);
+  return response;
+};
