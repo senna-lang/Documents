@@ -15,7 +15,7 @@ const TocBot = () => {
   }, []);
   return (
     <div className="rounded-lg bg-white p-3">
-      <h1 className=" font-bold text-xl mb-4 text-center">Table Of Content</h1>
+      <h1 className=" font-bold text-xl mb-4 text-center font-sourceCodePro">Table Of Content</h1>
       <nav className="toc" />
     </div>
   );
