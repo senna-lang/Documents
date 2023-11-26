@@ -8,7 +8,7 @@ import type {
 } from "@notionhq/client/build/src/api-endpoints";
 import { PropertyItemsResponse } from "@/types";
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 const notionSecret = process.env.NOTION_TOKEN!;
 const notionDataBaseId = process.env.NOTION_DATABASE_ID!;
@@ -77,5 +77,5 @@ export const updatePage = async (params: UpdatePageParameters) => await notion.p
 
 export const createComment = async (params: CreateCommentParameters) => {
   const response =  await notion.comments.create(params);
-  return response;
+  return response
 };
