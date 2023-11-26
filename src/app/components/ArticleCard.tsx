@@ -1,32 +1,15 @@
-"use client";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Article } from "@/types";
 import { BiSolidPurchaseTagAlt } from "react-icons/bi";
 import { TfiTime } from "react-icons/tfi";
-import axios from "axios";
-import useSWR from "swr";
 
 type ArticleCardProps = {
   article: Article;
 };
 
-const fetcher = async (url: string) => {
-  if (!url) return null;
-  const response = await axios.get(url);
-  if (response.data.type === "external") {
-    return response.data.url;
-  } else if (response.data.type === "file") {
-    return response.data.file.url;
-  }
-  return null;
-};
-
 const ArticleCard = ({ article }: ArticleCardProps) => {
-  const { data: imageUrl, error } = useSWR(article.thumb, fetcher);
-
-
   return (
     <article
       className="my-2 bg-white min-h-[500px] cursor-pointer hover:shadow-lg transition-transform duration-500 translate-y-2 hover:translate-y-[-2]"
@@ -48,7 +31,6 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
           priority
           className=" absolute top-0 left-0 w-full h-full object-cover"
         />
-       
       </Link>
       <div className=" flex flex-col justify-start pt-6 px-6">
         <div className="flex">
