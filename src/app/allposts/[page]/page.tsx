@@ -1,7 +1,7 @@
 import PageNation from "@/app/components/PageNation";
 import ArticleList from "../../components/ArticleList";
-import { createMetaData } from "@/utils/metaData";
-import { getAllPosts } from "@/lib/notion";
+import { createMetaData } from "@/app/utils/metaData";
+import { getAllPosts } from "@/app/lib/notion";
 
 const BlogPageList = async ({ params }: { params: { page: number } }) => {
   const posts = await getAllPosts();

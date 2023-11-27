@@ -6,7 +6,7 @@ import type {
   UpdatePageParameters,
   CreateCommentParameters,
 } from "@notionhq/client/build/src/api-endpoints";
-import { PropertyItemsResponse } from "@/types";
+import { PropertyItemsResponse } from "@/app/types/types";
 
 export const revalidate = 3600;
 
@@ -76,6 +76,6 @@ export const getPage = async (page_id: string) => {
 export const updatePage = async (params: UpdatePageParameters) => await notion.pages.update(params);
 
 export const createComment = async (params: CreateCommentParameters) => {
-  const response =  await notion.comments.create(params);
-  return response
+  const response = await notion.comments.create(params);
+  return response;
 };

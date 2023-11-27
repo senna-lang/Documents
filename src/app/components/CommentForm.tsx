@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { useComment } from "@/hooks/useComment";
+import { useComment } from "@/app/hooks/useComment";
 
 type CommentProps = {
   id: string;

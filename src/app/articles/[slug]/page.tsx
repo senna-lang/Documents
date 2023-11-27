@@ -5,9 +5,9 @@ import Link from "next/link";
 import { BiSolidPurchaseTagAlt } from "react-icons/bi";
 import TocBot from "@/app/components/TocBot";
 import rehypeSlug from "rehype-slug";
-import { getPostDetail, getAllPosts, getPage } from "@/lib/notion";
-import { createMetaData } from "@/utils/metaData";
-import { Article } from "@/types";
+import { getPostDetail, getAllPosts, getPage } from "@/app/lib/notion";
+import { createMetaData } from "@/app/utils/metaData";
+import { Article } from "@/app/types/types";
 import ArticleComments from "@/app/components/ArticleLilkes";
 import CommentForm from "@/app/components/CommentForm";
 
@@ -27,7 +27,7 @@ export async function generateStaticParams() {
 
 const Post = async ({ params }: { params: { slug: string } }) => {
   const detailArticle = await getPostDetail(params.slug);
-  
+
   const { page, mbString } = detailArticle;
 
   const createMetaData = (page: any) => {
@@ -49,7 +49,6 @@ const Post = async ({ params }: { params: { slug: string } }) => {
   };
 
   const metaData = createMetaData(page);
-
 
   return (
     <div>
@@ -74,14 +73,14 @@ const Post = async ({ params }: { params: { slug: string } }) => {
             <ReactMarkdown rehypePlugins={[rehypeSlug]}>{mbString.parent}</ReactMarkdown>
           </div>
           <div>
-            <CommentForm id={detailArticle.page.id}/>
+            <CommentForm id={detailArticle.page.id} />
           </div>
         </div>
         <section className=" flex flex-col items-center px-3 xl:w-[30%]">
           <Aside />
           <div className=" mb-4 sticky top-8 left-0 w-full flex flex-col justify-center">
             <TocBot />
-            <ArticleComments  id={detailArticle.page.id} />
+            <ArticleComments id={detailArticle.page.id} />
           </div>
         </section>
       </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Article } from "@/types";
+import { Article } from "@/app/types/types";
 import { BiSolidPurchaseTagAlt } from "react-icons/bi";
 import { TfiTime } from "react-icons/tfi";
 

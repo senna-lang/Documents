@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { useLike } from "@/hooks/useLike";
+import { useLike } from "@/app/hooks/useLike";
 import { Button } from "@mantine/core";
 import { FcLike } from "react-icons/fc";
 

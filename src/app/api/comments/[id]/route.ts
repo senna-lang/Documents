@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createComment } from "@/lib/notion";
+import { createComment } from "@/app/lib/notion";
 
 export async function POST(req: NextRequest) {
   const url = req.url as string;

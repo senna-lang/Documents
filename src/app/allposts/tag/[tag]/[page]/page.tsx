@@ -1,8 +1,8 @@
 import ArticleList from "../../../../components/ArticleList";
 import PageNation from "../../../../components/PageNation";
 import React from "react";
-import { createMetaData } from "@/utils/metaData";
-import { getAllPosts } from "@/lib/notion";
+import { createMetaData } from "@/app/utils/metaData";
+import { getAllPosts } from "@/app/lib/notion";
 
 const tagPageList = async ({ params }: { params: { tag: string; page: number } }) => {
   const currentTag = params?.tag;

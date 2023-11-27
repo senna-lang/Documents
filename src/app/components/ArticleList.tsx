@@ -1,5 +1,5 @@
-import React from "react"
-import { Article } from "@/types";
+import React from "react";
+import { Article } from "@/app/types/types";
 import ArticleCard from "./ArticleCard";
 
 type ArticleListProps = {

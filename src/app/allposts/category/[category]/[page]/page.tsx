@@ -1,8 +1,8 @@
 import ArticleList from "../../../../components/ArticleList";
 import PageNation from "../../../../components/PageNation";
 import React from "react";
-import { createMetaData } from "@/utils/metaData";
-import { getAllPosts } from "@/lib/notion";
+import { createMetaData } from "@/app/utils/metaData";
+import { getAllPosts } from "@/app/lib/notion";
 
 const categoryPageList = async ({ params }: { params: { category: string; page: number } }) => {
   const currentCat = params?.category;

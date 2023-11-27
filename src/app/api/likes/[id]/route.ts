@@ -1,4 +1,4 @@
-import { getPage, updatePage } from "@/lib/notion";
+import { getPage, updatePage } from "@/app/lib/notion";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
@@ -9,8 +9,8 @@ export async function GET(req: NextRequest) {
   const page_id: string = urlParts[urlParts.length - 1];
 
   const result = await getPage(page_id);
-  const currentLikes = NextResponse.json(result)
- 
+  const currentLikes = NextResponse.json(result);
+
   return currentLikes;
 }
 

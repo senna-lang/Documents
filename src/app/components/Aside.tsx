@@ -1,14 +1,13 @@
 import React from "react";
-import { getAllPosts } from "@/lib/notion";
+import { getAllPosts } from "@/app/lib/notion";
 import ComboBox from "./ComboBox";
 import TagSearch from "./TagSearch";
 
 type Tag = {
-  id:string;
-  name:string;
-  color:string;
-}
-
+  id: string;
+  name: string;
+  color: string;
+};
 
 const Aside = async () => {
   const posts = await getAllPosts();
@@ -20,7 +19,7 @@ const Aside = async () => {
       });
       return allTags;
     };
-    
+
     const tags = getTag(post.properties.Tags.multi_select);
     return tags;
   });
