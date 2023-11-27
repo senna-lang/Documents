@@ -17,6 +17,8 @@ type Tag = {
   color: string;
 };
 
+export const revalidate = 60
+
 export async function generateStaticParams() {
   const posts = await getAllPosts();
   const metaData = createMetaData(posts);
