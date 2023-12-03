@@ -11,7 +11,6 @@ export const ScrollToTop = () => {
     <Transition transition="slide-up" mounted={scroll.y > 700}>
       {(transitionStyles) => (
         <Button
-          className=""
           variant='outline'
           color='gray'
           size='md'
