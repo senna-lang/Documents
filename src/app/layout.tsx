@@ -1,4 +1,4 @@
-import "./styles/mantineBase.css"
+import "./styles/mantineBase.css";
 import "./globals.scss";
 import type { Metadata } from "next";
 import Header from "./components/Header";
@@ -7,6 +7,7 @@ import { Suspense } from "react";
 import Loading from "./loading";
 import "@mantine/core/styles.css";
 import { MantineProvider } from "@mantine/core";
+import { RecoilRoot } from "recoil";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { Noto_Sans_JP, Playfair_Display } from "next/font/google";
 
@@ -33,19 +34,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ja">
       <head />
       <body
-        className={`container bg-slate-100 mx-auto text-black ${NoteSansJP.className} ${PlayfairDisplay.variable}`}
+        className={`text-black  bg-slate-100 ${NoteSansJP.className} ${PlayfairDisplay.variable}`}
       >
         <MantineProvider>
-          <div className="flex flex-col min-h-screen">
-            <Header />
-            <main className="flex-grow">
-              <Suspense fallback={<Loading />}>{children}</Suspense>
+            <main className="container mx-auto">
+              <div className="flex flex-col min-h-screen">
+                <Header />
+                <main className="flex-grow">
+                  <Suspense fallback={<Loading />}>{children}</Suspense>
+                </main>
+                <div className="sticky bottom-0 py-4 text-right sp:p-2">
+                  <ScrollToTop />
+                </div>
+                <Footer />
+              </div>
             </main>
-            <div className="sticky bottom-0 py-4 text-right sp:p-2">
-              <ScrollToTop />
-            </div>
-            <Footer />
-          </div>
         </MantineProvider>
       </body>
     </html>
