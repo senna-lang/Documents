@@ -9,7 +9,6 @@ import { getPostDetail, getAllPosts, getPage } from "@/app/lib/notion";
 import { createMetaData } from "@/app/utils/metaData";
 import { Article } from "@/app/types/types";
 import ArticleComments from "@/app/components/ArticleLilkes";
-import CommentForm from "@/app/components/CommentForm";
 
 type Tag = {
   id: string;
@@ -73,9 +72,6 @@ const Post = async ({ params }: { params: { slug: string } }) => {
         <div className="news-detail bg-white rounded-lg w-full items-center px-7 xl:w-[70%]">
           <div className="m-3 font-medium">
             <ReactMarkdown rehypePlugins={[rehypeSlug]}>{mbString.parent}</ReactMarkdown>
-          </div>
-          <div>
-            <CommentForm id={detailArticle.page.id} />
           </div>
         </div>
         <section className=" flex flex-col items-center px-3 xl:w-[30%]">
