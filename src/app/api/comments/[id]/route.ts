@@ -10,7 +10,6 @@ export async function POST(req: NextRequest) {
 
   const bodyText = await req.text();
 
-  console.log(bodyText);
 
   const postRes = await createComment({
     parent: {
