@@ -2,7 +2,6 @@
 import CommentForm from "./CommentForm";
 import React, { useState } from "react";
 import { useLike } from "@/app/hooks/useLike";
-import { useComment } from "../hooks/useComment";
 import { Button } from "@mantine/core";
 import { FcLike } from "react-icons/fc";
 
@@ -13,7 +12,7 @@ type LikesProps = {
 const ArticleComments = ({ id }: LikesProps) => {
   const [isLiked, setIsLiked] = useState<boolean>(false);
   const { data : likes, trigger, isMutating } = useLike(id);
-  const { data : comment } = useComment(id);
+
 
   return (
     <div className="mt-2 rounded-lg bg-white p-5">
