@@ -8,7 +8,7 @@ import type {
 } from "@notionhq/client/build/src/api-endpoints";
 import { PropertyItemsResponse } from "@/app/types/types";
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 const notionSecret = process.env.NOTION_TOKEN!;
 const notionDataBaseId = process.env.NOTION_DATABASE_ID!;
