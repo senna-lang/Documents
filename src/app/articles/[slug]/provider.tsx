@@ -29,7 +29,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 setIsMutating(true);
               }}
             >
-              Everything is fine
+              Sending your comment ...
             </Notification>
           </div>
         ) : (
@@ -45,7 +45,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 setIsMutating(true);
               }}
             >
-              Everything is fine
+              Completed !!
             </Notification>
           </div>
         )
