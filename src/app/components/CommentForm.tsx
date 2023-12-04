@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import { useComment } from "@/app/hooks/useComment";
 import { Modal, Button, Textarea } from "@mantine/core";
-import { useDisclosure} from "@mantine/hooks";
+import { useDisclosure } from "@mantine/hooks";
 import { notificationState } from "../atoms/notification";
 
 type CommentProps = {
@@ -12,7 +12,7 @@ type CommentProps = {
 
 const CommentForm = ({ id }: CommentProps) => {
   const [notification, setNotification] = useRecoilState(notificationState);
- 
+
   const [comment, setComment] = useState("");
   const { trigger } = useComment(id, comment);
   const [opened, { open, close }] = useDisclosure(false);
@@ -31,20 +31,22 @@ const CommentForm = ({ id }: CommentProps) => {
 
   return (
     <div>
-      <Modal opened={opened} onClose={close} title="Authentication" size="lg" trapFocus={false}>
+      <Modal opened={opened} onClose={close} title="記事にコメントする" size="lg" trapFocus={false}>
         <form onSubmit={handleSubmit}>
           <Textarea
-            label="Input label"
-            description="Input description"
-            placeholder="Input placeholder"
+            placeholder="write down your comment"
             value={comment}
             onChange={handleCommentChange}
           />
-          <button type="submit">コメントを投稿</button>
+          <div className="mt-2">
+            <Button type="submit" fullWidth>投稿</Button>
+          </div>
         </form>
       </Modal>
 
-      <Button onClick={open}>Open modal</Button>
+      <Button onClick={open} size="sm" fullWidth>
+        コメントする
+      </Button>
     </div>
   );
 };
