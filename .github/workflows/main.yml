@@ -1,24 +1,20 @@
-name: deploy website
+name: internet yamelo
+
 on:
-  workflow_dispatch:
-    inputs:
-      ref:
-        description: branch|tag|SHA to checkout
-        default: "main"
-        required: true
+  push:
+    branches:
+      - main
   schedule:
-    - cron: "*/60 * * * *"
+    - cron: "60 * * * *"
+  workflow_dispatch:
+  repository_dispatch:
+
 jobs:
-  deploy:
+  build:
+    name: build
+    
     runs-on: ubuntu-latest
+    
     steps:
-      - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.inputs.ref }}
-      - uses: amondnet/vercel-action@v20
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
-          vercel-args: "--prod"
-          working-directory: ./
+    - name: Call the web hook
+      run: curl -X POST ${{ secrets.API_URL }}
