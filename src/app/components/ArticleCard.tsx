@@ -52,7 +52,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
 
         <Link
           href={`/articles/${article.slug}`}
-          className="text-slate-900 text-3xl font-bold min-h-[70px] hover:text-gray-700 pb-2"
+          className="text-slate-900 text-2xl font-bold min-h-[70px] hover:text-gray-700 pb-2"
         >
           {article.id}
         </Link>
