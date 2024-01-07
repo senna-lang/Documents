@@ -1,13 +1,17 @@
 import React from "react";
 import Aside from "@/app/components/Aside";
-import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import ReactMarkdown from "react-markdown";
+import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
+import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import type { ExtraProps } from "react-markdown";
+import type { HTMLAttributes } from "react";
 import Link from "next/link";
 import { BiSolidPurchaseTagAlt } from "react-icons/bi";
 import TocBot from "@/app/components/TocBot";
 import rehypeSlug from "rehype-slug";
 import { getPostDetail, getAllPosts, getPage } from "@/app/lib/notion";
 import { createMetaData } from "@/app/utils/metaData";
-import { Article } from "@/app/types/types";
+import { Article, PostDetail } from "@/app/types/types";
 import ArticleComments from "@/app/components/ArticleLilkes";
 
 type Tag = {
@@ -16,7 +20,7 @@ type Tag = {
   color: string;
 };
 
-export const revalidate = 60
+export const revalidate = 60;
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
@@ -28,6 +32,11 @@ export async function generateStaticParams() {
 
 const Post = async ({ params }: { params: { slug: string } }) => {
   const detailArticle = await getPostDetail(params.slug);
+
+  if (!detailArticle) {
+    console.log("エラーが発生しました。");
+    return;
+  }
 
   const { page, mbString } = detailArticle;
 
@@ -71,7 +80,26 @@ const Post = async ({ params }: { params: { slug: string } }) => {
       <div className=" h-auto mb-6 xl:flex xl:mx-36">
         <div className="news-detail bg-white rounded-lg w-full items-center px-7 xl:w-[70%]">
           <div className="m-3 font-medium">
-            <ReactMarkdown rehypePlugins={[rehypeSlug]}>{mbString.parent}</ReactMarkdown>
+            <ReactMarkdown
+              rehypePlugins={[rehypeSlug]}
+              components={{
+                code(props: HTMLAttributes<HTMLElement> & ExtraProps) {
+                  const { children, className, node, ...rest } = props;
+                  const match = /language-(\w+)/.exec(className || "");
+                  return match ? (
+                    <SyntaxHighlighter PreTag="code" language={match[1]} style={atomOneDark}>
+                      {String(children).replace(/\n$/, "")}
+                    </SyntaxHighlighter>
+                  ) : (
+                    <code {...rest} className={className}>
+                      {children}
+                    </code>
+                  );
+                },
+              }}
+            >
+              {mbString.parent}
+            </ReactMarkdown>
           </div>
         </div>
         <section className=" flex flex-col items-center px-3 xl:w-[30%]">
