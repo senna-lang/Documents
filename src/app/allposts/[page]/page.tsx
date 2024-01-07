@@ -5,6 +5,10 @@ import { getAllPosts } from "@/app/lib/notion";
 
 const BlogPageList = async ({ params }: { params: { page: number } }) => {
   const posts = await getAllPosts();
+  if(!posts) {
+    console.log('エラーが発生しています')
+    return
+  }
   const numberOfPage = Math.floor(posts.length / 6) + (posts.length % 6 > 0 ? 1 : 0);
   const currentPage: number = params?.page;
   const startIndex = (currentPage - 1) * 6;

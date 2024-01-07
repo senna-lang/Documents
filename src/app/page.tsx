@@ -9,6 +9,10 @@ import ContactCard from "./components/ContactCard";
 
 const Blog = async () => {
   const posts = await getAllPosts();
+  if(!posts) {
+    console.log('記事の取得に失敗しました。')
+    return
+  }
   const postsByPage = posts.slice(0, 6);
   const metaData = createMetaData(postsByPage);
 
