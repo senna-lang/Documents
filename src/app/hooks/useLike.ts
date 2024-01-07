@@ -5,6 +5,13 @@ import { useCallback } from "react";
 
 const url = "/api/likes";
 
+axios.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    console.log("エラーが発生しました", error);
+  }
+);
+
 const getFetcher = async (url: string) => {
   const response = await axios.get(url);
   return response.data;
@@ -21,7 +28,7 @@ export const useLike = (page_id: string) => {
     getFetcher
   );
 
-   const revalidate = useCallback(() => mutate(), [mutate]);
+  const revalidate = useCallback(() => mutate(), [mutate]);
 
   const {
     trigger,

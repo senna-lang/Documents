@@ -5,6 +5,13 @@ import { useRecoilState } from "recoil";
 
 const url = "/api/comments";
 
+axios.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    console.log("エラーが発生しました", error);
+  }
+);
+
 const postFetcher = async (url: string, text: string) => {
   const response = await axios.post(url, text);
   return response.data;
