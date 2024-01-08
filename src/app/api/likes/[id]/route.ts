@@ -29,6 +29,11 @@ export async function PATCH(req: NextRequest) {
     const result = await getPage(page_id);
     const currentLikes = result;
 
+    if(!currentLikes) {
+      console.log('エラーが発生しました。')
+      return
+    }
+
     const postRes = await updatePage({
       page_id,
       properties: {
