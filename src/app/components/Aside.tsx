@@ -12,6 +12,11 @@ type Tag = {
 const Aside = async () => {
   const posts = await getAllPosts();
 
+  if(!posts){
+    console.log('エラーが発生しました。')
+    return
+  }
+
   const getTags: string[] = posts.flatMap((post: any) => {
     const getTag = (tags: Tag[]) => {
       const allTags = tags.map((tag: Tag) => {
