@@ -9,7 +9,7 @@ import type {
 import { Post, PropertyItemsResponse } from "@/app/types/types";
 import { PostDetail } from "@/app/types/types";
 
-export const revalidate = 60;
+export const revalidate = 1800;
 
 const notionSecret = process.env.NOTION_TOKEN!;
 const notionDataBaseId = process.env.NOTION_DATABASE_ID!;
