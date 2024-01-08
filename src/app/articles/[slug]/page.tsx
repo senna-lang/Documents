@@ -78,7 +78,7 @@ const Post = async ({ params }: { params: { slug: string } }) => {
       </div>
 
       <div className=" h-auto mb-6 xl:flex xl:mx-36">
-        <div className="news-detail bg-white rounded-lg w-full items-center px-7 xl:w-[70%]">
+        <div className="post-detail bg-white rounded-lg w-full items-center px-7 xl:w-[70%]">
           <div className="m-3 font-medium">
             <ReactMarkdown
               rehypePlugins={[rehypeSlug]}

@@ -7,7 +7,7 @@ const TocBot = () => {
   useEffect(() => {
     tocbot.init({
       tocSelector: ".toc",
-      contentSelector: ".news-detail",
+      contentSelector: ".post-detail",
       headingSelector: "h2,h3",
     });
 
