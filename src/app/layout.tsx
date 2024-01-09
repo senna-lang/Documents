@@ -7,7 +7,6 @@ import { Suspense } from "react";
 import Loading from "./loading";
 import "@mantine/core/styles.css";
 import { MantineProvider } from "@mantine/core";
-import { RecoilRoot } from "recoil";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { Noto_Sans_JP, Playfair_Display } from "next/font/google";
 
