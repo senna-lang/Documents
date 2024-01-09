@@ -18,7 +18,6 @@ const getFetcher = async (url: string) => {
 };
 const patchFetcher = async (url: string) => {
   const response = await axios.patch(url);
-
   return response.data;
 };
 
