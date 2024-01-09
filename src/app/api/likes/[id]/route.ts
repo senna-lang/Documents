@@ -1,39 +1,23 @@
 import { getPage, updatePage } from "@/app/lib/notion";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest) {
+export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
   try {
-    const url = req.url as string;
-
-    const urlParts: string[] = new URL(url).pathname.split("/");
-
-    const page_id: string = urlParts[urlParts.length - 1];
-
+    const page_id = params.id;
     const result = await getPage(page_id);
     const currentLikes = NextResponse.json(result);
-
     return currentLikes;
   } catch (err) {
-    console.log("エラーが発生しました。", err);
+    return NextResponse.json(err);
   }
 }
 
-export async function PATCH(req: NextRequest) {
+export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
   try {
-    const url = req.url as string;
-
-    const urlParts: string[] = new URL(url).pathname.split("/");
-
-    const page_id: string = urlParts[urlParts.length - 1];
-
+    const page_id = params.id;
     const result = await getPage(page_id);
     const currentLikes = result;
-
-    if(!currentLikes) {
-      console.log('エラーが発生しました。')
-      return
-    }
-
+    
     const postRes = await updatePage({
       page_id,
       properties: {
@@ -46,6 +30,6 @@ export async function PATCH(req: NextRequest) {
     const response = NextResponse.json(postRes);
     return response;
   } catch (err) {
-    console.log("エラーが発生しました。", err);
+    return NextResponse.json(err);
   }
 }
