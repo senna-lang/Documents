@@ -67,8 +67,20 @@
       line-height: 2;
     }
   }
+  & a {
+    color: slateblue;
+  }
   & code {
     margin-bottom: 20px;
+    border-radius: 12px;
+  }
+  & blockquote {
+    display:  block;
+    border-left: solid 4px black;
+    padding: 0 5px;
+    & p {
+      line-height: 1.5;
+    }
   }
 }
 
