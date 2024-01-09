@@ -11,16 +11,14 @@ import TocBot from "@/app/components/TocBot";
 import rehypeSlug from "rehype-slug";
 import { getPostDetail, getAllPosts, getPage } from "@/app/lib/notion";
 import { createMetaData } from "@/app/utils/metaData";
-import { Article, PostDetail } from "@/app/types/types";
-import ArticleComments from "@/app/components/ArticleLilkes";
+import { Article,} from "@/app/types/types";
+import ArticleComments from "@/app/components/ArticleMeta";
 
 type Tag = {
   id: string;
   name: string;
   color: string;
 };
-
-export const revalidate = 60;
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
@@ -31,7 +29,7 @@ export async function generateStaticParams() {
 }
 
 const Post = async ({ params }: { params: { slug: string } }) => {
-  const detailArticle = await getPostDetail(params.slug);
+  const detailArticle = await getPostDetail(params.slug) ;
 
   if (!detailArticle) {
     console.log("エラーが発生しました。");
@@ -40,7 +38,9 @@ const Post = async ({ params }: { params: { slug: string } }) => {
 
   const { page, mbString } = detailArticle;
 
-  const createMetaData = (page: any) => {
+  console.log(page)
+
+  const createMetaData = (page:any) => {
     const getTags = (tags: Tag[]) => {
       const allTags = tags.map((tag: Tag) => {
         return tag.name;
