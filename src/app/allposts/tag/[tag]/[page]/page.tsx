@@ -3,6 +3,7 @@ import PageNation from "../../../../components/PageNation";
 import React from "react";
 import { createMetaData } from "@/app/utils/metaData";
 import { getAllPosts } from "@/app/lib/notion";
+import { Article } from "@/app/types/types";
 
 const tagPageList = async ({ params }: { params: { tag: string; page: number } }) => {
   const currentTag = params?.tag;
@@ -10,7 +11,7 @@ const tagPageList = async ({ params }: { params: { tag: string; page: number } }
 
   const metaData = createMetaData(posts);
 
-  const filteredData: any = metaData.filter((data: any) =>
+  const filteredData = metaData.filter((data: Article) =>
     data.tags.find((tag: string) => tag === currentTag)
   );
 
