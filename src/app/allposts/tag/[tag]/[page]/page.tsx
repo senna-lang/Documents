@@ -11,12 +11,13 @@ const tagPageList = async ({ params }: { params: { tag: string; page: number } }
 
   const metaData = createMetaData(posts);
 
+  //タグでフィルター
   const filteredData = metaData.filter((data: Article) =>
     data.tags.find((tag: string) => tag === currentTag)
   );
 
+  //記事を最新の６つまでに
   const numberOfPage = Math.floor(filteredData.length / 6) + (filteredData.length % 6 > 0 ? 1 : 0);
-
   const currentPage: number = params?.page;
   const startIndex = (currentPage - 1) * 6;
   const endIndex = startIndex + 6;

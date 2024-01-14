@@ -1,12 +1,12 @@
 "use client";
 import React from "react";
 import { RecoilRoot } from "recoil";
-import Layout from "./provider";
+import Provider from "./provider";
 
 const recoilRoot = ({ children }: { children: React.ReactNode }) => {
   return (
     <RecoilRoot>
-      <Layout>{children}</Layout>
+      <Provider>{children}</Provider>
     </RecoilRoot>
   );
 };

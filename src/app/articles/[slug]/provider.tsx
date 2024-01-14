@@ -5,7 +5,7 @@ import { IconX, IconCheck } from "@tabler/icons-react";
 import { notificationState } from "@/app/atoms/notification";
 import { isMutatingState } from "@/app/atoms/isMutating";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Provider({ children }: { children: React.ReactNode }) {
   const [notification, setNotification] = useRecoilState(notificationState);
   const [isMutating, setIsMutating] = useRecoilState(isMutatingState);
 

@@ -4,6 +4,7 @@ type Tag = {
   color: string;
 };
 
+//記事のメタデータを抽出
 export function createMetaData(posts: any) {
   const metaData = posts.map((post: any) => {
     const getTags = (tags: Tag[]) => {

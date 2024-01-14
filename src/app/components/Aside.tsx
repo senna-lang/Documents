@@ -17,6 +17,7 @@ const Aside = async () => {
     return
   }
 
+  //すべての投稿からタグを取得
   const getTags: string[] = posts.flatMap((post: any) => {
     const getTag = (tags: Tag[]) => {
       const allTags = tags.map((tag: Tag) => {
@@ -31,6 +32,7 @@ const Aside = async () => {
   const set = new Set(getTags);
   const tagList: string[] = Array.from(set);
 
+  //すべての投稿からカテゴリを取得
   const getCat: string[] = posts.flatMap((post: any) => {
     const getCat = (cat: Tag[]) => {
       const allCat = cat.map((cat: Tag) => {

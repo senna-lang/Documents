@@ -38,8 +38,6 @@ const Post = async ({ params }: { params: { slug: string } }) => {
 
   const { page, mbString } = detailArticle;
 
-  console.log(page)
-
   const createMetaData = (page:any) => {
     const getTags = (tags: Tag[]) => {
       const allTags = tags.map((tag: Tag) => {

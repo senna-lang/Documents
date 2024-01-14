@@ -21,6 +21,7 @@ const CommentForm = ({ id }: CommentProps) => {
     setComment(e.target.value);
   };
 
+  //コメントの送信
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     trigger();
