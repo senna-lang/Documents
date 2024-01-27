@@ -12,12 +12,12 @@ type ArticleCardProps = {
 const ArticleCard = ({ article }: ArticleCardProps) => {
   return (
     <article
-      className="my-2 bg-white min-h-[500px] cursor-pointer hover:shadow-lg transition-transform duration-500 translate-y-2 hover:translate-y-[-2]"
+      className="my-2 min-h-[500px] translate-y-2 cursor-pointer bg-white transition-transform duration-500 hover:translate-y-[-2] hover:shadow-lg"
       key={article.id}
     >
       <Link
         href={`/articles/${article.slug}`}
-        className=" block hover:opacity-75 relative before:content-[''] before:block before: pt-[56.25%]"
+        className=" before: relative block pt-[56.25%] before:block before:content-[''] hover:opacity-75"
       >
         <Image
           src={
@@ -29,19 +29,19 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
           height={300}
           alt=""
           priority
-          className=" absolute top-0 left-0 w-full h-full object-cover"
+          className=" absolute left-0 top-0 h-full w-full object-cover"
         />
       </Link>
-      <div className=" flex flex-col justify-start pt-6 px-6">
+      <div className=" flex flex-col justify-start px-6 pt-6">
         <div className="flex">
-          <div className="mt-1 mr-2">
+          <div className="mr-2 mt-1">
             <BiSolidPurchaseTagAlt />
           </div>
           <div className="flex">
             {article.tags.map((tag) => (
               <Link
                 href={`/allposts/tag/${tag}/1`}
-                className="text-blue-600 pb-4 font-bold mr-2"
+                className="mr-2 pb-4 font-bold text-blue-600"
                 key={tag}
               >
                 {tag}
@@ -52,12 +52,12 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
 
         <Link
           href={`/articles/${article.slug}`}
-          className="text-slate-900 text-2xl font-bold min-h-[70px] hover:text-gray-700 pb-2"
+          className="min-h-[70px] pb-2 text-2xl font-bold text-slate-900 hover:text-gray-700"
         >
           {article.id}
         </Link>
 
-        <Link href={`/articles/${article.slug}`} className="text-slate-900 pb-10 mt-2 h-[110px]">
+        <Link href={`/articles/${article.slug}`} className="mt-2 h-[110px] pb-10 text-slate-900">
           {article.description}
         </Link>
 
@@ -65,7 +65,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
           続きを読む
         </Link>
 
-        <span className="flex justify-end mb-4">
+        <span className="mb-4 flex justify-end">
           <span className="mr-1 mt-[3.7px] text-xs ">
             <TfiTime />
           </span>

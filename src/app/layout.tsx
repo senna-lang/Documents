@@ -33,21 +33,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ja">
       <head />
       <body
-        className={`text-black  bg-slate-100 ${NoteSansJP.className} ${PlayfairDisplay.variable}`}
+        className={`bg-slate-100  text-black ${NoteSansJP.className} ${PlayfairDisplay.variable}`}
       >
         <MantineProvider>
-            <main className="container mx-auto">
-              <div className="flex flex-col min-h-screen">
-                <Header />
-                <main className="flex-grow">
-                  <Suspense fallback={<Loading />}>{children}</Suspense>
-                </main>
-                <div className="sticky bottom-0 py-4 text-right sp:p-2">
-                  <ScrollToTop />
-                </div>
-                <Footer />
+          <main className="container mx-auto">
+            <div className="flex min-h-screen flex-col">
+              <Header />
+              <main className="flex-grow">
+                <Suspense fallback={<Loading />}>{children}</Suspense>
+              </main>
+              <div className="sp:p-2 sticky bottom-0 py-4 text-right">
+                <ScrollToTop />
               </div>
-            </main>
+              <Footer />
+            </div>
+          </main>
         </MantineProvider>
       </body>
     </html>

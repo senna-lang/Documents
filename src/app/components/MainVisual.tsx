@@ -26,9 +26,9 @@ const MainVisual = async () => {
   const filteredThumbs = thumbs.filter((image: SliderData) => image.img !== null);
 
   return (
-    <div className="flex flex-col items-center 2xl:mx-36 2xl:h-[550px] 2xl:relative ">
+    <div className="flex flex-col items-center 2xl:relative 2xl:mx-36 2xl:h-[550px] ">
       <AnimationText />
-      <div className=" 2xl:absolute 2xl:left-0 2xl:top-10 mv01">
+      <div className=" mv01 2xl:absolute 2xl:left-0 2xl:top-10">
         <HeroSlider sliderData={filteredThumbs} />
       </div>
     </div>

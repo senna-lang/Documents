@@ -40,7 +40,9 @@ const CommentForm = ({ id }: CommentProps) => {
             onChange={handleCommentChange}
           />
           <div className="mt-2">
-            <Button type="submit" fullWidth>投稿</Button>
+            <Button type="submit" fullWidth>
+              投稿
+            </Button>
           </div>
         </form>
       </Modal>

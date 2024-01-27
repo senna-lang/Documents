@@ -12,9 +12,9 @@ type Tag = {
 const Aside = async () => {
   const posts = await getAllPosts();
 
-  if(!posts){
-    console.log('エラーが発生しました。')
-    return
+  if (!posts) {
+    console.log("エラーが発生しました。");
+    return;
   }
 
   //すべての投稿からタグを取得
@@ -50,11 +50,11 @@ const Aside = async () => {
 
   return (
     <aside className="w-full">
-      <div className="bg-white border rounded-lg p-4 w-full mb-2">
-        <h3 className=" font-bold text-gray-900 mb-4 text-xl font-sourceCodePro">Category</h3>
+      <div className="mb-2 w-full rounded-lg border bg-white p-4">
+        <h3 className=" mb-4 font-sourceCodePro text-xl font-bold text-gray-900">Category</h3>
         <ComboBox catList={slicedCatList} />
       </div>
-      <div className="bg-white border rounded-lg p-4 w-full mb-2">
+      <div className="mb-2 w-full rounded-lg border bg-white p-4">
         <TagSearch tagList={tagList} />
       </div>
     </aside>

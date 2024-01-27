@@ -3,11 +3,11 @@ import React from "react";
 
 const Error = ({ reset }: { reset: () => void }) => {
   return (
-    <div className="bg-red-100 border-1-4 border-red-500 text-red-700 mt-4 rounded shadow-md max-w-md mx-auto p-2">
-      <h3 className="font-bold mb-2 text-center">エラーが発生しました</h3>
+    <div className="border-1-4 mx-auto mt-4 max-w-md rounded border-red-500 bg-red-100 p-2 text-red-700 shadow-md">
+      <h3 className="mb-2 text-center font-bold">エラーが発生しました</h3>
       <button
         onClick={() => reset()}
-        className="bg-red-600 text-white px-4 py-2 rounded  hover:bg-red-500 transition duration-200"
+        className="rounded bg-red-600 px-4 py-2 text-white  transition duration-200 hover:bg-red-500"
       >
         reload
       </button>

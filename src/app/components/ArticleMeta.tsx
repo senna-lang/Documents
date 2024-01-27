@@ -11,13 +11,12 @@ type LikesProps = {
 
 const ArticleComments = ({ id }: LikesProps) => {
   const [isLiked, setIsLiked] = useState<boolean>(false);
-  const { data : likes, trigger, isMutating } = useLike(id);
-
+  const { data: likes, trigger, isMutating } = useLike(id);
 
   return (
     <div className="mt-2 rounded-lg bg-white p-5">
-      <div className="flex justify-between items-center">
-        <div className=" w-full mx-4">
+      <div className="flex items-center justify-between">
+        <div className=" mx-4 w-full">
           <div className="flex justify-between">
             <span>いいね</span>
             <span>{likes}件</span>

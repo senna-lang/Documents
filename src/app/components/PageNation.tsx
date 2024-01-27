@@ -10,7 +10,7 @@ type Props = {
 
 const PageNation = (props: Props) => {
   const router = useRouter();
-  const { numberOfPage, tag , currentPage} = props;
+  const { numberOfPage, tag, currentPage } = props;
   let pages: number[] = [];
   let count = 0;
 
@@ -27,18 +27,19 @@ const PageNation = (props: Props) => {
   }
 
   return (
-    <section className="mb-8 lg:w-1/2 mx-auto rounded-md p-5">
+    <section className="mx-auto mb-8 rounded-md p-5 lg:w-1/2">
       <ul className="flex items-center justify-center gap-4">
         {pages.map((page) => (
-          <li className={`bg-black rounded-full w-9 h-9 relative cursor-pointer ${page==currentPage ? '': 'opacity-20 hover:opacity-100 duration-300'}`} onClick={
-            tag
-              ? () => router.replace(`/allposts/tag/${tag}/${page}`)
-              : () => router.replace(`/allposts/${page}`)
-          } key={page}>
-            <p
-              className="block text-xs absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 text-white"
-              
-            >
+          <li
+            className={`relative h-9 w-9 cursor-pointer rounded-full bg-black ${page == currentPage ? "" : "opacity-20 duration-300 hover:opacity-100"}`}
+            onClick={
+              tag
+                ? () => router.replace(`/allposts/tag/${tag}/${page}`)
+                : () => router.replace(`/allposts/${page}`)
+            }
+            key={page}
+          >
+            <p className="absolute left-2/4 top-2/4 block -translate-x-2/4 -translate-y-2/4 text-xs text-white">
               {page}
             </p>
           </li>

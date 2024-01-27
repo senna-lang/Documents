@@ -17,8 +17,8 @@ const BlogPageList = async ({ params }: { params: { page: number } }) => {
   return (
     <div className="h-auto xl:mx-40">
       <section className="w-full items-center px-3 ">
-        <div className="text-center my-7">
-          <h1 className="text-5xl font-PlayFairDisplay">All Posts</h1>
+        <div className="my-7 text-center">
+          <h1 className="font-PlayFairDisplay text-5xl">All Posts</h1>
         </div>
         <ArticleList articles={metaData} normal={false} />
       </section>

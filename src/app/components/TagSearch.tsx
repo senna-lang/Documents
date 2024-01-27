@@ -24,8 +24,8 @@ const TagSearch: FC<Props> = ({ tagList }) => {
 
   return (
     <div>
-      <div className="flex items-end mb-4 justify-between">
-        <h3 className="font-bold text-gray-900 text-xl font-sourceCodePro">Tags</h3>
+      <div className="mb-4 flex items-end justify-between">
+        <h3 className="font-sourceCodePro text-xl font-bold text-gray-900">Tags</h3>
         <Switch
           label="All tags"
           onChange={() => {
@@ -39,11 +39,11 @@ const TagSearch: FC<Props> = ({ tagList }) => {
         />
       </div>
       <ScrollArea.Autosize mah={200} offsetScrollbars scrollbarSize={6} scrollHideDelay={500}>
-        <div className="grid gap-2 mb-2 md:grid-cols-2">
+        <div className="mb-2 grid gap-2 md:grid-cols-2">
           {tag.map((tag) => (
             <div
               key={tag}
-              className=" border rounded-lg h-7 text-sm flex flex-col items-center justify-center hover:bg-slate-300 hover:tracking-widest hover:font-medium cursor-pointer transition-all duration-500"
+              className=" flex h-7 cursor-pointer flex-col items-center justify-center rounded-lg border text-sm transition-all duration-500 hover:bg-slate-300 hover:font-medium hover:tracking-widest"
             >
               <a href={`/allposts/tag/${tag}/1`}>{tag}</a>
             </div>

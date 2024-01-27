@@ -43,15 +43,11 @@ const HeroSlider = (sliderData: SliderDataProps) => {
           <SwiperSlide key={`${data.id}`}>
             <Link href={`/articles/${data.slug}`}>
               <div className="slide-media">
-                <Image
-                  src={data.img}
-                  width={1280}
-                  height={720}
-                  alt="sliderImage"
-                  priority
-                />
+                <Image src={data.img} width={1280} height={720} alt="sliderImage" priority />
               </div>
-              <h2 className="slide-title absolute bottom-[10px] right-[30px] opacity-0 leading-[1.6] text-white font-semibold text-[1rem] lg:text-[2rem]">{data.id}</h2>
+              <h2 className="slide-title absolute bottom-[10px] right-[30px] text-[1rem] font-semibold leading-[1.6] text-white opacity-0 lg:text-[2rem]">
+                {data.id}
+              </h2>
             </Link>
           </SwiperSlide>
         );

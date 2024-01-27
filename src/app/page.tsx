@@ -9,9 +9,9 @@ import ContactCard from "./components/ContactCard";
 
 const Blog = async () => {
   const posts = await getAllPosts();
-  if(!posts) {
-    console.log('記事の取得に失敗しました。')
-    return
+  if (!posts) {
+    console.log("記事の取得に失敗しました。");
+    return;
   }
   const postsByPage = posts.slice(0, 6);
   const metaData = createMetaData(postsByPage);
@@ -19,21 +19,21 @@ const Blog = async () => {
   return (
     <div>
       <MainVisual />
-      <div className="h-auto xl:flex lg:mx-28 xl:mx-36">
+      <div className="h-auto lg:mx-28 xl:mx-36 xl:flex">
         <section className="w-full items-center px-3 xl:w-[70%]">
-          <div className="text-center my-10">
-            <h1 className="text-5xl font-PlayFairDisplay">NEW POSTS</h1>
+          <div className="my-10 text-center">
+            <h1 className="font-PlayFairDisplay text-5xl">NEW POSTS</h1>
           </div>
           <ArticleList articles={metaData} normal={true} />
-          <div className="text-center mt-5 mb-6 lg:mb-10">
+          <div className="mb-6 mt-5 text-center lg:mb-10">
             <Link href={`/allposts/1`}>
-              <button className=" relative inline-block bg-black text-white border-black font-semibold py-4 px-16 my-3 mx-auto cursor-pointer transition-all duration-500 hover:bg-opacity-70 hover:text-white hover:tracking-[5px]">
+              <button className=" relative mx-auto my-3 inline-block cursor-pointer border-black bg-black px-16 py-4 font-semibold text-white transition-all duration-500 hover:bg-opacity-70 hover:tracking-[5px] hover:text-white">
                 MORE
               </button>
             </Link>
           </div>
         </section>
-        <section className=" flex flex-col items-center lg:mt-32 px-3 xl:w-[30%]">
+        <section className=" flex flex-col items-center px-3 lg:mt-32 xl:w-[30%]">
           <Aside />
           <ContactCard />
         </section>

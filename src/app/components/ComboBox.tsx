@@ -8,7 +8,7 @@ type Props = {
 };
 
 const ComboBox: FC<Props> = ({ catList }) => {
-   const router = useRouter();
+  const router = useRouter();
   const groceries = catList;
   const combobox = useCombobox({
     onDropdownClose: () => combobox.resetSelectedOption(),
@@ -27,7 +27,7 @@ const ComboBox: FC<Props> = ({ catList }) => {
       onOptionSubmit={(val) => {
         setValue(val);
         combobox.closeDropdown();
-        router.push(`/allposts/category/${val}/1`)
+        router.push(`/allposts/category/${val}/1`);
       }}
     >
       <Combobox.Target>

@@ -26,8 +26,8 @@ const tagPageList = async ({ params }: { params: { tag: string; page: number } }
   return (
     <div className="h-auto xl:mx-40">
       <section className="w-full items-center px-3 ">
-        <div className="text-center my-7">
-          <h1 className="text-5xl font-PlayFairDisplay">{currentTag}</h1>
+        <div className="my-7 text-center">
+          <h1 className="font-PlayFairDisplay text-5xl">{currentTag}</h1>
         </div>
         <ArticleList articles={postsByPage} normal={false} />
       </section>

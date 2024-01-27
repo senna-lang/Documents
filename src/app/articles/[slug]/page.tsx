@@ -11,7 +11,7 @@ import TocBot from "@/app/components/TocBot";
 import rehypeSlug from "rehype-slug";
 import { getPostDetail, getAllPosts, getPage } from "@/app/lib/notion";
 import { createMetaData } from "@/app/utils/metaData";
-import { Article,} from "@/app/types/types";
+import { Article } from "@/app/types/types";
 import ArticleComments from "@/app/components/ArticleMeta";
 
 type Tag = {
@@ -29,7 +29,7 @@ export async function generateStaticParams() {
 }
 
 const Post = async ({ params }: { params: { slug: string } }) => {
-  const detailArticle = await getPostDetail(params.slug) ;
+  const detailArticle = await getPostDetail(params.slug);
 
   if (!detailArticle) {
     console.log("エラーが発生しました。");
@@ -38,7 +38,7 @@ const Post = async ({ params }: { params: { slug: string } }) => {
 
   const { page, mbString } = detailArticle;
 
-  const createMetaData = (page:any) => {
+  const createMetaData = (page: any) => {
     const getTags = (tags: Tag[]) => {
       const allTags = tags.map((tag: Tag) => {
         return tag.name;
@@ -60,23 +60,23 @@ const Post = async ({ params }: { params: { slug: string } }) => {
 
   return (
     <div>
-      <div className=" text-center flex flex-col items-center">
+      <div className=" flex flex-col items-center text-center">
         <h1 className=" w-full text-3xl font-bold">{metaData.id}</h1>
-        <p className=" text-gray-500 mt-6">Published {metaData.date}</p>
-        <div className="flex mb-12">
-          <div className="mt-3 mr-2">
+        <p className=" mt-6 text-gray-500">Published {metaData.date}</p>
+        <div className="mb-12 flex">
+          <div className="mr-2 mt-3">
             <BiSolidPurchaseTagAlt />
           </div>
           {metaData.tags.map((tag: string) => (
-            <p className="text-black border rounded-xl mt-2 px-2 inline-block" key={tag}>
+            <p className="mt-2 inline-block rounded-xl border px-2 text-black" key={tag}>
               <Link href={`/allposts/tag/${tag}/1`}>{tag}</Link>
             </p>
           ))}
         </div>
       </div>
 
-      <div className=" h-auto mb-6 xl:flex xl:mx-36">
-        <div className="post-detail bg-white rounded-lg w-full items-center px-7 xl:w-[70%]">
+      <div className=" mb-6 h-auto xl:mx-36 xl:flex">
+        <div className="post-detail w-full items-center rounded-lg bg-white px-7 xl:w-[70%]">
           <div className="m-3 font-medium">
             <ReactMarkdown
               rehypePlugins={[rehypeSlug]}
@@ -102,7 +102,7 @@ const Post = async ({ params }: { params: { slug: string } }) => {
         </div>
         <section className=" flex flex-col items-center px-3 xl:w-[30%]">
           <Aside />
-          <div className=" mb-4 sticky top-8 left-0 w-full flex flex-col justify-center">
+          <div className=" sticky left-0 top-8 mb-4 flex w-full flex-col justify-center">
             <TocBot />
             <ArticleComments id={detailArticle.page.id} />
           </div>

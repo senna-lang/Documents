@@ -16,7 +16,7 @@ const categoryPageList = async ({ params }: { params: { category: string; page: 
     data.category.find((cat: string) => cat === currentCat)
   );
 
-    //記事を最新の６つまでに
+  //記事を最新の６つまでに
   const numberOfPage = Math.floor(filteredData.length / 6) + (filteredData.length % 6 > 0 ? 1 : 0);
   const currentPage: number = params?.page;
   const startIndex = (currentPage - 1) * 6;
@@ -26,8 +26,8 @@ const categoryPageList = async ({ params }: { params: { category: string; page: 
   return (
     <div className="h-auto xl:mx-40">
       <section className="w-full items-center px-3 ">
-        <div className="text-center my-7">
-          <h1 className="text-5xl font-PlayFairDisplay">{currentCat}</h1>
+        <div className="my-7 text-center">
+          <h1 className="font-PlayFairDisplay text-5xl">{currentCat}</h1>
         </div>
         <ArticleList articles={postsByPage} normal={false} />
       </section>

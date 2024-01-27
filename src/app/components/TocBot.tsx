@@ -14,8 +14,8 @@ const TocBot = () => {
     return () => tocbot.destroy();
   }, []);
   return (
-    <div className="rounded-lg bg-white p-3 max-h-[80vh] overflow-y-auto">
-      <h1 className=" font-bold text-xl mb-4 text-center font-sourceCodePro">Table Of Content</h1>
+    <div className="max-h-[80vh] overflow-y-auto rounded-lg bg-white p-3">
+      <h1 className=" mb-4 text-center font-sourceCodePro text-xl font-bold">Table Of Content</h1>
       <nav className="toc" />
     </div>
   );
