@@ -6,9 +6,21 @@ const nextConfig = {
       "sbtmauspygekngsauqjd.supabase.co",
       "prod-files-secure.s3.us-west-2.amazonaws.com",
     ],
+    disableStaticImages: true, 
   },
   experimental: {
     serverActions: true,
+  },
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: [
+        {
+          loader: "@svgr/webpack",
+        },
+      ],
+    });
+    return config;
   },
   async headers() {
     return [
