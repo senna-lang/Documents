@@ -1,12 +1,12 @@
 "use client";
 
-import { Group, Burger } from "@mantine/core";
+import { Group, Burger, Drawer } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import Link from "next/link";
 
 const links = [
   { link: "/allposts/1", label: "All Posts" },
-  { link: "/pricing", label: "About Me" },
+  { link: "https://senna-portforio.vercel.app", label: "About Me" },
   { link: "https://github.com/senna-lang", label: "Git Hub" },
 ];
 
@@ -34,6 +34,24 @@ export function Header() {
             <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
           </Group>
         </Group>
+        <Drawer
+          opened={opened}
+          onClose={toggle}
+          title="SENNA BLOG"
+          overlayProps={{ backgroundOpacity: 0.5, blur: 4 }}
+        >
+          <ul className="px-4 pt-[78px] font-bold">
+            <li className="mb-4">
+              <Link href="/allposts/1" onClick={toggle}>All Posts</Link>
+            </li>
+            <li className="mb-4">
+              <Link href="https://senna-portforio.vercel.app/" onClick={toggle}>About Me</Link>
+            </li>
+            <li className="mb-4">
+              <Link href="https://github.com/senna-lang" onClick={toggle}>Git Hub</Link>
+            </li>
+          </ul>
+        </Drawer>
       </div>
     </header>
   );
