@@ -86,6 +86,16 @@ export const updatePage = async (params: UpdatePageParameters) => {
   }
 };
 
+export const getComments = async (block_id: string) => {
+  try {
+    const response = await notion.comments.list({ block_id });
+
+    return response;
+  } catch (err) {
+    console.log("エラーが発生しました。", err);
+  }
+};
+
 //Notionにコメント
 export const createComment = async (params: CreateCommentParameters) => {
   try {

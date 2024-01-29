@@ -2,16 +2,19 @@
 import CommentForm from "./CommentForm";
 import React, { useState } from "react";
 import { useLike } from "@/app/hooks/useLike";
+import { useComment } from "../hooks/useComment";
 import { Button } from "@mantine/core";
 import { FcLike } from "react-icons/fc";
 
-type LikesProps = {
+type MetaProps = {
   id: string;
 };
 
-const ArticleComments = ({ id }: LikesProps) => {
+const ArticleComments = ({ id }: MetaProps) => {
   const [isLiked, setIsLiked] = useState<boolean>(false);
   const { data: likes, trigger, isMutating } = useLike(id);
+  const { data: comments } = useComment(id, "");
+  // console.log(comments.results.length)
 
   return (
     <div className="mt-2 rounded-lg bg-white p-5">
@@ -21,8 +24,9 @@ const ArticleComments = ({ id }: LikesProps) => {
             <span>いいね</span>
             <span>{likes}件</span>
           </div>
-          <div>
-            <p>コメント</p>
+          <div className="flex justify-between">
+            <span>コメント</span>
+            <span>{comments}件</span>
           </div>
         </div>
         <div>
