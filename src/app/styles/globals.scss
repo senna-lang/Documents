@@ -164,59 +164,6 @@
   }
 }
 
-.typing-effect1 {
-  width: 5ch;
-  animation:
-    typing 2s steps(5),
-    effect 1s step-end 2s 1 alternate forwards;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 0.02em solid black;
-  font-family: monospace;
-}
-.typing-effect2 {
-  width: 10ch;
-  animation:
-    typing 3s steps(10),
-    effect 1s step-end 4 alternate;
-  animation-fill-mode: both;
-  animation-delay: 3s;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 0.02em solid black;
-  font-family: monospace;
-}
-.typing-effect3 {
-  width: 11ch;
-  animation:
-    typing 2s steps(11),
-    effect 0.75s step-end infinite alternate;
-  animation-fill-mode: both;
-  animation-delay: 7.5s;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 0.02em solid black;
-  font-family: monospace;
-}
-
-@keyframes typing {
-  from {
-    width: 0;
-  }
-}
-
-@keyframes effect {
-  0% {
-    border-color: transparent;
-  } /*消滅*/
-  50% {
-    border-color: black;
-  } /*出現*/
-  100% {
-    border-color: transparent;
-  } /*消滅*/
-}
-
 header {
   .header {
     height: 56px;
