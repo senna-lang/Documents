@@ -1,13 +1,13 @@
 import "./styles/mantineBase.css";
 import "./styles/globals.scss";
-import type { Metadata } from "next";
+import "@mantine/core/styles.css";
 import Header from "./components/layouts/Header";
 import Footer from "./components/layouts/Footer";
-import { Suspense } from "react";
-import Loading from "./loading";
-import "@mantine/core/styles.css";
-import { MantineProvider } from "@mantine/core";
 import { ScrollToTop } from "./components/elements/ScrollToTop";
+import Loading from "./loading";
+import { Suspense } from "react";
+import type { Metadata } from "next";
+import { MantineProvider } from "@mantine/core";
 import { Noto_Sans_JP, Playfair_Display } from "next/font/google";
 
 const NoteSansJP = Noto_Sans_JP({
