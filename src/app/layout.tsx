@@ -1,5 +1,5 @@
 import "./styles/mantineBase.css";
-import "./globals.scss";
+import "./styles/globals.scss";
 import type { Metadata } from "next";
 import Header from "./components/layouts/Header";
 import Footer from "./components/layouts/Footer";

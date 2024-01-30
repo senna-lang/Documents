@@ -2,12 +2,12 @@ import React from "react";
 import Link from "next/link";
 import Aside from "@/app/components/layouts/Aside";
 import TocBot from "@/app/components/elements/TocBot";
-import * as blog from '@/app/features/blog/components/index'
+import * as blog from "@/app/features/blog/components/index";
 import { createMetaData } from "@/app/utils/metaData";
 import ReactMarkdown from "react-markdown";
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
-import { getPostDetail, getAllPosts, } from "@/app/lib/notion";
+import { getPostDetail, getAllPosts } from "@/app/lib/notion";
 import rehypeSlug from "rehype-slug";
 import { BiSolidPurchaseTagAlt } from "react-icons/bi";
 import type { ExtraProps } from "react-markdown";
@@ -76,7 +76,7 @@ const Post = async ({ params }: { params: { slug: string } }) => {
       </div>
 
       <div className=" mb-6 h-auto xl:mx-36 xl:flex">
-        <div className="post-detail w-full items-center rounded-lg bg-white px-7 xl:w-[70%]">
+        <div className="post-detail w-full items-center rounded-lg bg-white px-3 sm:px-7 xl:w-[70%]">
           <div className="m-3 font-medium">
             <ReactMarkdown
               rehypePlugins={[rehypeSlug]}
