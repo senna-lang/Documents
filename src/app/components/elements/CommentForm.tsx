@@ -32,7 +32,7 @@ const CommentForm = ({ id }: CommentProps) => {
 
   return (
     <div>
-      <Modal opened={opened} onClose={close} title="記事にコメントする" size="lg" trapFocus={false}>
+      <Modal opened={opened} onClose={close} title="記事にコメントする" size="lg" trapFocus={false} centered>
         <form onSubmit={handleSubmit}>
           <Textarea
             placeholder="write down your comment"

@@ -8,7 +8,9 @@ type ArticleListProps = {
 };
 
 const ArticleList = ({ articles, normal }: ArticleListProps) => {
-  const style = normal ? "grid gap-2 md:grid-cols-2 lg:mb-4n" : "grid gap-2 md:grid-cols-3 lg:mb-4";
+  const style = normal
+    ? "items-center sm:grid sm:gap-2 md:grid-cols-2 lg:mb-4n"
+    : "grid gap-2 md:grid-cols-3 lg:mb-4";
   return (
     <div>
       <div className={style}>

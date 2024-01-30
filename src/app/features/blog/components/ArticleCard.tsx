@@ -11,7 +11,7 @@ type ArticleCardProps = {
 
 const ArticleCard = ({ article }: ArticleCardProps) => {
   return (
-    <article
+    <div
       className="my-2 min-h-[500px] translate-y-2 cursor-pointer bg-white transition-transform duration-500 hover:translate-y-[-2] hover:shadow-lg"
       key={article.id}
     >
@@ -37,7 +37,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
           <div className="mr-2 mt-1">
             <BiSolidPurchaseTagAlt />
           </div>
-          <div className="flex">
+          <div className="grid grid-cols-3 place-items-center sm:grid-cols-4">
             {article.tags.map((tag) => (
               <Link
                 href={`/allposts/tag/${tag}/1`}
@@ -52,7 +52,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
 
         <Link
           href={`/articles/${article.slug}`}
-          className="min-h-[70px] pb-2 text-2xl font-bold text-slate-900 hover:text-gray-700"
+          className="min-h-[70px] pb-2 text-xl font-bold text-slate-900 hover:text-gray-700 sm:text-2xl"
         >
           {article.id}
         </Link>
@@ -72,7 +72,7 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
           <p className="text-sm text-slate-900 opacity-70">{article.date}</p>
         </span>
       </div>
-    </article>
+    </div>
   );
 };
 
