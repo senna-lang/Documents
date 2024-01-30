@@ -8,6 +8,15 @@ import { FaInstagram } from "react-icons/fa";
 const ContactCard = () => {
   return (
     <div className="relative w-full rounded-lg border bg-white text-center">
+      <div className=" z-10 absolute left-1/2 top-[250px] translate-x-[-50%] translate-y-[-75%] transform md:translate-y-[-50%] lg:translate-y-[-70%]">
+        <Image
+          className="h-24 w-24 rounded-full object-cover"
+          src="/images/avatar.JPG"
+          width={60}
+          height={60}
+          alt="Avatar"
+        />
+      </div>
       <div className="relative h-60 w-full ">
         <Image
           src="/images/profileback.jpeg"
@@ -17,17 +26,8 @@ const ContactCard = () => {
           className="rounded-t-lg object-cover"
         />
       </div>
-      <div className="absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-75%] transform md:translate-y-[-50%] lg:translate-y-[-70%]">
-        <Image
-          className="h-24 w-24 rounded-full object-cover"
-          src="/images/avatar.JPG"
-          width={60}
-          height={60}
-          alt="Avatar"
-        />
-        <p className="mt-4 text-2xl font-bold text-gray-600">せん</p>
-      </div>
-      <div className="mt-14 w-full rounded bg-white p-4 lg:mt-24">
+      <div className=" mt-7 w-full rounded bg-white p-4">
+        <p className="mt-4 text-2xl font-bold text-gray-600">せな</p>
         <h3 className="mb-2 font-bold text-gray-900">About me</h3>
         <p className="text-gray-600">
           長野県　安曇野市出身 24歳
