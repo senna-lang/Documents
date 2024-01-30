@@ -1,8 +1,8 @@
 "use client";
-import CommentForm from "./CommentForm";
+import CommentForm from "@/app/components/elements/CommentForm";
 import React, { useState } from "react";
 import { useLike } from "@/app/hooks/useLike";
-import { useComment } from "../hooks/useComment";
+import { useComment } from "../../../hooks/useComment";
 import { Button } from "@mantine/core";
 import { FcLike } from "react-icons/fc";
 
@@ -14,7 +14,6 @@ const ArticleComments = ({ id }: MetaProps) => {
   const [isLiked, setIsLiked] = useState<boolean>(false);
   const { data: likes, trigger, isMutating } = useLike(id);
   const { data: comments } = useComment(id, "");
-  // console.log(comments.results.length)
 
   return (
     <div className="mt-2 rounded-lg bg-white p-5">

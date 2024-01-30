@@ -1,11 +1,10 @@
-import ArticleList from "./components/ArticleList";
-import Aside from "./components/Aside";
 import React from "react";
 import Link from "next/link";
-import MainVisual from "./components/MainVisual";
+import MainVisual from "./components/layouts/MainVisual";
+import Aside from "./components/layouts/Aside";
+import * as blog from './features/blog/components/index';
 import { createMetaData } from "@/app/utils/metaData";
 import { getAllPosts } from "@/app/lib/notion";
-import ContactCard from "./components/ContactCard";
 
 const Blog = async () => {
   const posts = await getAllPosts();
@@ -24,7 +23,7 @@ const Blog = async () => {
           <div className="my-10 text-center">
             <h1 className="font-PlayFairDisplay text-5xl">NEW POSTS</h1>
           </div>
-          <ArticleList articles={metaData} normal={true} />
+          <blog.ArticleList articles={metaData} normal={true} />
           <div className="mb-6 mt-5 text-center lg:mb-10">
             <Link href={`/allposts/1`}>
               <button className=" relative mx-auto my-3 inline-block cursor-pointer border-black bg-black px-16 py-4 font-semibold text-white transition-all duration-500 hover:bg-opacity-70 hover:tracking-[5px] hover:text-white">
@@ -35,7 +34,7 @@ const Blog = async () => {
         </section>
         <section className=" flex flex-col items-center px-3 lg:mt-32 xl:w-[30%]">
           <Aside />
-          <ContactCard />
+          <blog.ContactCard />
         </section>
       </div>
     </div>

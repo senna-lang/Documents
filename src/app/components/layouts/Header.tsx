@@ -1,8 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { Group, Burger, Drawer } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import Link from "next/link";
 
 const links = [
   { link: "/allposts/1", label: "All Posts" },

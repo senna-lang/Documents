@@ -1,18 +1,18 @@
 import React from "react";
-import Aside from "@/app/components/Aside";
+import Link from "next/link";
+import Aside from "@/app/components/layouts/Aside";
+import TocBot from "@/app/components/elements/TocBot";
+import * as blog from '@/app/features/blog/components/index'
+import { createMetaData } from "@/app/utils/metaData";
 import ReactMarkdown from "react-markdown";
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { getPostDetail, getAllPosts, } from "@/app/lib/notion";
+import rehypeSlug from "rehype-slug";
+import { BiSolidPurchaseTagAlt } from "react-icons/bi";
 import type { ExtraProps } from "react-markdown";
 import type { HTMLAttributes } from "react";
-import Link from "next/link";
-import { BiSolidPurchaseTagAlt } from "react-icons/bi";
-import TocBot from "@/app/components/TocBot";
-import rehypeSlug from "rehype-slug";
-import { getPostDetail, getAllPosts, getPage } from "@/app/lib/notion";
-import { createMetaData } from "@/app/utils/metaData";
 import { Article } from "@/app/types/types";
-import ArticleComments from "@/app/components/ArticleMeta";
 
 type Tag = {
   id: string;
@@ -104,7 +104,7 @@ const Post = async ({ params }: { params: { slug: string } }) => {
           <Aside />
           <div className=" sticky left-0 top-8 mb-4 flex w-full flex-col justify-center">
             <TocBot />
-            <ArticleComments id={detailArticle.page.id} />
+            <blog.ArticleComments id={detailArticle.page.id} />
           </div>
         </section>
       </div>

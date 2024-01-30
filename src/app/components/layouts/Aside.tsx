@@ -1,7 +1,7 @@
 import React from "react";
 import { getAllPosts } from "@/app/lib/notion";
-import ComboBox from "./ComboBox";
-import TagSearch from "./TagSearch";
+import ComboBox from "../elements/ComboBox";
+import TagSearch from "../elements/MultiSelect";
 
 type Tag = {
   id: string;

@@ -4,7 +4,7 @@ import { useRecoilState } from "recoil";
 import { useComment } from "@/app/hooks/useComment";
 import { Modal, Button, Textarea } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { notificationState } from "../atoms/notification";
+import { notificationState } from "../../atoms/notification";
 
 type CommentProps = {
   id: string;

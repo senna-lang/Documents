@@ -1,6 +1,6 @@
-import ArticleList from "../../../../components/ArticleList";
-import PageNation from "../../../../components/PageNation";
 import React from "react";
+import * as blog from "@/app/features/blog/components/index";
+import PageNation from "@/app/components/elements/PageNation";
 import { createMetaData } from "@/app/utils/metaData";
 import { getAllPosts } from "@/app/lib/notion";
 import { Article } from "@/app/types/types";
@@ -29,7 +29,7 @@ const tagPageList = async ({ params }: { params: { tag: string; page: number } }
         <div className="my-7 text-center">
           <h1 className="font-PlayFairDisplay text-5xl">{currentTag}</h1>
         </div>
-        <ArticleList articles={postsByPage} normal={false} />
+        <blog.ArticleList articles={postsByPage} normal={false} />
       </section>
       <PageNation numberOfPage={numberOfPage} tag={currentTag} currentPage={currentPage} />
     </div>

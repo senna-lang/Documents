@@ -1,7 +1,6 @@
 import React from "react";
+import * as blog from "@/app/features/blog/components/index";
 import { createMetaData } from "@/app/utils/metaData";
-import AnimationText from "./AnimationText";
-import HeroSlider from "./HeroSlider";
 import { getAllPosts } from "@/app/lib/notion";
 import { Article } from "@/app/types/types";
 
@@ -27,9 +26,9 @@ const MainVisual = async () => {
 
   return (
     <div className="flex flex-col items-center 2xl:relative 2xl:mx-36 2xl:h-[550px] ">
-      <AnimationText />
+      <blog.AnimationText />
       <div className=" mv01 2xl:absolute 2xl:left-0 2xl:top-10">
-        <HeroSlider sliderData={filteredThumbs} />
+        <blog.HeroSlider sliderData={filteredThumbs} />
       </div>
     </div>
   );
