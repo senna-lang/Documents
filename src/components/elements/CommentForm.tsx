@@ -1,10 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
-import { useComment } from "@/app/hooks/useComment";
+import { useComment } from "@/common/hooks/useComment";
 import { Modal, Button, Textarea } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { notificationState } from "../../atoms/notification";
+import { notificationState } from "../../common/atoms/notification";
 
 type CommentProps = {
   id: string;
@@ -32,7 +32,14 @@ const CommentForm = ({ id }: CommentProps) => {
 
   return (
     <div>
-      <Modal opened={opened} onClose={close} title="記事にコメントする" size="lg" trapFocus={false} centered>
+      <Modal
+        opened={opened}
+        onClose={close}
+        title="記事にコメントする"
+        size="lg"
+        trapFocus={false}
+        centered
+      >
         <form onSubmit={handleSubmit}>
           <Textarea
             placeholder="write down your comment"

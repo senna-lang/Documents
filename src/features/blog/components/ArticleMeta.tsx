@@ -1,8 +1,8 @@
 "use client";
-import CommentForm from "@/app/components/elements/CommentForm";
+import CommentForm from "@/components/elements/CommentForm";
 import React, { useState } from "react";
-import { useLike } from "@/app/hooks/useLike";
-import { useComment } from "../../../hooks/useComment";
+import { useLike } from "@/common/hooks/useLike";
+import { useComment } from "../../../common/hooks/useComment";
 import { Button } from "@mantine/core";
 import { FcLike } from "react-icons/fc";
 

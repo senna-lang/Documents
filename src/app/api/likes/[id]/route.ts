@@ -1,4 +1,4 @@
-import { getPage, updatePage } from "@/app/lib/notion";
+import { getPage, updatePage } from "@/common/lib/notion";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
@@ -17,7 +17,7 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
     const page_id = params.id;
     const result = await getPage(page_id);
     const currentLikes = result;
-    
+
     const postRes = await updatePage({
       page_id,
       properties: {

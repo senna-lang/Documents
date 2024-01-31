@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createComment, getComments } from "@/app/lib/notion";
+import { createComment, getComments } from "@/common/lib/notion";
 
 export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
   try {

@@ -1,8 +1,8 @@
 import React from "react";
-import * as blog from "@/app/features/blog/components/index";
-import { createMetaData } from "@/app/utils/metaData";
-import { getAllPosts } from "@/app/lib/notion";
-import { Article } from "@/app/types/types";
+import * as blog from "@/features/blog/components/index";
+import { createMetaData } from "@/common/utils/metaData";
+import { getAllPosts } from "@/common/lib/notion";
+import { Article } from "@/common/types/types";
 
 type SliderData = {
   id: string;

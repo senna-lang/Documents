@@ -1,18 +1,18 @@
 import React from "react";
 import Link from "next/link";
-import Aside from "@/app/components/layouts/Aside";
-import TocBot from "@/app/components/elements/TocBot";
-import * as blog from "@/app/features/blog/components/index";
-import { createMetaData } from "@/app/utils/metaData";
+import Aside from "@/components/layouts/Aside";
+import TocBot from "@/components/elements/TocBot";
+import * as blog from "@/features/blog/components/index";
+import { createMetaData } from "@/common/utils/metaData";
 import ReactMarkdown from "react-markdown";
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
-import { getPostDetail, getAllPosts } from "@/app/lib/notion";
+import { getPostDetail, getAllPosts } from "@/common/lib/notion";
 import rehypeSlug from "rehype-slug";
 import { BiSolidPurchaseTagAlt } from "react-icons/bi";
 import type { ExtraProps } from "react-markdown";
 import type { HTMLAttributes } from "react";
-import { Article } from "@/app/types/types";
+import { Article } from "@/common/types/types";
 
 type Tag = {
   id: string;

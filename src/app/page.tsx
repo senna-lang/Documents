@@ -1,10 +1,10 @@
 import React from "react";
 import Link from "next/link";
-import MainVisual from "./components/layouts/MainVisual";
-import Aside from "./components/layouts/Aside";
-import * as blog from './features/blog/components/index';
-import { createMetaData } from "@/app/utils/metaData";
-import { getAllPosts } from "@/app/lib/notion";
+import MainVisual from "../components/layouts/MainVisual";
+import Aside from "../components/layouts/Aside";
+import * as blog from "../features/blog/components/index";
+import { createMetaData } from "@/common/utils/metaData";
+import { getAllPosts } from "@/common/lib/notion";
 
 const Blog = async () => {
   const posts = await getAllPosts();

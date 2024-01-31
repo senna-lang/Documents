@@ -1,5 +1,5 @@
 import React from "react";
-import { getAllPosts } from "@/app/lib/notion";
+import { getAllPosts } from "@/common/lib/notion";
 import ComboBox from "../elements/ComboBox";
 import TagSearch from "../elements/MultiSelect";
 

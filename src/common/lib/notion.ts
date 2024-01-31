@@ -6,7 +6,7 @@ import type {
   UpdatePageParameters,
   CreateCommentParameters,
 } from "@notionhq/client/build/src/api-endpoints";
-import { PropertyItemsResponse } from "@/app/types/types";
+import { PropertyItemsResponse } from "@/common/types/types";
 
 export const revalidate = 60;
 

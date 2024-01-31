@@ -2,8 +2,8 @@
 import { useRecoilState } from "recoil";
 import { Notification, rem } from "@mantine/core";
 import { IconX, IconCheck } from "@tabler/icons-react";
-import { notificationState } from "@/app/atoms/notification";
-import { isMutatingState } from "@/app/atoms/isMutating";
+import { notificationState } from "@/common/atoms/notification";
+import { isMutatingState } from "@/common/atoms/isMutating";
 
 export default function Provider({ children }: { children: React.ReactNode }) {
   const [notification, setNotification] = useRecoilState(notificationState);

@@ -1,9 +1,9 @@
-import "./styles/mantineBase.css";
-import "./styles/globals.scss";
+import "../common/styles/mantineBase.css";
+import "../common/styles/globals.scss";
 import "@mantine/core/styles.css";
-import Header from "./components/layouts/Header";
-import Footer from "./components/layouts/Footer";
-import { ScrollToTop } from "./components/elements/ScrollToTop";
+import Header from "../components/layouts/Header";
+import Footer from "../components/layouts/Footer";
+import { ScrollToTop } from "../components/elements/ScrollToTop";
 import Loading from "./loading";
 import { Suspense } from "react";
 import type { Metadata } from "next";

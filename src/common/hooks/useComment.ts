@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
 import axios from "axios";
-import { isMutatingState } from "@/app/atoms/isMutating";
+import { isMutatingState } from "@/common/atoms/isMutating";
 import { useCallback } from "react";
 import { useRecoilState } from "recoil";
 
@@ -41,7 +41,7 @@ export const useComment = (block_id: string, text: string) => {
   } = useSWRMutation(block_id ? `${url}/${block_id}` : null, (url) => postFetcher(url, text), {
     onSuccess: () => {
       setCommentMutating(false);
-      revalidate
+      revalidate;
     },
   });
 

@@ -1,4 +1,4 @@
-import { TextTypingAnim } from "@/app/components/elements/TextTypingAnim";
+import { TextTypingAnim } from "@/components/elements/TextTypingAnim";
 import React from "react";
 
 const AnimationText = () => {
