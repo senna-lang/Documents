@@ -1,14 +1,11 @@
 import { notFound } from "next/navigation";
 import { Client } from "@notionhq/client";
 import { NotionToMarkdown } from "notion-to-md";
-import { cache } from "react";
 import type {
   UpdatePageParameters,
   CreateCommentParameters,
 } from "@notionhq/client/build/src/api-endpoints";
 import { PropertyItemsResponse } from "@/common/types/types";
-
-export const revalidate = 60;
 
 const notionSecret = process.env.NOTION_TOKEN!;
 const notionDataBaseId = process.env.NOTION_DATABASE_ID!;
@@ -21,7 +18,7 @@ const notion = new Client({
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
 //すべての投稿取得
-export const getAllPosts = cache(async () => {
+export const getAllPosts = async () => {
   const posts = await notion.databases.query({
     database_id: notionDataBaseId,
     page_size: 100,
@@ -40,10 +37,10 @@ export const getAllPosts = cache(async () => {
   });
   const allPosts = posts.results;
   return allPosts;
-});
+};
 
 //記事詳細の取得
-export const getPostDetail = cache(async (slug: string) => {
+export const getPostDetail = async (slug: string) => {
   const response = await notion.databases.query({
     database_id: notionDataBaseId,
     filter: {
@@ -67,7 +64,7 @@ export const getPostDetail = cache(async (slug: string) => {
     page,
     mbString,
   };
-});
+};
 
 //notionDBからページ情報取得
 export const getPage = async (page_id: string) => {
