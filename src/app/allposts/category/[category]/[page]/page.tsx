@@ -20,7 +20,7 @@ export async function generateStaticParams() {
     const cat = getCat(post.properties.Category.multi_select);
     return cat;
   });
-  catArray.map((cat: string) => ({
+  return catArray.map((cat: string) => ({
     tag: cat,
     page: 1,
   }));
