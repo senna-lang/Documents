@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { cache } from "react";
 import { Client } from "@notionhq/client";
 import { NotionToMarkdown } from "notion-to-md";
 import type {
@@ -18,7 +19,7 @@ const notion = new Client({
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
 //すべての投稿取得
-export const getAllPosts = async () => {
+export const getAllPosts = cache(async () => {
   const posts = await notion.databases.query({
     database_id: notionDataBaseId,
     page_size: 100,
@@ -37,7 +38,7 @@ export const getAllPosts = async () => {
   });
   const allPosts = posts.results;
   return allPosts;
-};
+});
 
 //記事詳細の取得
 export const getPostDetail = async (slug: string) => {
