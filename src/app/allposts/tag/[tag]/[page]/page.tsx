@@ -22,7 +22,7 @@ export async function generateStaticParams() {
   });
   return tagArray.map((tag: string) => ({
     tag: tag,
-    page: 1,
+    page: '1',
   }));
 }
 
