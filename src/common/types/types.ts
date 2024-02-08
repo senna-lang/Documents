@@ -8,6 +8,13 @@ export type Article = {
   thumb: string;
   likes: number | null;
 };
+
+export type Tag = {
+  id: string;
+  name: string;
+  color: string;
+};
+
 export type PropertyItemsResponse = {
   object: string;
 type: string;

@@ -1,13 +1,9 @@
 import React from "react";
 import { getAllPosts } from "@/common/lib/notion";
+import { Tag } from "@/common/types/types";
 import ComboBox from "../elements/ComboBox";
 import TagSearch from "../elements/MultiSelect";
 
-type Tag = {
-  id: string;
-  name: string;
-  color: string;
-};
 
 const Aside = async () => {
   const posts = await getAllPosts();
