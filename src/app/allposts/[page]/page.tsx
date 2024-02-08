@@ -5,6 +5,15 @@ import { getAllPosts } from "@/common/lib/notion";
 
 export const revalidate = 1800;
 
+export async function generateStaticParams() {
+  const posts = await getAllPosts();
+  const numberOfPage = Math.floor(posts.length / 6) + (posts.length % 6 > 0 ? 1 : 0);
+  const pageArray = Array.from({ length: numberOfPage }, (_, index) => (index + 1).toString());
+  return pageArray.map((num: string) => ({
+    page: num,
+  }));
+}
+
 const BlogPageList = async ({ params }: { params: { page: number } }) => {
   const posts = await getAllPosts();
   //記事を最新の６つまでに
