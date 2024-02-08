@@ -3,7 +3,7 @@ import * as blog from "@/features/blog/components/index";
 import PageNation from "@/components/elements/PageNation";
 import { createMetaData } from "@/common/utils/metaData";
 import { getAllPosts } from "@/common/lib/notion";
-import { Article,Tag } from "@/common/types/types";
+import { Article, Tag } from "@/common/types/types";
 
 export const revalidate = 1800;
 
@@ -20,7 +20,7 @@ export async function generateStaticParams() {
     const tags = getTag(post.properties.Tags.multi_select);
     return tags;
   });
-  tagArray.map((tag: string) => ({
+  return tagArray.map((tag: string) => ({
     tag: tag,
     page: 1,
   }));
