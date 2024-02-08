@@ -3,9 +3,28 @@ import * as blog from "@/features/blog/components/index";
 import PageNation from "@/components/elements/PageNation";
 import { createMetaData } from "@/common/utils/metaData";
 import { getAllPosts } from "@/common/lib/notion";
-import { Article } from "@/common/types/types";
+import { Article, Tag } from "@/common/types/types";
 
 export const revalidate = 1800;
+
+export async function generateStaticParams() {
+  const posts = await getAllPosts();
+  const catArray: string[] = posts.flatMap((post: any) => {
+    const getCat = (cat: Tag[]) => {
+      const allCat = cat.map((cat: Tag) => {
+        return cat.name;
+      });
+      return allCat;
+    };
+
+    const cat = getCat(post.properties.Category.multi_select);
+    return cat;
+  });
+  catArray.map((cat: string) => ({
+    tag: cat,
+    page: 1,
+  }));
+}
 
 const CategoryPageList = async ({ params }: { params: { category: string; page: number } }) => {
   const currentCat = params?.category;

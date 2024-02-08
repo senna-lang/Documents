@@ -3,9 +3,28 @@ import * as blog from "@/features/blog/components/index";
 import PageNation from "@/components/elements/PageNation";
 import { createMetaData } from "@/common/utils/metaData";
 import { getAllPosts } from "@/common/lib/notion";
-import { Article } from "@/common/types/types";
+import { Article,Tag } from "@/common/types/types";
 
 export const revalidate = 1800;
+
+export async function generateStaticParams() {
+  const posts = await getAllPosts();
+  const tagArray: string[] = posts.flatMap((post: any) => {
+    const getTag = (tags: Tag[]) => {
+      const allTags = tags.map((tag: Tag) => {
+        return tag.name;
+      });
+      return allTags;
+    };
+
+    const tags = getTag(post.properties.Tags.multi_select);
+    return tags;
+  });
+  tagArray.map((tag: string) => ({
+    tag: tag,
+    page: 1,
+  }));
+}
 
 const TagPageList = async ({ params }: { params: { tag: string; page: number } }) => {
   const currentTag = params?.tag;
