@@ -5,7 +5,9 @@ import { createMetaData } from "@/common/utils/metaData";
 import { getAllPosts } from "@/common/lib/notion";
 import { Article } from "@/common/types/types";
 
-const tagPageList = async ({ params }: { params: { tag: string; page: number } }) => {
+export const revalidate = 1800;
+
+const TagPageList = async ({ params }: { params: { tag: string; page: number } }) => {
   const currentTag = params?.tag;
   const posts = await getAllPosts();
 
@@ -36,4 +38,4 @@ const tagPageList = async ({ params }: { params: { tag: string; page: number } }
   );
 };
 
-export default tagPageList;
+export default TagPageList;

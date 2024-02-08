@@ -5,7 +5,9 @@ import { createMetaData } from "@/common/utils/metaData";
 import { getAllPosts } from "@/common/lib/notion";
 import { Article } from "@/common/types/types";
 
-const categoryPageList = async ({ params }: { params: { category: string; page: number } }) => {
+export const revalidate = 1800;
+
+const CategoryPageList = async ({ params }: { params: { category: string; page: number } }) => {
   const currentCat = params?.category;
   const posts = await getAllPosts();
 
@@ -35,4 +37,4 @@ const categoryPageList = async ({ params }: { params: { category: string; page: 
     </div>
   );
 };
-export default categoryPageList;
+export default CategoryPageList;
