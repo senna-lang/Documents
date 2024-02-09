@@ -24,7 +24,7 @@ const PlayfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "SENNA BLOG",
+  title: "SENNA　BLOG",
   description: "Senna's NotionBlog",
 };
 
