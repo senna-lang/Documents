@@ -1,5 +1,5 @@
-import React from "react";
 import Link from "next/link";
+import notFound from "../../not-found";
 import Aside from "@/components/layouts/Aside";
 import TocBot from "@/components/elements/TocBot";
 import * as blog from "@/features/blog/components/index";
@@ -32,8 +32,7 @@ const Post = async ({ params }: { params: { slug: string } }) => {
   const detailArticle = await getPostDetail(params.slug);
 
   if (!detailArticle) {
-    console.log("エラーが発生しました。");
-    return;
+    notFound();
   }
 
   const { page, mbString } = detailArticle;
