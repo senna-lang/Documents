@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import { Modal, Button, Textarea } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import { useComment } from "@/common/hooks/useComment";
 import { notificationState } from "../../common/atoms/notification";
 import { isMutatingState } from "@/common/atoms/isMutating";
 import { sendComment } from "@/common/actions/actions";
@@ -14,6 +15,7 @@ type CommentProps = {
 const CommentForm = ({ id }: CommentProps) => {
   const [notification, setNotification] = useRecoilState(notificationState);
   const [commentMutating, setCommentMutating] = useRecoilState(isMutatingState);
+  const { data, mutate } = useComment(id);
   const [comment, setComment] = useState("");
   const [opened, { open, close }] = useDisclosure(false);
 
@@ -27,10 +29,10 @@ const CommentForm = ({ id }: CommentProps) => {
     const res = await sendComment({ id, comment });
     if (res) {
       setCommentMutating(false);
+      mutate(data, { optimisticData: [data + 1] });
     } else {
       setCommentMutating(true);
     }
-    console.log(res);
     setComment("");
     setNotification(!notification);
     close();

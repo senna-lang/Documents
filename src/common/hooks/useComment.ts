@@ -28,6 +28,7 @@ export const useComment = (block_id: string) => {
   return {
     data: data || 0,
     revalidate,
+    mutate,
     isLoading,
     error,
   };
