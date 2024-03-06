@@ -84,6 +84,7 @@ export const updatePage = async (params: UpdatePageParameters) => {
   }
 };
 
+//コメント数の取得
 export const getComments = async (block_id: string) => {
   try {
     const response = await notion.comments.list({ block_id });
