@@ -19,17 +19,16 @@ export default function Provider({ children }: { children: React.ReactNode }) {
         isMutating ? (
           <div className="fixed bottom-20 right-20 z-50 w-auto">
             <Notification
-              icon={checkIcon}
-              color="teal"
-              title="メッセージ送信中"
+              icon={xIcon}
+              color="red"
+              title="送信に失敗しました"
               radius="md"
-              loading={isMutating}
               onClose={() => {
                 setNotification(false);
                 setIsMutating(true);
               }}
             >
-              Sending your comment ...
+              Failed to send comment
             </Notification>
           </div>
         ) : (

@@ -1,10 +1,11 @@
 "use client";
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
-import { useComment } from "@/common/hooks/useComment";
 import { Modal, Button, Textarea } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { notificationState } from "../../common/atoms/notification";
+import { isMutatingState } from "@/common/atoms/isMutating";
+import { sendComment } from "@/common/actions/actions";
 
 type CommentProps = {
   id: string;
@@ -12,9 +13,8 @@ type CommentProps = {
 
 const CommentForm = ({ id }: CommentProps) => {
   const [notification, setNotification] = useRecoilState(notificationState);
-
+  const [commentMutating, setCommentMutating] = useRecoilState(isMutatingState);
   const [comment, setComment] = useState("");
-  const { trigger } = useComment(id, comment);
   const [opened, { open, close }] = useDisclosure(false);
 
   const handleCommentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -22,9 +22,15 @@ const CommentForm = ({ id }: CommentProps) => {
   };
 
   //コメントの送信
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    trigger();
+    const res = await sendComment({ id, comment });
+    if (res) {
+      setCommentMutating(false);
+    } else {
+      setCommentMutating(true);
+    }
+    console.log(res);
     setComment("");
     setNotification(!notification);
     close();
