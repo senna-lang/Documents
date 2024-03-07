@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useTransition } from "react";
 import { useRecoilState } from "recoil";
 import { Modal, Button, Textarea } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
@@ -15,6 +15,7 @@ type CommentProps = {
 const CommentForm = ({ id }: CommentProps) => {
   const [notification, setNotification] = useRecoilState(notificationState);
   const [commentMutating, setCommentMutating] = useRecoilState(isMutatingState);
+  const [isPending, startTransition] = useTransition();
   const { data, mutate } = useComment(id);
   const [comment, setComment] = useState("");
   const [opened, { open, close }] = useDisclosure(false);
@@ -24,18 +25,20 @@ const CommentForm = ({ id }: CommentProps) => {
   };
 
   //コメントの送信
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const res = await sendComment({ id, comment });
-    if (res) {
-      setCommentMutating(false);
-      mutate(data, { optimisticData: [data + 1] });
-    } else {
-      setCommentMutating(true);
-    }
-    setComment("");
-    setNotification(!notification);
-    close();
+    startTransition(async () => {
+      const res = await sendComment({ id, comment });
+      if (res) {
+        setCommentMutating(false);
+        mutate(data, { optimisticData: [data + 1] });
+      } else {
+        setCommentMutating(true);
+      }
+      setComment("");
+      setNotification(!notification);
+      close();
+    });
   };
 
   return (
